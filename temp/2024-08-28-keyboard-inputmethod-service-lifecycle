@@ -1,0 +1,11 @@
+---
+title: Android InputMethodService에 대한 분석
+author: jaepark
+date: 2024-08-28 21:47:00 +0900
+categories: [Android]
+tags: [keyboard]
+pin: false
+img_path: '/assets/img'
+---
+
+Custom Keyboard 앱을 만들기 위해서는 반드시 InputMethodService를 extend하여 Custom하는 View를 return 해야 합니다.

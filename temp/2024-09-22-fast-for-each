@@ -1,0 +1,14 @@
+---
+title: Android Compose fastForEach에 대해
+author: jaepark
+date: 2024-09-22 21:25:00 +0900
+categories: [Android]
+tags: [compose]
+pin: false
+img_path: '/assets/img'
+---
+
+https://developer.android.com/reference/java/util/RandomAccess
+https://developer.android.com/reference/kotlin/androidx/compose/ui/util/package-summary#(kotlin.collections.List).fastForEach(kotlin.Function1)
+https://discuss.kotlinlang.org/t/for-statement-performance-improvement-kotlin-jvm/22805
+https://jisungbin.medium.com/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%8C%80%EC%9A%A9%EB%9F%89-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9D%84-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EB%A6%AC%EA%B8%B0-b857cda50f14
