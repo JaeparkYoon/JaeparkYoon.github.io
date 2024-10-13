@@ -10,7 +10,7 @@ img_path: '/assets/img'
 Android Compose를 이용하여 개발하면서 우연히 fastForEach를 발견하게 됐습니다. 왜 kotlin의 기존 forEach를 제쳐두고 별도로 fastForEach를 만들어
 사용했는지 궁금하여 fastForEach와 forEach의 차이점을 알아보고 추후 코드를 작성할 때 언제 이용하는게 유리한지 알아보겠습니다.
 
-### forEach fastForEach의 동작 방식
+## forEach fastForEach의 동작 방식
 
 우선, kotlin에서 가본으로 제공하는 forEach의 내부 코드와 자바 코드로 어떻게 디컴파일 되는지 살펴봤습니다.
 
@@ -77,7 +77,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 ```
 디컴파일 해보면 Iterator 대신 원시 타입인 index 변수를 사용하여 for문 안에서 list.get(index) 형식으로 각각의 element를 보내고 있습니다.
 
-### 성능의 차이
+## 성능의 차이
 성능의 차이로 봤을 때 fastForEach가 좀 더 성능을 낼만한 점은 2가지로 추릴 수 있습니다. 
 - Iterator 객체 대신 index 역할을 하는 int 변수를 메모리에 할당
 - iterator의 next() 대신 get(i)를 사용
@@ -98,7 +98,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 <br><br>
 즉, RandomAccess를 지원하는 Collection은 get(i)가 더 유리함으로 Kotlin의 forEach보다 더 좋은 성능을 가져갈 수 있다는 사실을 알 수 있습니다. 
 
-### 결론
+## 결론
 **kotlin에서 forEach 대신 fastForEach를 사용하면 더 좋은 성능을 내는 자료구조형은 RandomAccess를 Implementing 하는 모든 Collection입니다.**
 대표적인 Collection들은<br>
 - java : ArrayList, AttributeList, CopyOnWriteArrayList, RoleList, RoleUnresolvedList, Stack, Vector<br>
