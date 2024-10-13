@@ -91,7 +91,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 
 공통 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있으니 사용하지 말고, 
 우리가 직접 만든 코드 또는 random access를 지원한다는 것이 알려진 collection에서 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
-지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,<br>
+지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,
 **java의 List Collection중에 element를 가져올 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
 [공식문서의 설명을 읽어보면 RandomAccess를 Implementing 하는 Collection들은 반복문을 돌 때 iterator의 next()보다 get(i)의 접근이 더 
 성능상 빠르다고 설명합니다.](https://developer.android.com/reference/java/util/RandomAccess)
