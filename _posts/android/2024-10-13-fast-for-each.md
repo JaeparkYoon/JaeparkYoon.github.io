@@ -44,7 +44,7 @@ while(var2.hasNext()) {
     System.out.println(it);
 }
 ```
-var2라는 iterator의 객체를 할당하여 iterator의 element의 마지막까지 돌아가는 while문을 돌려 element를 반환하고 있습니다.<br>
+var2라는 iterator의 객체를 할당하여 iterator의 element의 마지막까지 돌아가는 while문을 돌려 element를 반환하고 있습니다.
 다음은 fastForEach는 내부 코드가 어떻게 됐는지 살펴봤습니다.
 ```kotlin
 @Suppress("BanInlineOptIn")
@@ -81,6 +81,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 성능의 차이로 봤을 때 fastForEach가 좀 더 성능을 낼만한 점은 2가지로 추릴 수 있습니다. 
 - Iterator 객체 대신 index 역할을 하는 int 변수를 메모리에 할당
 - iterator의 next() 대신 get(i)를 사용
+
 메모리를 객체 대신 원시 타입을 할당하는 점은 성능상 유리한 부분을 가져올 수 있지만 next() 대신 get(i)를 사용하여 반복문 안에서 element를 return
 하는 것이 왜 유리한가에 대한 의문점이 있었습니다. 그 의문점을 해결하기 위한 실마리가 fastForEach 공식 문서 설명에 있었습니다. 
 
