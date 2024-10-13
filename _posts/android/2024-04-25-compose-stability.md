@@ -39,8 +39,8 @@ data class Contact(var name: String, var number: String)
 공식 문서에 나온대로 var 키워드를 선언했을 때 ContactDetails Componant는 Recompose가 되는것을 확인할 수 있었습니다.
 만약 이러한 변경 가능한 객체를 안전한 타입으로 설정하고 싶을때 **@Stable** 어노테이션을 사용하면 var 키워드를 주더라도 Recompose 대상에서 제외가 가능합니다.
 <br><br>
-Stable 관련해서 공식 문서에서 나온 내용을 살펴봤는데요, 그렇다면 Stable 및 UnStable로 간주되는 유형은 뭐가 있는지 안드로이드의 
-유명한 세미나인 드로이드나이츠에서 엄재웅님의 발표를 보고 정리했습니다. 
+Stable 관련해서 공식 문서에서 나온 내용을 살펴봤는데요, 그렇다면 Stable 및 UnStable로 간주되는 유형은 뭐가 있는지 안드로이드의 기술 세미나인 
+드로이드나이츠에서 엄재웅님의 발표 자료를 보고 정리했습니다. 
 
 ## Stable로 간주되는 유형
 - 원시 타입
