@@ -101,14 +101,15 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 ### 결론
 **kotlin에서 forEach 대신 fastForEach를 사용하면 더 좋은 성능을 내는 자료구조형은 RandomAccess를 Implementing 하는 모든 Collection입니다.**
 대표적인 Collection들은<br>
-java - ArrayList, AttributeList, CopyOnWriteArrayList, RoleList, RoleUnresolvedList, Stack, Vector<br>
-kotlin - List(CollectionsJVM에서 ListBuilder를 통해 RandomAccess Implementing) , MutableList<br>
-android - 직접 만든 자료 구조형인 SnapshotStateList 등등..<br>
+- java : ArrayList, AttributeList, CopyOnWriteArrayList, RoleList, RoleUnresolvedList, Stack, Vector<br>
+- kotlin : List(CollectionsJVM에서 ListBuilder를 통해 RandomAccess Implementing) , MutableList<br>
+- android : 직접 만든 자료 구조형인 SnapshotStateList 등등..
+
 다양하게 있습니다 추후 버전이 업데이트 되면서 새로운 자료구조형이 나타나 RandomAccess를 지원하는 잠재적인 Collection 또한 포함이 된다고 볼 수 있습니다.
 <br>
 **반대로 forEach의 성능이 좋은 자료구조형은 RandomAccess를 지원하지 않는 Collection이라고 볼 수 있습니다.**
 
-**참고**
-[https://developer.android.com/reference/java/util/RandomAccess](https://developer.android.com/reference/java/util/RandomAccess)
-[https://developer.android.com/reference/kotlin/androidx/compose/ui/util/package-summary#(kotlin.collections.List).fastForEach(kotlin.Function1)](https://developer.android.com/reference/kotlin/androidx/compose/ui/util/package-summary#(kotlin.collections.List).fastForEach(kotlin.Function1))<br>
-[https://jisungbin.medium.com/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%8C%80%EC%9A%A9%EB%9F%89-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9D%84-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EB%A6%AC%EA%B8%B0-b857cda50f14](https://jisungbin.medium.com/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%8C%80%EC%9A%A9%EB%9F%89-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9D%84-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EB%A6%AC%EA%B8%B0-b857cda50f14)
+**참고**<br>
+- [https://developer.android.com/reference/java/util/RandomAccess](https://developer.android.com/reference/java/util/RandomAccess)
+- [https://developer.android.com/reference/kotlin/androidx/compose/ui/util/package-summary#(kotlin.collections.List).fastForEach(kotlin.Function1)](https://developer.android.com/reference/kotlin/androidx/compose/ui/util/package-summary#(kotlin.collections.List).fastForEach(kotlin.Function1))
+- [https://jisungbin.medium.com/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%8C%80%EC%9A%A9%EB%9F%89-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9D%84-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EB%A6%AC%EA%B8%B0-b857cda50f14](https://jisungbin.medium.com/%EC%BD%94%ED%8B%80%EB%A6%B0-%EB%8C%80%EC%9A%A9%EB%9F%89-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9D%84-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EB%A6%AC%EA%B8%B0-b857cda50f14)
