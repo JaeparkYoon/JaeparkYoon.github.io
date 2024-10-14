@@ -7,8 +7,8 @@ tags: [compose]
 pin: false
 img_path: '/assets/img'
 ---
-Android Compose를 이용하여 개발하면서 우연히 fastForEach를 발견하게 됐습니다. 왜 kotlin의 기존 forEach를 제쳐두고 별도로 fastForEach를 만들어
-사용했는지 궁금하여 fastForEach와 forEach의 차이점을 알아보고 추후 코드를 작성할 때 언제 이용하는게 유리한지 알아보겠습니다.
+Android Compose를 이용하여 개발하면서 우연히 fastForEach를 발견하게 됐습니다. 왜 Android 개발팀은 kotlin의 기존 forEach를 제쳐두고 별도로 fastForEach를 만들어
+사용했는지 궁금하여 fastForEach와 forEach의 차이점을 알아보고 추후 코드를 작성할 때 언제 이용하는게 유리한지 알아봤습니다.
 
 ## 동작 방식
 ```kotlin
@@ -80,7 +80,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 디컴파일 해보면 Iterator 대신 원시 타입인 index 변수를 사용하여 for문 안에서 list.get(index) 형식으로 각각의 element를 보내고 있습니다.
 
 ## 성능의 차이
-성능의 차이로 봤을 때 fastForEach가 좀 더 성능을 낼만한 점은 2가지로 추릴 수 있습니다. 
+디컴파일 된 java 코드를 확인해 보면 fastForEach가 좀 더 성능을 낼만한 점은 2가지로 추릴 수 있습니다. 
 - Iterator 객체 대신 index 역할을 하는 int 변수를 메모리에 할당
 - iterator의 next() 대신 get(i)를 사용
 
@@ -92,7 +92,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 {: .prompt-info }
 
 공용 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있으니 사용하지 말고, 
-우리가 직접 만든 코드 또는 random access를 지원하는 collection에서 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
+random access를 지원하는 collection에서 생성된 코드에서만 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
 지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,
 **java의 List Collection중에 랜덤 또는 순차적인 리스트를 접근할 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
 [공식문서의 설명을 읽어보면 RandomAccess를 Implementing 하는 Collection들은 반복문을 돌 때 iterator의 next()보다 get(i)의 접근이 더 
