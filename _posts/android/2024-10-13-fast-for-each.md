@@ -10,9 +10,15 @@ img_path: '/assets/img'
 Android Compose를 이용하여 개발하면서 우연히 fastForEach를 발견하게 됐습니다. 왜 kotlin의 기존 forEach를 제쳐두고 별도로 fastForEach를 만들어
 사용했는지 궁금하여 fastForEach와 forEach의 차이점을 알아보고 추후 코드를 작성할 때 언제 이용하는게 유리한지 알아보겠습니다.
 
-## forEach fastForEach의 동작 방식
+## 동작 방식
+```kotlin
+listOf("element_1", "element_2", "element_3").forEach { println(it) }
+listOf("element_1", "element_2", "element_3").fastForEach { println(it) }
+```
+동작 방식을 비교하기 위해 위의 코드를 java 코드로 디컴파일 하여 동작 방식을 비교해 봤습니다.
 
-우선, kotlin에서 가본으로 제공하는 forEach의 내부 코드와 자바 코드로 어떻게 디컴파일 되는지 살펴봤습니다.
+### forEach
+우선, kotlin에서 가본으로 제공하는 forEach의 내부 코드가 어떻게 되는지 살펴봤습니다.
 
 ```kotlin
 @kotlin.internal.HidesMembers
@@ -23,13 +29,7 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
 
 내부 코드를 살펴보면 forEach는 Collection의 최상위 interface인 Iterable의 확장 함수로 작성돼있는 것을 알 수 있었습니다. for문을 돌려서
 List, Set, Queue 같은 Collection들의 element를 고차함수의 인자로 넘겨서 forEach { element -> ptrintln(element) }와 같은 간결한
-kotlin 코드를 작성할 수 있게 해줍니다.
-
-```kotlin
-listOf("element_1", "element_2", "element_3").forEach { println(it) }
-```
-
-위의 코드를 java 코드로 디컴파일 하면 다음과 같이 나옵니다.
+kotlin 코드를 작성할 수 있게 해줍니다. 예제 코드를 디컴파일 하면 다음과 같이 나옵니다.
 
 ```java
 String[]var0=new String[]{"element_1","element_2","element_3"};
@@ -45,6 +45,8 @@ while(var2.hasNext()) {
 }
 ```
 var2라는 iterator의 객체를 할당하여 iterator의 element의 마지막까지 돌아가는 while문을 돌려 element를 반환하고 있습니다.
+
+### fastForEach
 다음은 fastForEach는 내부 코드가 어떻게 됐는지 살펴봤습니다.
 ```kotlin
 @Suppress("BanInlineOptIn")
@@ -60,8 +62,8 @@ inline fun <T> List<T>.fastForEach(action: (T) -> Unit) {
 forEach와 다르게 fastForEach는 Iterable의 확장함수가 아닌 Iterable을 최종적으로 상속하는 interface 중 하나인 List의 확장함수로 돼있습니다.
 이 부분에서 알 수 있는 점은 모든 Collection을 지원하지 않고 일부 Collection만 지원한다는 것입니다. 또한 list의 index를 사용하여 element를
 get 하는 부분이 눈에 띄었으며, contract { callsInPlace(action) }를 사용하여 컴파일러에게 action의 반복 횟수를 알려주고 있는 것을 보아 컴파일러는
-Iterator를 사용하면 반복횟수를 알 수 있지만 List의 index를 사용한다면 반복횟수를 알 수 없다는점을 확인하게 됐습니다. 마찬가지로 fastForEach로 바꿔서
-디컴파일 해보면 다음과 같습니다.
+Iterator를 사용하면 반복횟수를 알 수 있지만 List의 index를 사용한다면 반복횟수를 알 수 없다는점을 확인하게 됐습니다. 마찬가지로 fastForEach의 예제 코드를
+디컴파일 하면 다음과 같이 나옵니다.
 ```java
 String[]var0=new String[]{"element_1","element_2","element_3"};
 List $this$fastForEach$iv=CollectionsKt.listOf(var0);
@@ -89,10 +91,10 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 > and this method may actually be a lot slower. Only use for collections that are created by code we control and are known to support random access.
 {: .prompt-info }
 
-공통 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있으니 사용하지 말고, 
-우리가 직접 만든 코드 또는 random access를 지원한다는 것이 알려진 collection에서 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
+공용 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있으니 사용하지 말고, 
+우리가 직접 만든 코드 또는 random access를 지원하는 collection에서 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
 지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,
-**java의 List Collection중에 element를 가져올 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
+**java의 List Collection중에 랜덤 또는 순차적인 리스트를 접근할 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
 [공식문서의 설명을 읽어보면 RandomAccess를 Implementing 하는 Collection들은 반복문을 돌 때 iterator의 next()보다 get(i)의 접근이 더 
 성능상 빠르다고 설명합니다.](https://developer.android.com/reference/java/util/RandomAccess)
 <br><br>
