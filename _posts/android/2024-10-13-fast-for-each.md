@@ -91,7 +91,7 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 > and this method may actually be a lot slower. Only use for collections that are created by code we control and are known to support random access.
 {: .prompt-info }
 
-공용 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있으니 사용하지 말고, 
+공용 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 더 느릴 수 있어 사용하지 말고, 
 random access를 지원하는 collection에서 생성된 코드에서만 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
 지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,
 **java의 List Collection중에 랜덤 또는 순차적인 리스트를 접근할 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
