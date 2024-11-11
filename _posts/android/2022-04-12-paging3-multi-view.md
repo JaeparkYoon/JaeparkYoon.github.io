@@ -1,5 +1,5 @@
 ---
-title: Android Paging3에서 멀티뷰를 구현하는 방법에 대한 연구
+title: Android Paging3에서 멀티뷰를 구현하는 방법에 대한 연구 (xml)
 author: jaepark
 date: 2022-04-12 16:58:00 +0900
 categories: [Android]
