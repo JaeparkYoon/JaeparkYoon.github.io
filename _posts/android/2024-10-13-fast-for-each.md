@@ -28,7 +28,7 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
 ```
 
 내부 코드를 살펴보면 forEach는 Collection의 최상위 interface인 Iterable의 확장 함수로 작성돼있는 것을 알 수 있었습니다. for문을 돌려서
-List, Set, Queue 같은 Collection들의 element를 고차함수의 인자로 넘겨서 forEach { element -> ptrintln(element) }와 같은 간결한
+List, Set, Queue 같은 Collection들의 element를 고차 함수의 인자로 넘겨서 forEach { element -> ptrintln(element) }와 같은 간결한
 kotlin 코드를 작성할 수 있게 해줍니다. 예제 코드를 디컴파일 하면 다음과 같이 나옵니다.
 
 ```java
@@ -87,14 +87,13 @@ for(int var3=$this$fastForEach$iv.size(); index$iv<var3; ++index$iv) {
 메모리를 객체 대신 원시 타입을 할당하는 점은 성능상 유리한 부분을 가져올 수 있지만 next() 대신 get(i)를 사용하여 반복문 안에서 element를 return
 하는 것이 왜 유리한가에 대한 의문점이 있었습니다. 그 의문점을 해결하기 위한 실마리가 fastForEach 공식 문서 설명에 있었습니다. 
 
-> Do not use for collections that come from public APIs, since they may not support random access in an efficient way, 
-> and this method may actually be a lot slower. Only use for collections that are created by code we control and are known to support random access.
+> Only use for collections that are created by code we control and are known to support random access.
 {: .prompt-info }
 
-공용 API에서 제공되는 Collection에서는 random access를 지원하지 않을 수 있어 사용하지 말고, 
 random access를 지원하는 collection에서 생성된 코드에서만 fastForEach를 사용하라는 문구에서 볼 수 있듯이 random access를 
-지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다. 그렇다면 RandomAccess는 무엇일까 찾아봤더니,
-**java의 List Collection중에 랜덤 또는 순차적인 리스트를 접근할 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 였습니다.**
+지원하는 Collection에서는 이 방법이 더 빠른것을 알 수 있습니다.
+
+**RandomAccess는 java의 List Collection중에 랜덤 또는 순차적인 리스트를 접근할 때 더 효율적인 알고리즘을 제공하기 위한 목적으로 만들어진 java의 interface 입니다.**
 [공식문서의 설명을 읽어보면 RandomAccess를 Implementing 하는 Collection들은 반복문을 돌 때 iterator의 next()보다 get(i)의 접근이 더 
 성능상 빠르다고 설명합니다.](https://developer.android.com/reference/java/util/RandomAccess)
 <br><br>
