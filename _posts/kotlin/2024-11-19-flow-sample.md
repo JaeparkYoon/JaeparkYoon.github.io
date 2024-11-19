@@ -48,4 +48,4 @@ settingDataStore.heightRate
 
 ![webm_1](/kotlin/flow_sample/after_apply_sample.gif){: width="300" }
 
-이렇게 키보드 높낮이를 바꿀때 좀 더 부드러운 UI로 유저가 이용할 수 있도록 개선돼서 너무 기쁜 마음입니다!
+이렇게 키보드 높낮이를 바꿀 때 좀 더 부드러운 UI로 유저가 이용할 수 있도록 개선돼서 너무 기쁜 마음입니다!
