@@ -63,7 +63,7 @@ fun getSearchResult(query: String) = viewModelScope.launch {
 <img alt="image_3" src="https://github.com/YoonJaePark3908/StockPortfolio/assets/54883589/17c01064-91dc-4121-8957-28fbc741912d">
 
 cachedIn을 하지 않았을 경우 화면 회전을하면 페이징 내부에서 서버를 다시 찌르는 로직을 타는 반면, cachedIn 적용 후 화면 회전을 하면 캐싱된 데이터를 적재하여 서버를 다시 찌르지 않았습니다.
-config change 시나리오와 같이 같은 데이터를 쓰게 될 경우 라이브러리가 알아서 캐싱된 데이터를 가져와 초기화 해줌으로 서버를 다시 찌르는 번거로움이 없어졌으며, 
+config change 시나리오와 같이 같은 데이터를 쓰게 될 경우 라이브러리가 알아서 캐싱 된 데이터를 가져와 초기화해줌으로써 서버를 다시 찌르는 번거로움이 없어졌으며,
 이는 페이징 라이브러리의 큰 장점 중 하나인 메모리 캐싱을 이용하는 사례가 될 수 있습니다.
 
 이를 통해 왜 페이징 flow에 cachedIn을 하는지 알게 됐습니다.
