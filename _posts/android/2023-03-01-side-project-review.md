@@ -42,5 +42,5 @@ Local DB 모듈 구축 등등 스스로 공부하여 사용할 수 있는 기회
 누군가가 저에게 "사이드 프로젝트 해야 하나요?" 물어본다면 저의 대답은 매우 간결하고 단호하게 꼭 하세요!!라고 말씀드릴 겁니다. 
 그 정도로 사이드 프로젝트는 개발자 개인에게 있어 정말 큰 도움이 됩니다.
 사이드 프로젝트를 망설이는 분이 있다면 꼭 시작해서 끝을 맺어보시기를 권장 드립니다.<br>읽어주셔서 감사합니다!<br><br>
-[사이드 프로젝트 git 링크](https://github.com/JaeparkYoon3908/StockPortfolio)
+[사이드 프로젝트 git 링크](https://github.com/JaeparkYoon/StockPortfolio)
 
