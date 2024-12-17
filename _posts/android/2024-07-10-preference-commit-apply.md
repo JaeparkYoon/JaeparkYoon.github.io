@@ -104,7 +104,7 @@ Datastore로 마이그레이션이 어려운 상황이라면 적절하게 Corout
 
 ```kotlin
 fun runJob() {
-    viewModelScope.launch {
+    viewModelScope.launch { // main dispatcher를 갖고 있는 viewModelScope
         if (setPreferenceData("data")) {
             //프리퍼런스 성공 시 동작
         }
