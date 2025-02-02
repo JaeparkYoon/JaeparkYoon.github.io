@@ -5,7 +5,7 @@ date: 2022-11-01 04:58:00 +0900
 categories: [Kotlin]
 tags: [state flow,shared flow]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 >StateFlow와 SharedFlow의 차이점을 공부하기 전에 알아야하는 개념이 있었습니다. 그것은 바로 'Cold Stream'과 'Hot Stream'입니다.
 

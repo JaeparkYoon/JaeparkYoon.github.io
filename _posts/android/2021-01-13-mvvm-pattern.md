@@ -5,7 +5,7 @@ date: 2021-01-13 17:47:00 +0900
 categories: [Android]
 tags: [mvvm]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **디자인 패턴의 필요성**
 저는, 한 프로젝트에서 신규 기능 개발을 담당한 적이 있습니다. 이미 짜놓은 코드에서는 모든 데이터 및 네트워크 처리, UI 구성을 activity에 작성을 해둔 상태입니다. 

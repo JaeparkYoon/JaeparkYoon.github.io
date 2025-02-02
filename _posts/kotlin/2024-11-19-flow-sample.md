@@ -5,7 +5,7 @@ date: 2024-11-19
 categories: [Kotlin]
 tags: [flow,flow sample]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## 문제 인식 및 해결
 제가 만들고 있는 키보드 앱에서는 키보드 높낮이를 조절하는 기능이 있습니다. datastore에 키보드 높낮이 비율을 flow 값으로 갖고 있고, 이를 collect 하여

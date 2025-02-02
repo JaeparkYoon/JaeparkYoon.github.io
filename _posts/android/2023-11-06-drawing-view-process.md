@@ -5,7 +5,7 @@ date: 2020-11-23 14:39:00 +0900
 categories: [Android]
 tags: [view]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 >글을 읽기전에 알아두면 좋은 개념<br>
 >- LinearLayout, ConstraintLayout의 부모 Class : ViewGroup<br>

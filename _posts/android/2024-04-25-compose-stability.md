@@ -5,7 +5,7 @@ date: 2024-04-25 11:04:00 +0900
 categories: [Android]
 tags: [compose]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## Compose의 Stability
 **Compose는 Recompose 시 불안정한 타입의 값을 가진 Componant는 Recompose가 되고, 안정한 타입을 가진 Componant는 Recompose가 스킵이 됩니다.**<br> 

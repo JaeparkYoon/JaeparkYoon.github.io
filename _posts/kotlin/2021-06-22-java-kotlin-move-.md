@@ -5,7 +5,7 @@ date: 2021-06-22 17:15:00 +0900
 categories: [Kotlin]
 tags: [kotlin]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 
 ## **편리하고 간결한 코드**

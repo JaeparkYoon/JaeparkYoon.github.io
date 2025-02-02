@@ -5,7 +5,7 @@ date: 2024-08-04 10:38:00 +0900
 categories: [Android]
 tags: [compose, structure]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 reade reference before write post
 https://medium.com/@chethan.n/viewmodels-with-hilt-and-compose-navigation-c11923df1540

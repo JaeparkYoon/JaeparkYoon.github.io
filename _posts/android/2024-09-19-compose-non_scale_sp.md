@@ -5,7 +5,7 @@ date: 2024-09-19 20:18:00 +0900
 categories: [Android]
 tags: [compose]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 Android 앱 개발을 하면서 가끔은 시스템 설정의 글자 크기를 무시하고 고정 사이즈를 필요로 하는 상황을 맞이할 수 있습니다. 기존 xml의 TextView에서는
 sp 단위가 아닌 dp 단위를 써서 고정시킬 수 있었습니다. 하지만 Compose에서는 Text의 단위는 sp 또는 em 단위를 써야 합니다. sp 단위는 시스템의 글자 크기 

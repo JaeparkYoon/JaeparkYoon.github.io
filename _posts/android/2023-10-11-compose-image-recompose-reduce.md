@@ -5,7 +5,7 @@ date: 2023-10-11 15:24:00 +0900
 categories: [Android]
 tags: [compose]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 > [Medium 글](https://engineering.teknasyon.com/reduce-recomposition-for-images-icons-in-jetpack-compose-8d2dd3bfa933)을 읽다 성능 관련 꿀팁이라 공유합니다.
 >

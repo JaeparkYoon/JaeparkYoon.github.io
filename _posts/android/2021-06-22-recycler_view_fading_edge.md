@@ -5,7 +5,7 @@ date: 2021-06-22 13:39:00 +0900
 categories: [Android]
 tags: [recyclerview]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 > 리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.
 

@@ -5,7 +5,7 @@ date: 2023-07-19 13:13:00 +0900
 categories: [Kotlin]
 tags: [enum]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **values() 함수의 문제점**
 

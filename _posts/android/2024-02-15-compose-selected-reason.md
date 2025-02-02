@@ -5,7 +5,7 @@ date: 2024-02-15 10:38:00 +0900
 categories: [Android]
 tags: [compose]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **특정 트리거로 인해 UI Update 시 불필요한 렌더링 완화로 인한 성능 향상**
 [기존 View System에서 자식뷰가 새로 그려지게 되면 그 위에있는 ViewGroup 안에 있는 뷰도 같이 새로 그려지게 됩니다.](https://developer.android.com/topic/performance/rendering/optimizing-view-hierarchies#managing)

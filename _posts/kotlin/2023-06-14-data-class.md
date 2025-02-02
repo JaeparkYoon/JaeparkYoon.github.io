@@ -5,7 +5,7 @@ date: 2023-06-14 23:41:00 +0900
 categories: [Kotlin]
 tags: [data class]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **Data classes**
 data class는 데이터를 담기위한 목적으로 만들어진 클래스이며, 데이터 클래스를 다음과 같이 정의하면 컴파일러는 다음과 같은 함수를 자동으로 생성합니다.

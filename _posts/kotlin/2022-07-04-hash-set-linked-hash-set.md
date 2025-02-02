@@ -5,7 +5,7 @@ date: 2022-07-04 22:31:00 +0900
 categories: [Kotlin]
 tags: [set]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 코틀린에서 HashSet을 생성하기 위해 hashSetOf를 사용하며, LinkedHashSet을 생성하기 위해 setOf를 사용합니다. 
 setOf를 자세히 들여다보면 LinkedHashSet으로 만드는 것을 볼 수 있습니다.

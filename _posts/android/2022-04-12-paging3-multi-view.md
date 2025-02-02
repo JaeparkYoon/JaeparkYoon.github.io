@@ -5,7 +5,7 @@ date: 2022-04-12 16:58:00 +0900
 categories: [Android]
 tags: [paging3]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 >본문에 들어가기 앞서, 풀 소스코드 링크 공유합니다. 본 포스팅은 Paging3 라이브러리를 사용하여 리스트를 구성해본적이 있어야 쉽게 이해 하실 수 있습니다. 
 >Paging3 라이브러리를 사용방법은 구글링 해보면 많이 나오니 참고하시기 바랍니다.

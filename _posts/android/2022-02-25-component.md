@@ -5,7 +5,7 @@ date: 2022-02-25 12:03:00 +0900
 categories: [Android]
 tags: [android component]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 > Android Developer 홈페이지의 공식 문서를 읽다보면 Component에 대한 언급이 자주 등장 합니다.
 > 그 만큼 android에서 기초가 되고 중요한 요소들이라는 것을 알 수 있는데요, Android Component에 대한 공부를 하며 내용을 정리 해볼까 합니다.

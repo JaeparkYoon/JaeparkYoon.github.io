@@ -5,7 +5,7 @@ date: 2024-10-26 :47:00 +0900
 categories: [Android]
 tags: [compose, side-effect]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## 개념
 프로그래밍에서 SideEffect를 보편적으로 예상하지 못한 동작에서 일어난 결과를 얘기합니다. 이와 같은 맥락으로 Compose의 SideEffect는

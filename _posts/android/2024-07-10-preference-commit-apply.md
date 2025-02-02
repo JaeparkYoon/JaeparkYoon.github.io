@@ -5,7 +5,7 @@ date: 2024-07-10 10:38:00 +0900
 categories: [Android]
 tags: [preference]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 > Android Preference에서 data를 추가하기 위해서 Editor의 commit(), apply() 두 가지 방법을 이용합니다. 
 > Preference 코드를 작성하면서 추후에 왜 이런 코드를 짰는지에 대한 명확한 이유를 설명하기 위해서는 commit()과 apply()의 차이점에 대해 알고 갈 필요가 있습니다.

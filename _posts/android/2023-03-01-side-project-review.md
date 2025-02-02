@@ -5,7 +5,7 @@ date: 2023-03-01 14:39:00 +0900
 categories: [Android]
 tags: [side project]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 안녕하세요, 신입 때 기술의 성장을 목표로 무턱대고 시작한 것이 구글 플레이스토어까지 릴리즈하여 저의 기술 성장에 큰 원동력이 되어줬던 첫 사이드 프로젝트를 진행하며 느낀점을 남겨봅니다.
 

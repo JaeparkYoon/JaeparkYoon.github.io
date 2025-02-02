@@ -5,7 +5,7 @@ date: 2023-12-01 13:13:00 +0900
 categories: [Android]
 tags: [paging3]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **실험 개요**
 Paging3의 장점 중 하나인 페이징 된 데이터의 메모리 캐싱인데 그렇다면 이 캐싱된 데이터는 어떻게 활용되는지 궁금해졌습니다.

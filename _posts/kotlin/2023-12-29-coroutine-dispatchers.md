@@ -5,7 +5,7 @@ date: 2023-12-29 17:23:00 +0900
 categories: [Kotlin]
 tags: [coroutine]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **Dispacher란?**
 코루틴이 어느 스레드 풀에서 작동할지 정해주는 역할을 합니다. Dispatcher의 종류는 Main, IO, Default, Unconfined 총 4가지가 있습니다.

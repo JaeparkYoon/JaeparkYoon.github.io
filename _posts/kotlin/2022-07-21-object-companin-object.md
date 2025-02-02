@@ -5,7 +5,7 @@ date: 2022-07-21 10:15:00 +0900
 categories: [Kotlin]
 tags: [kotlin object]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 ## **Object**
 kotlin에서 객체를 싱글톤으로 동작하고 싶으면 간단하게 object 키워드를 사용하여 구현할 수 있습니다. 

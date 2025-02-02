@@ -5,7 +5,7 @@ date: 2024-10-13 22:50:00 +0900
 categories: [Android]
 tags: [compose]
 pin: false
-img_path: '/assets/img'
+media_subpath: '/assets/img'
 ---
 Android Compose를 이용하여 개발하면서 우연히 fastForEach를 발견하게 됐습니다. 왜 Android 개발팀은 kotlin의 기존 forEach를 제쳐두고 별도로 fastForEach를 만들어
 사용했는지 궁금하여 fastForEach와 forEach의 차이점을 알아보고 추후 코드를 작성할 때 언제 이용하는게 유리한지 알아봤습니다.
