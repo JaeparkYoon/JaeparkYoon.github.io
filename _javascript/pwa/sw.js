@@ -1,41 +1,28 @@
-/* PWA service worker */
+importScripts('./assets/js/data/swconf.js');
 
-const swconfPath = '/assets/js/data/swconf.js';
-const params = new URL(location).searchParams;
-const swconfUrl = params.has('baseurl')
-  ? `${params.get('baseurl')}${swconfPath}`
-  : swconfPath;
-
-importScripts(swconfUrl);
 const purge = swconf.purge;
-
-function verifyHost(url) {
-  for (const host of swconf.allowHosts) {
-    const regex = RegExp(`^http(s)?://${host}/`);
-    if (regex.test(url)) {
-      return true;
-    }
-  }
-  return false;
-}
+const interceptor = swconf.interceptor;
 
 function verifyUrl(url) {
-  if (!verifyHost(url)) {
+  const requestUrl = new URL(url);
+  const requestPath = requestUrl.pathname;
+
+  if (!requestUrl.protocol.startsWith('http')) {
     return false;
   }
 
-  const requestPath = new URL(url).pathname;
+  for (const prefix of interceptor.urlPrefixes) {
+    if (requestUrl.href.startsWith(prefix)) {
+      return false;
+    }
+  }
 
-  for (const path of swconf.denyPaths) {
+  for (const path of interceptor.paths) {
     if (requestPath.startsWith(path)) {
       return false;
     }
   }
   return true;
-}
-
-if (!purge) {
-  swconf.allowHosts.push(location.host);
 }
 
 self.addEventListener('install', (event) => {
@@ -75,6 +62,10 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.headers.has('range')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
@@ -88,7 +79,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        // See : <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
+        // See: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
         let responseToCache = response.clone();
 
         caches.open(swconf.cacheName).then((cache) => {
