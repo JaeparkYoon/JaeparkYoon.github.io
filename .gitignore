@@ -21,3 +21,5 @@ package-lock.json
 *.map
 sw.min.js
 assets/js/dist
+
+.Ds_Store
