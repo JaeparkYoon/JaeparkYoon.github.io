@@ -1,6 +1,10 @@
 package jpyoon.mediumsample
 
+import android.content.Context
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +31,20 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val configuration = Configuration(newBase?.resources?.configuration)
+        val currentDensityDpi = configuration.densityDpi
+        configuration.densityDpi = if (currentDensityDpi >= DisplayMetrics.DENSITY_560 &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+        ) {
+            DisplayMetrics.DENSITY_560
+        } else {
+            DisplayMetrics.DENSITY_DEVICE_STABLE
+        }
+        val context = newBase?.createConfigurationContext(configuration)
+        super.attachBaseContext(context)
     }
 }
 
