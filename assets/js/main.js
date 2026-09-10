@@ -1,18 +1,12 @@
 /**
- * Jaepark Yoon Portfolio - Interactive Script
- * Features:
- *  - Header blur & active scroll navigation
- *  - Project filter switcher
- *  - SnapFolio screenshot carousel & modal lightbox
- *  - Tactics RPG 5x7 interactive formation visualizer & simulation stats
+ * Jaepark Yoon Portfolio - SnapFolio Showcase & App Flow Simulator
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
-  initProjectSwitcher();
   initSnapfolioCarousel();
   initScreenshotModal();
-  initTacticsSimulator();
+  initAppFlowSimulation();
 });
 
 /* ==========================================================================
@@ -44,37 +38,6 @@ function initHeader() {
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) {
         link.classList.add("active");
-      }
-    });
-  });
-}
-
-/* ==========================================================================
-   Project Switcher / Filter Tabs
-   ========================================================================== */
-function initProjectSwitcher() {
-  const tabs = document.querySelectorAll(".switch-tab");
-  const projectSections = document.querySelectorAll(".project-section");
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-
-      const filter = tab.getAttribute("data-target");
-
-      if (filter === "all") {
-        projectSections.forEach((sec) => (sec.style.display = "block"));
-      } else {
-        projectSections.forEach((sec) => {
-          if (sec.id === filter) {
-            sec.style.display = "block";
-            // Scroll to the selected project smoothly
-            sec.scrollIntoView({ behavior: "smooth" });
-          } else {
-            sec.style.display = "none";
-          }
-        });
       }
     });
   });
@@ -145,194 +108,143 @@ function initScreenshotModal() {
 }
 
 /* ==========================================================================
-   Tactics RPG - 5x7 Interactive Tactical Pitch Simulator
+   SnapFolio App Flow Simulation
    ========================================================================== */
-const FORMATIONS = {
-  standard: {
-    name: "표준 2-3-2 (Standard Balanced)",
-    code: "2-3-2",
-    winRate: "56%",
-    winRateClass: "success",
-    structure: "DF 2 · MF 3 · FW 2 (합 7명)",
-    tacticalDepth: "3단 2-3-2 / 4단 2-3-0-2",
-    description:
-      "공수 밸런스가 균형 잡힌 정석 진형. 중앙 3열과 양 측면의 공간 점유율이 고르고 국지전 대인 방어에 안정적입니다. 18종 기본 포지션 조합 중 가장 표준적인 전투 양상을 보입니다.",
-    bestCard: "집결 (Rally)",
-    weakness: "극단적 측면 기습 시 커버 동선 필요",
-    placements: [
-      // row: 0~6 (0: home def, 1: home mid, 2: home att)
-      // col: 0~4 (0: L-Wing, 1: L-Half, 2: Center, 3: R-Half, 4: R-Wing)
-      { row: 0, col: 1, role: "DF", pos: "CB-L" },
-      { row: 0, col: 3, role: "DF", pos: "CB-R" },
-      { row: 1, col: 0, role: "MF", pos: "LM" },
-      { row: 1, col: 2, role: "MF", pos: "CM" },
-      { row: 1, col: 4, role: "MF", pos: "RM" },
-      { row: 2, col: 1, role: "FW", pos: "CF-L" },
-      { row: 2, col: 3, role: "FW", pos: "CF-R" },
+const FLOW_STEPS = [
+  {
+    step: 0,
+    badge: "STEP 01",
+    title: "홈 대시보드 (통합 자산 현황)",
+    img: "assets/images/snapfolio/01-screenshot.png",
+    body: "앱 진입 시 가장 먼저 보이는 메인 화면입니다. 총 보유 자산, 전일 대비 변동, 올해 누적 수익률(YTD), 카테고리별 자산 비중 도넛 차트, 보유 종목 리스트, 월간 배당금 요약이 하나의 스크롤에 직관적으로 정리됩니다.",
+    techTags: [
+      { icon: "fa-layer-group", text: "ObserveHomeDataUseCase" },
+      { icon: "fa-database", text: "Room KMP StateFlow" },
+      { icon: "fa-palette", text: "Compose M3 LazyColumn" },
     ],
   },
-  dispersion: {
-    name: "측면 분산 (Flank Dispersion)",
-    code: "2-1-4",
-    winRate: "57%",
-    winRateClass: "success",
-    structure: "DF 2 · MF 1 · FW 4 (측면 우회 극대화)",
-    tacticalDepth: "양 측면 2 · 중앙 1 · 하프 각 1",
-    description:
-      "시뮬레이터 3성 실측 평균 승률 1위(57%). 가로로 넓게 서서 상대 중앙 밀집 수비를 우회하고 넥서스를 타격합니다. 세로 쌓기를 피해 1v1 교전 효율을 극대화한 현대적 전술입니다.",
-    bestCard: "돌파 지시 (Breakthrough)",
-    weakness: "중앙 1선 차단 시 후방 노출 위험",
-    placements: [
-      { row: 0, col: 0, role: "DF", pos: "LB" },
-      { row: 0, col: 4, role: "DF", pos: "RB" },
-      { row: 1, col: 2, role: "MF", pos: "CAM" },
-      { row: 2, col: 0, role: "FW", pos: "LW" },
-      { row: 2, col: 1, role: "FW", pos: "LF" },
-      { row: 2, col: 3, role: "FW", pos: "RF" },
-      { row: 2, col: 4, role: "FW", pos: "RW" },
+  {
+    step: 1,
+    badge: "STEP 02",
+    title: "스크린샷 일괄 업로드 & AI 분석",
+    img: "assets/images/snapfolio/02-screenshot.png",
+    body: "증권사(키움, 토스, 미래에셋 등) 계좌 스크린샷을 최대 5장까지 동시 선택합니다. 백그라운드 서비스에서 ML Kit OCR 전처리와 Gemini 3.1 Flash-Lite 모델이 결합되어 종목명, 수량, 매입단가, 평가금액을 실시간 자동 파싱합니다.",
+    techTags: [
+      { icon: "fa-robot", text: "Gemini 3.1 Flash-Lite" },
+      { icon: "fa-eye", text: "ML Kit Korean OCR" },
+      { icon: "fa-gears", text: "Foreground Upload Service" },
     ],
   },
-  halfspace: {
-    name: "하프스페이스 집중 (Halfspace Overload)",
-    code: "2-3-2",
-    winRate: "53%",
-    winRateClass: "success",
-    structure: "DF 2 · MF 3 · FW 2 (1·3열 집중)",
-    tacticalDepth: "하프스페이스(Col 1, 3) 각 2명",
-    description:
-      "축구의 핵심 전술 구역인 하프스페이스(1열·3열)에 4명을 배치하여 상대 수비선 사이 틈새를 정밀 공략합니다. 중앙 장악력이 우수하며 안정적인 중원 압박을 구사합니다.",
-    bestCard: "총력 수비 (Full Defense)",
-    weakness: "극단적 와이드 윙어 상대 시 측면 공간 허용",
-    placements: [
-      { row: 0, col: 1, role: "DF", pos: "CB-L" },
-      { row: 0, col: 3, role: "DF", pos: "CB-R" },
-      { row: 1, col: 1, role: "MF", pos: "LCM" },
-      { row: 1, col: 2, role: "MF", pos: "CM" },
-      { row: 1, col: 3, role: "MF", pos: "RCM" },
-      { row: 2, col: 1, role: "FW", pos: "SS-L" },
-      { row: 2, col: 3, role: "FW", pos: "SS-R" },
+  {
+    step: 2,
+    badge: "STEP 03",
+    title: "AI 포트폴리오 질의응답 (대화형 코치)",
+    img: "assets/images/snapfolio/03-screenshot.png",
+    body: "Gemini AI 모델이 사용자의 실제 포트폴리오 구조를 기반으로 자산 리스크와 섹터 편중도를 진단합니다. '현재 포트폴리오의 리밸런싱 방향은?', '배당 재투자 효과는?' 같은 질문에 실시간 스트리밍 대화로 구체적인 답변을 제공합니다.",
+    techTags: [
+      { icon: "fa-comments", text: "Vertex AI Streaming SDK" },
+      { icon: "fa-coins", text: "Server Credit Verification" },
+      { icon: "fa-code-branch", text: "MVI Unidirectional State" },
     ],
   },
-  leftbiased: {
-    name: "좌편중 진형 (Left-Overload Risk)",
-    code: "2-3-2 (좌쏠림)",
-    winRate: "36%",
-    winRateClass: "danger",
-    structure: "좌측 3열 전원 밀집 (우측 2열 방치)",
-    tacticalDepth: "Col 0~2 집중 / Col 3~4 공백",
-    description:
-      "좌측 국지전에서 일시적 수적 우위를 점하지만, 우측 2개 열(하프/플랭크)을 완전히 내어주어 상대의 반대편 넥서스 직접 타격에 무방비로 노출됩니다 (실측 승률 36% 급감).",
-    bestCard: "비추천 (극단적 도박 진형)",
-    weakness: "반대편 광역 침투에 무조건 넥서스 실점",
-    placements: [
-      { row: 0, col: 0, role: "DF", pos: "LB" },
-      { row: 0, col: 1, role: "DF", pos: "CB" },
-      { row: 1, col: 0, role: "MF", pos: "LM" },
-      { row: 1, col: 1, role: "MF", pos: "LCM" },
-      { row: 1, col: 2, role: "MF", pos: "CM" },
-      { row: 2, col: 0, role: "FW", pos: "LW" },
-      { row: 2, col: 1, role: "FW", pos: "CF" },
+  {
+    step: 3,
+    badge: "STEP 04",
+    title: "시계열 자산 추이 & 카테고리 기여도",
+    img: "assets/images/snapfolio/04-screenshot.png",
+    body: "1일, 1주일, 1개월, 3개월, 1년, 전체 등 8개 구간의 인터랙티브 차트를 제공합니다. 드래그 Hover를 통해 특정 시점의 평가액을 정밀하게 확인하고, 국내주식·해외주식·예적금 등 카테고리별 수익 기여도를 시각적으로 추적합니다.",
+    techTags: [
+      { icon: "fa-chart-line", text: "ObserveTrendDataUseCase" },
+      { icon: "fa-clock-rotate-left", text: "Portfolio Snapshot DB" },
+      { icon: "fa-mobile", text: "Smooth Drag Gesture Canvas" },
     ],
   },
-  centerstack: {
-    name: "중앙 세로 쌓기 (Central Stack - 최악)",
-    code: "3-1-3 (세로 정체)",
-    winRate: "35%",
-    winRateClass: "danger",
-    structure: "중앙 2열에 3명 집중 + 좁은 간격",
-    tacticalDepth: "중앙 열 3명 중첩 배치",
-    description:
-      "셀 정원(1칸 1명) 및 인접 협동 규칙상, 세로로 쌓은 유닛은 맨 앞 1명만 교전하고 뒷선 유닛이 병목되어 화력을 낭비합니다. 실측 결과 최악의 승률(35%)을 기록한 실패 진형입니다.",
-    bestCard: "전술 수정 필수 (교체 즉시 실행)",
-    weakness: "단일 열 병목 현상 및 양 날개 무력화",
-    placements: [
-      { row: 0, col: 2, role: "DF", pos: "CB" },
-      { row: 0, col: 1, role: "DF", pos: "LB" },
-      { row: 0, col: 3, role: "DF", pos: "RB" },
-      { row: 1, col: 2, role: "MF", pos: "CM" },
-      { row: 2, col: 2, role: "FW", pos: "CF" },
-      { row: 1, col: 1, role: "MF", pos: "LM" },
-      { row: 1, col: 3, role: "MF", pos: "RM" },
+  {
+    step: 4,
+    badge: "STEP 05",
+    title: "배당 캘린더 & 시장 지표 분석",
+    img: "assets/images/snapfolio/05-screenshot.png",
+    body: "보유 종목의 월별 예상 배당금과 연간 배당 수익률을 자동 산출합니다. 또한 미국 FRED 시장 지표 프록시 연동 및 워런 버핏 등 글로벌 투자 대가의 포트폴리오와 내 자산을 비교해 볼 수 있는 실험실(Lab) 기능을 지원합니다.",
+    techTags: [
+      { icon: "fa-calendar-days", text: "Dividend Calculation Engine" },
+      { icon: "fa-server", text: "FRED & ECOS Cloud Proxy" },
+      { icon: "fa-flask", text: "Investment Lab Simulation" },
     ],
   },
-};
+  {
+    step: 5,
+    badge: "STEP 06",
+    title: "로컬 퍼스트 보안 & 커스텀 설정",
+    img: "assets/images/snapfolio/06-screenshot.png",
+    body: "라이트/다크 테마 전환, 4가지 감성 액센트 컬러 프리셋(Salmon, Terracotta, Coral, Burgundy), 금액 숨김 모드, CSV 내보내기/가져오기를 완벽 지원합니다. 모든 금융 데이터는 외부 서버가 아닌 기기 로컬에 안전하게 보관됩니다.",
+    techTags: [
+      { icon: "fa-shield-halved", text: "Local-First Room KMP" },
+      { icon: "fa-sliders", text: "DataStore Preferences" },
+      { icon: "fa-file-csv", text: "CSV Backup & Restore" },
+    ],
+  },
+];
 
-function initTacticsSimulator() {
-  const pitch = document.getElementById("tacticalPitch");
-  const buttons = document.querySelectorAll(".formation-btn");
-  if (!pitch || buttons.length === 0) return;
+function initAppFlowSimulation() {
+  const stepBtns = document.querySelectorAll(".flow-step-btn");
+  const stepDots = document.querySelectorAll(".step-dot");
+  const screenImg = document.getElementById("simScreenImg");
+  const badgeEl = document.getElementById("flowDetailBadge");
+  const titleEl = document.getElementById("flowDetailTitle");
+  const bodyEl = document.getElementById("flowDetailBody");
 
-  // Generate 5 cols x 7 rows pitch cells
-  pitch.innerHTML = "";
-  for (let r = 0; r < 7; r++) {
-    for (let c = 0; c < 5; c++) {
-      const cell = document.createElement("div");
-      cell.className = "pitch-cell";
-      cell.dataset.row = r;
-      cell.dataset.col = c;
+  if (!stepBtns.length || !screenImg) return;
 
-      // Assign visual zone style
-      if (r === 0) cell.classList.add("zone-home-def");
-      else if (r === 1) cell.classList.add("zone-home-mid");
-      else if (r === 2) cell.classList.add("zone-home-att");
+  function setStep(index) {
+    const data = FLOW_STEPS[index];
+    if (!data) return;
 
-      pitch.appendChild(cell);
-    }
-  }
-
-  // Render initial formation
-  renderFormation("standard");
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      const key = btn.dataset.formation;
-      renderFormation(key);
+    // Active button state
+    stepBtns.forEach((btn, i) => {
+      btn.classList.toggle("active", i === index);
     });
-  });
-}
 
-function renderFormation(key) {
-  const data = FORMATIONS[key];
-  if (!data) return;
+    // Active dot state
+    stepDots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
 
-  // Clear existing tokens
-  document.querySelectorAll(".player-token").forEach((t) => t.remove());
+    // Animate screen image transition
+    screenImg.style.opacity = "0.3";
+    screenImg.style.transform = "scale(0.97)";
+    setTimeout(() => {
+      screenImg.src = data.img;
+      screenImg.alt = data.title;
+      screenImg.style.opacity = "1";
+      screenImg.style.transform = "scale(1)";
+    }, 150);
 
-  // Render tokens on the 5x7 grid
-  data.placements.forEach((p) => {
-    const cell = document.querySelector(
-      `.pitch-cell[data-row="${p.row}"][data-col="${p.col}"]`
-    );
-    if (cell) {
-      const token = document.createElement("div");
-      token.className = `player-token token-${p.role.toLowerCase()}`;
-      token.innerHTML = `
-        <span class="token-role">${p.role}</span>
-        <span class="token-pos">${p.pos}</span>
+    // Update detail card
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (titleEl) titleEl.textContent = data.title;
+
+    if (bodyEl) {
+      let tagsHtml = data.techTags
+        .map(
+          (t) =>
+            `<span class="detail-tech-tag"><i class="fa-solid ${t.icon}"></i> ${t.text}</span>`
+        )
+        .join("");
+
+      bodyEl.innerHTML = `
+        <p>${data.body}</p>
+        <div class="flow-detail-tech">${tagsHtml}</div>
       `;
-      cell.appendChild(token);
     }
+  }
+
+  // Step button click listeners
+  stepBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => setStep(idx));
   });
 
-  // Update Report Panel
-  const reportName = document.getElementById("reportFormationName");
-  const reportWinrate = document.getElementById("reportWinRate");
-  const reportDesc = document.getElementById("reportDesc");
-  const reportStructure = document.getElementById("reportStructure");
-  const reportTactics = document.getElementById("reportTactics");
-  const reportCard = document.getElementById("reportBestCard");
-  const reportWeakness = document.getElementById("reportWeakness");
-
-  if (reportName) reportName.textContent = data.name;
-  if (reportWinrate) {
-    reportWinrate.textContent = `평균 승률 ${data.winRate}`;
-    reportWinrate.className = `report-stat-pill ${data.winRateClass === "danger" ? "danger" : ""}`;
-  }
-  if (reportDesc) reportDesc.textContent = data.description;
-  if (reportStructure) reportStructure.textContent = data.structure;
-  if (reportTactics) reportTactics.textContent = data.tacticalDepth;
-  if (reportCard) reportCard.textContent = data.bestCard;
-  if (reportWeakness) reportWeakness.textContent = data.weakness;
+  // Step dots click listeners
+  stepDots.forEach((dot, idx) => {
+    dot.addEventListener("click", () => setStep(idx));
+  });
 }

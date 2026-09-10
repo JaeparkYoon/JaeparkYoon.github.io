@@ -814,361 +814,251 @@ img {
 }
 
 /* ==========================================================================
-   Tactics RPG - 5x7 Tactical Grid Interactive Simulator
+   SnapFolio App Flow Simulation Component
    ========================================================================== */
 
-.tactics-interactive-wrap {
+.app-sim-container {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
+  grid-template-columns: 320px 1fr;
+  gap: 48px;
+  align-items: start;
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 36px;
-  margin: 40px 0 50px;
+  padding: 44px;
   box-shadow: var(--shadow-lg);
 }
 
-/* 5x7 Pitch Board */
-.pitch-container {
+/* Phone Mockup */
+.phone-mockup-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: sticky;
+  top: 100px;
 }
 
-.pitch-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.pitch-title {
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-primary);
-}
-
-.pitch-legend {
-  display: flex;
-  gap: 12px;
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-secondary);
-}
-
-.badge-role {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: white;
-}
-
-.badge-df { background: #2563eb; }
-.badge-mf { background: #059669; }
-.badge-fw { background: #dc2626; }
-
-.tactical-pitch {
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 5 / 7;
-  background: linear-gradient(180deg, #15803d 0%, #166534 50%, #15803d 100%);
-  border: 2px solid #22c55e;
-  border-radius: var(--radius-lg);
+.phone-frame {
+  width: 290px;
+  height: 600px;
+  background: #0f172a;
+  border-radius: 46px;
   padding: 12px;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(22, 101, 52, 0.2);
+  box-shadow: 
+    0 0 0 4px #e2e8f0,
+    0 25px 50px -12px rgba(15, 23, 42, 0.22),
+    0 8px 16px -4px rgba(15, 23, 42, 0.08);
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Pitch Field Markings */
-.tactical-pitch::before {
-  content: "";
+.phone-notch {
+  width: 96px;
+  height: 20px;
+  background: #0f172a;
+  border-radius: 0 0 14px 14px;
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.35);
-  pointer-events: none;
-}
-
-.tactical-pitch::after {
-  content: "";
-  position: absolute;
-  top: 50%;
+  top: 12px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
-.pitch-cell {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px dashed rgba(255, 255, 255, 0.25);
-  border-radius: 6px;
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  transition: all 0.3s ease;
 }
 
-.pitch-cell.zone-home-def { background: rgba(59, 130, 246, 0.15); }
-.pitch-cell.zone-home-mid { background: rgba(16, 185, 129, 0.15); }
-.pitch-cell.zone-home-att { background: rgba(239, 68, 68, 0.15); }
+.sim-screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
 
-/* Player Token */
-.player-token {
-  width: 38px;
-  height: 38px;
+.phone-home-bar {
+  width: 110px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.phone-step-indicator {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  background: var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.step-dot:hover {
+  background: var(--border-hover);
+}
+
+.step-dot.active {
+  width: 28px;
+  border-radius: 9999px;
+  background: var(--accent-snapfolio);
+}
+
+/* Flow Step Panel */
+.flow-panel {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+}
+
+.flow-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flow-step-btn {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  animation: tokenSpawn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2;
-  position: relative;
-  cursor: default;
-}
-
-@keyframes tokenSpawn {
-  0% { transform: scale(0.2); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.token-df {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  border: 2px solid #bfdbfe;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
-}
-
-.token-mf {
-  background: linear-gradient(135deg, #059669, #047857);
-  border: 2px solid #a7f3d0;
-  box-shadow: 0 0 10px rgba(5, 150, 105, 0.5);
-}
-
-.token-fw {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  border: 2px solid #fecaca;
-  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
-}
-
-.token-role {
-  font-size: 0.68rem;
-  line-height: 1;
-}
-
-.token-pos {
-  font-size: 0.58rem;
-  opacity: 0.9;
-}
-
-/* Tactical Panel Controls & Report */
-.tactics-control-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.panel-section-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-}
-
-.formation-btn-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.formation-btn {
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
+  gap: 18px;
+  padding: 16px 20px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
+  border-radius: var(--radius-md);
   text-align: left;
+  cursor: pointer;
   transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
-.formation-btn:hover {
+.flow-step-btn:hover {
   background: #ffffff;
   border-color: var(--border-hover);
+  transform: translateX(4px);
   box-shadow: var(--shadow-sm);
 }
 
-.formation-btn.active {
+.flow-step-btn.active {
   background: #ffffff;
-  border-color: var(--accent-tactics);
-  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.15), var(--shadow-sm);
+  border-color: var(--accent-snapfolio);
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.12), var(--shadow-sm);
+  transform: translateX(6px);
 }
 
-.f-name {
-  font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--text-primary);
-}
-
-.f-code {
-  font-size: 0.75rem;
+.flow-step-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-muted);
   font-family: var(--font-mono);
-  color: var(--accent-tactics);
+  width: 32px;
+  flex-shrink: 0;
 }
 
-.f-winrate {
-  font-size: 0.78rem;
+.flow-step-btn.active .flow-step-num {
+  color: var(--accent-snapfolio);
+}
+
+.flow-step-content {
+  flex: 1;
+}
+
+.flow-step-title {
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  margin-bottom: 3px;
 }
 
-/* Simulation Report Card */
-.sim-report-box {
+.flow-step-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.flow-step-arrow {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: transform var(--transition-normal), color var(--transition-normal);
+}
+
+.flow-step-btn.active .flow-step-arrow {
+  color: var(--accent-snapfolio);
+  transform: translateX(3px);
+}
+
+/* Detail Card */
+.flow-detail-card {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  border-radius: var(--radius-lg);
+  padding: 24px;
 }
 
-.report-header {
+.flow-detail-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.report-formation-name {
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--text-primary);
-}
-
-.report-stat-pill {
-  font-size: 0.8rem;
-  font-weight: 700;
+.flow-detail-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
   padding: 4px 10px;
   border-radius: 9999px;
-  background: rgba(5, 150, 105, 0.1);
-  color: var(--accent-tactics);
-  border: 1px solid rgba(5, 150, 105, 0.25);
+  background: rgba(234, 88, 12, 0.12);
+  color: var(--accent-snapfolio);
+  font-family: var(--font-mono);
 }
 
-.report-stat-pill.danger {
-  background: rgba(220, 38, 38, 0.1);
-  color: #dc2626;
-  border-color: rgba(220, 38, 38, 0.25);
+.flow-detail-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.report-desc {
-  font-size: 0.88rem;
+.flow-detail-body p {
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-.report-details-list {
+.flow-detail-tech {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
-  font-size: 0.84rem;
 }
 
-.report-detail-row {
-  display: flex;
-  justify-content: space-between;
-  color: var(--text-muted);
-}
-
-.report-detail-row span:last-child {
-  color: var(--text-primary);
+.detail-tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
   font-weight: 600;
-  font-family: var(--font-mono);
-}
-
-/* Golden Test Parity Matrix */
-.golden-matrix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.golden-item {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.golden-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(5, 150, 105, 0.1);
-  color: var(--accent-tactics);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-}
-
-.golden-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.golden-target {
-  font-size: 0.9rem;
-  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: #ffffff;
   color: var(--text-primary);
-}
-
-.golden-hash {
-  font-size: 0.72rem;
+  border: 1px solid var(--border-subtle);
   font-family: var(--font-mono);
-  color: var(--text-muted);
-}
-
-.golden-status {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-tactics);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ==========================================================================
@@ -1336,17 +1226,19 @@ img {
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  .tactics-interactive-wrap {
+  .app-sim-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 36px;
+    padding: 28px 20px;
   }
   
-  .pitch-container {
-    width: 100%;
+  .phone-mockup-wrapper {
+    position: static;
   }
 
-  .tactical-pitch {
-    max-width: 380px;
+  .phone-frame {
+    width: 280px;
+    height: 560px;
   }
 }
 
@@ -1377,7 +1269,8 @@ img {
     text-align: center;
   }
 
-  .formation-btn-grid {
-    grid-template-columns: 1fr;
+  .phone-frame {
+    width: 250px;
+    height: 500px;
   }
 }

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>윤재박 (Jaepark Yoon) — Mobile Architecture & Core Game Systems Engineer</title>
-  <meta name="description" content="모바일 네이티브, Kotlin Multiplatform(KMP), 실용적 AI, 결정론적 게임 엔진을 설계하고 구현하는 엔지니어 윤재박의 포트폴리오입니다." />
+  <title>윤재박 (Jaepark Yoon) — SnapFolio · KMP 기반 올인원 자산 관리 앱</title>
+  <meta name="description" content="스크린샷 한 장으로 흩어진 투자 자산을 모으는 KMP + Gemini AI 올인원 자산 관리 앱, SnapFolio(스냅폴)를 소개합니다." />
   <meta name="author" content="Jaepark Yoon" />
 
   <!-- Open Graph / SNS -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jaeparkyoon.github.io/" />
-  <meta property="og:title" content="윤재박 (Jaepark Yoon) — Portfolio" />
-  <meta property="og:description" content="스냅폴(SnapFolio)과 Tactics RPG(NewGame)를 중심으로 한 KMP & 모바일 아키텍처 프로젝트 소개" />
+  <meta property="og:title" content="윤재박 (Jaepark Yoon) — SnapFolio Portfolio" />
+  <meta property="og:description" content="KMP + Gemini AI 기반 올인원 자산 관리 앱 SnapFolio(스냅폴) 프로젝트 소개" />
   <meta property="og:image" content="assets/images/snapfolio/feature-graphic.png" />
 
   <!-- Favicon -->
@@ -41,7 +41,7 @@
         <ul class="nav-links">
           <li><a href="#overview" class="nav-link active">소개</a></li>
           <li><a href="#snapfolio" class="nav-link">SnapFolio</a></li>
-          <li><a href="#tactics" class="nav-link">Tactics RPG</a></li>
+          <li><a href="#app-flow" class="nav-link">앱 시뮬레이션</a></li>
           <li><a href="#about" class="nav-link">프로필</a></li>
         </ul>
       </nav>
@@ -63,84 +63,65 @@
       <div class="container hero-wrapper">
         <div class="pill-badge">
           <span class="dot"></span>
-          <span>Mobile Architecture • KMP Core Engine • AI Integration</span>
+          <span>KMP · Gemini AI · Jetpack Compose · SwiftUI</span>
         </div>
 
         <h1 class="hero-title">
-          단단한 <span class="gradient-text">코어 엔진</span>과<br />
-          직관적인 <span class="gradient-text">모바일 경험</span>을 만듭니다
+          스크린샷 한 장으로<br />
+          <span class="gradient-text">투자 자산</span>을 모으다
         </h1>
 
         <p class="hero-subtitle">
-          Kotlin Multiplatform(KMP)을 기반으로 0 to 1 모바일 프로덕트(스냅폴)부터<br />
-          부동소수점 오차 없는 100% 결정론적 시뮬레이션 게임 엔진(Tactics RPG)까지,<br />
-          아키텍처의 견고함과 제품의 실용성을 집요하게 추구합니다.
+          Kotlin Multiplatform(KMP)과 Gemini AI 기반의 올인원 자산 관리 앱 SnapFolio(스냅폴).<br />
+          복잡한 인증서 연동 없이, 보유 자산 스크린샷만 올리면 AI가 자동 파싱하여<br />
+          포트폴리오를 구축해 주는 100% 바이브 코딩 창작물입니다.
         </p>
 
         <div class="hero-cta">
           <a href="#snapfolio" class="btn btn-primary">
             <i class="fa-solid fa-mobile-screen-button"></i>
-            <span>SnapFolio 살펴보기</span>
+            <span>프로젝트 상세 보기</span>
           </a>
-          <a href="#tactics" class="btn btn-secondary">
-            <i class="fa-solid fa-gamepad"></i>
-            <span>Tactics RPG 전술판 체험</span>
+          <a href="#app-flow" class="btn btn-secondary">
+            <i class="fa-solid fa-play"></i>
+            <span>앱 흐름 시뮬레이션 체험</span>
           </a>
-          <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <a href="https://github.com/JaeparkYoon/SnapFolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             <i class="fa-brands fa-github"></i>
-            <span>GitHub Profile</span>
+            <span>GitHub 소스 코드</span>
           </a>
         </div>
 
         <!-- Key Metrics Row -->
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-value">2</span>
-            <span class="stat-label">Core KMP Projects</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Deterministic Engine</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">4+</span>
-            <span class="stat-label">Target Platforms</span>
+            <span class="stat-value">KMP</span>
+            <span class="stat-label">Cross-Platform Core</span>
           </div>
           <div class="stat-item">
             <span class="stat-value">AI</span>
-            <span class="stat-label">Gemini Vision & LLM</span>
+            <span class="stat-label">Gemini Vision & Chat</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">2</span>
+            <span class="stat-label">Android & iOS</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Vibe Coded</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-         Project Spotlight Filter / Switcher
-         ======================================================================== -->
-    <section class="project-nav-section">
-      <div class="container">
-        <div class="project-switcher">
-          <button class="switch-tab active" data-target="all">
-            <i class="fa-solid fa-layer-group"></i> 전체 보기
-          </button>
-          <button class="switch-tab" data-target="snapfolio">
-            <i class="fa-solid fa-wallet"></i> SnapFolio (스냅폴)
-          </button>
-          <button class="switch-tab" data-target="tactics">
-            <i class="fa-solid fa-chess-board"></i> Tactics RPG (NewGame)
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         Project 1: SnapFolio (스냅폴)
+         Project: SnapFolio (스냅폴)
          ======================================================================== -->
     <section class="project-section snapfolio-theme" id="snapfolio">
       <div class="container">
         <div class="section-header">
           <div class="section-badge badge-snapfolio">
-            <i class="fa-solid fa-sparkles"></i> Featured Mobile App • Fintech & AI
+            <i class="fa-solid fa-sparkles"></i> Featured Mobile App · Fintech & AI
           </div>
           <h2 class="section-title">
             <img src="assets/images/snapfolio/icon.png" alt="SnapFolio Icon" class="project-logo-img" />
@@ -181,7 +162,6 @@
           </div>
 
           <div class="screenshot-carousel-track" id="snapfolioCarousel">
-            <!-- 01 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/01-screenshot.png" alt="홈 대시보드" loading="lazy" />
@@ -193,7 +173,6 @@
               </div>
             </div>
 
-            <!-- 02 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/02-screenshot.png" alt="AI 스크린샷 파싱" loading="lazy" />
@@ -205,7 +184,6 @@
               </div>
             </div>
 
-            <!-- 03 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/03-screenshot.png" alt="AI 포트폴리오 채팅" loading="lazy" />
@@ -217,7 +195,6 @@
               </div>
             </div>
 
-            <!-- 04 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/04-screenshot.png" alt="자산 추이 차트" loading="lazy" />
@@ -229,7 +206,6 @@
               </div>
             </div>
 
-            <!-- 05 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/05-screenshot.png" alt="배당 및 인사이트" loading="lazy" />
@@ -241,7 +217,6 @@
               </div>
             </div>
 
-            <!-- 06 -->
             <div class="screenshot-card">
               <div class="screenshot-img-wrapper">
                 <img src="assets/images/snapfolio/06-screenshot.png" alt="프라이버시 & 설정" loading="lazy" />
@@ -338,224 +313,112 @@
     </section>
 
     <!-- ========================================================================
-         Project 2: Tactics RPG (NewGame)
+         SnapFolio App Flow Simulation
          ======================================================================== -->
-    <section class="project-section tactics-theme" id="tactics">
+    <section class="project-section" id="app-flow">
       <div class="container">
-        <div class="section-header">
-          <div class="section-badge badge-tactics">
-            <i class="fa-solid fa-gamepad"></i> Featured Core System • Deterministic Game
+        <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto 48px;">
+          <div class="section-badge badge-snapfolio">
+            <i class="fa-solid fa-play"></i> Interactive App Flow
           </div>
-          <h2 class="section-title">
-            <span style="font-size: 2rem;">⚽</span>
-            Tactics RPG (가제: NewGame)
-          </h2>
-          <p class="section-subtitle">
-            "축구의 리그·구단 운영 시스템을 본뜬 7v7 그리드 전술 RPG"<br />
-            풋볼 매니저(FM) 스타일의 시즌 운영·로스터 로테이션·스카우팅·이적 시장 시스템을 7v7 판타지 그리드 전술 전투와 융합한 게임입니다. 부동소수점을 배제한 100% 결정론적 KMP 코어와 Unity 2D 뷰어로 구현되었습니다.
+          <h2 class="section-title" style="justify-content: center;">앱 흐름 시뮬레이션</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">
+            SnapFolio의 핵심 사용자 여정을 단계별로 체험해 보세요.<br />
+            아래 단계 버튼을 클릭하면 실제 서비스 화면과 함께 각 단계의 동작 원리가 표시됩니다.
           </p>
-          <div class="tech-tag-list">
-            <span class="tech-tag">Kotlin Multiplatform</span>
-            <span class="tech-tag">100% Deterministic (Zero Float)</span>
-            <span class="tech-tag">C-ABI Native Bridge (.bundle / .xcframework / .aar)</span>
-            <span class="tech-tag">Unity 6000 (Universal 2D)</span>
-            <span class="tech-tag">Python Simulation Ground Truth</span>
-            <span class="tech-tag">xorshift64* Pseudo Random</span>
-          </div>
         </div>
 
-        <!-- Interactive 5x7 Tactical Formation Simulator -->
-        <div class="tactics-interactive-wrap">
-          <!-- Pitch Board Left Column -->
-          <div class="pitch-container">
-            <div class="pitch-header">
-              <span class="pitch-title">
-                <i class="fa-solid fa-chess-board" style="color: var(--accent-tactics);"></i>
-                7v7 전술 배치도 (5열 × 7행 필드)
-              </span>
-              <div class="pitch-legend">
-                <div class="legend-item"><span class="badge-role badge-df">DF</span> 수비수</div>
-                <div class="legend-item"><span class="badge-role badge-mf">MF</span> 미드필더</div>
-                <div class="legend-item"><span class="badge-role badge-fw">FW</span> 공격수</div>
+        <div class="app-sim-container">
+          <!-- Phone Mockup -->
+          <div class="phone-mockup-wrapper">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/images/snapfolio/01-screenshot.png" alt="App Flow Screen" id="simScreenImg" class="sim-screen-img" />
               </div>
+              <div class="phone-home-bar"></div>
             </div>
-
-            <!-- Pitch Visualizer -->
-            <div style="position: relative; width: 100%; display: flex; justify-content: center;">
-              <div class="tactical-pitch" id="tacticalPitch">
-                <!-- 35 cells generated via JS -->
-              </div>
+            <div class="phone-step-indicator">
+              <span class="step-dot active" data-step="0"></span>
+              <span class="step-dot" data-step="1"></span>
+              <span class="step-dot" data-step="2"></span>
+              <span class="step-dot" data-step="3"></span>
+              <span class="step-dot" data-step="4"></span>
+              <span class="step-dot" data-step="5"></span>
             </div>
-            <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 10px;">
-              * 하단 3개 행(15칸)은 홈팀 자유 배치 구역이며, 상단은 중원 및 적 진영입니다.
-            </p>
           </div>
 
-          <!-- Controls & Simulation Report Right Column -->
-          <div class="tactics-control-panel">
-            <div>
-              <h3 class="panel-section-title">전술 진형 선택 & 시뮬레이션 측정</h3>
-              <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 14px;">
-                버튼을 클릭하면 5×7 피치 보드의 유닛 배치가 실시간 변경되며, Python 시뮬레이터 수만 경기 실측 통계가 표시됩니다.
-              </p>
-
-              <div class="formation-btn-grid">
-                <button class="formation-btn active" data-formation="standard">
-                  <span class="f-name">표준 2-3-2</span>
-                  <span class="f-code">기본 정석 포메이션</span>
-                  <span class="f-winrate">평균 승률 56%</span>
-                </button>
-
-                <button class="formation-btn" data-formation="dispersion">
-                  <span class="f-name">측면 분산 (2-1-4)</span>
-                  <span class="f-code">가로 공간 극대화</span>
-                  <span class="f-winrate" style="color: #34d399;">실측 1위 57%</span>
-                </button>
-
-                <button class="formation-btn" data-formation="halfspace">
-                  <span class="f-name">하프스페이스 집중</span>
-                  <span class="f-code">1·3열 집중 공략</span>
-                  <span class="f-winrate">평균 승률 53%</span>
-                </button>
-
-                <button class="formation-btn" data-formation="leftbiased">
-                  <span class="f-name">좌편중 쏠림 진형</span>
-                  <span class="f-code">반대편 공간 노출</span>
-                  <span class="f-winrate" style="color: #f87171;">승률 급감 36%</span>
-                </button>
-
-                <button class="formation-btn" data-formation="centerstack">
-                  <span class="f-name">중앙 세로 쌓기</span>
-                  <span class="f-code">병목 현상 유발</span>
-                  <span class="f-winrate" style="color: #f87171;">최악 승률 35%</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Live Sim Report Box -->
-            <div class="sim-report-box">
-              <div class="report-header">
-                <span class="report-formation-name" id="reportFormationName">표준 2-3-2 (Standard Balanced)</span>
-                <span class="report-stat-pill" id="reportWinRate">평균 승률 56%</span>
-              </div>
-              <p class="report-desc" id="reportDesc">
-                공수 밸런스가 균형 잡힌 정석 진형. 중앙 3열과 양 측면의 공간 점유율이 고르고 국지전 대인 방어에 안정적입니다.
-              </p>
-              <div class="report-details-list">
-                <div class="report-detail-row">
-                  <span>포지션 인원 구성</span>
-                  <span id="reportStructure">DF 2 · MF 3 · FW 2 (합 7명)</span>
+          <!-- Flow Steps Panel -->
+          <div class="flow-panel">
+            <div class="flow-step-list">
+              <button class="flow-step-btn active" data-step="0">
+                <div class="flow-step-num">01</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">홈 대시보드</h4>
+                  <p class="flow-step-desc">앱을 열면 총자산, 일간 변동, YTD 수익률이 한눈에 보입니다.</p>
                 </div>
-                <div class="report-detail-row">
-                  <span>배치 심도 (3단/4단)</span>
-                  <span id="reportTactics">3단 2-3-2 / 4단 2-3-0-2</span>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+
+              <button class="flow-step-btn" data-step="1">
+                <div class="flow-step-num">02</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">스크린샷 업로드</h4>
+                  <p class="flow-step-desc">증권사 앱 캡처 이미지를 최대 5장까지 한 번에 올립니다.</p>
                 </div>
-                <div class="report-detail-row">
-                  <span>최적 감독 지시 카드</span>
-                  <span id="reportBestCard" style="color: #60a5fa;">집결 (Rally)</span>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+
+              <button class="flow-step-btn" data-step="2">
+                <div class="flow-step-num">03</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">AI 자동 파싱 & 검수</h4>
+                  <p class="flow-step-desc">Gemini 3.1 Flash-Lite가 종목명·수량·금액을 추출하고, 검수 화면에서 편집 후 확정합니다.</p>
                 </div>
-                <div class="report-detail-row">
-                  <span>전술적 유의점</span>
-                  <span id="reportWeakness">극단적 측면 기습 시 커버 동선 필요</span>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+
+              <button class="flow-step-btn" data-step="3">
+                <div class="flow-step-num">04</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">자산 추이 & 차트</h4>
+                  <p class="flow-step-desc">1일~전체 8개 구간의 시계열 차트로 자산 변동 추이를 추적합니다.</p>
                 </div>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+
+              <button class="flow-step-btn" data-step="4">
+                <div class="flow-step-num">05</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">배당 & 시장 인사이트</h4>
+                  <p class="flow-step-desc">배당 예측 캘린더와 투자 구루 포트폴리오를 비교 분석합니다.</p>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+
+              <button class="flow-step-btn" data-step="5">
+                <div class="flow-step-num">06</div>
+                <div class="flow-step-content">
+                  <h4 class="flow-step-title">설정 & 프라이버시</h4>
+                  <p class="flow-step-desc">테마 전환, 액센트 컬러, 금액 숨김, CSV 백업/복원을 관리합니다.</p>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
+              </button>
+            </div>
+
+            <!-- Detail Panel -->
+            <div class="flow-detail-card" id="flowDetailCard">
+              <div class="flow-detail-header">
+                <span class="flow-detail-badge" id="flowDetailBadge">STEP 01</span>
+                <h4 class="flow-detail-title" id="flowDetailTitle">홈 대시보드</h4>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tactics RPG Core Features Grid -->
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon-box icon-tactics">
-              <i class="fa-solid fa-flag-checkered"></i>
-            </div>
-            <h4 class="feature-title">7v7 전술 전투 & 감독 지시 카드</h4>
-            <p class="feature-text">
-              120틱(2분 30초) 동안 5×7 격자에서 진행되는 자동 전투. 감독은 '집결', '총력 수비', '돌파 지시' 3종의 전술 카드와 3장의 교체 카드로 전세를 실시간 개입합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-tactics">
-              <i class="fa-solid fa-trophy"></i>
-            </div>
-            <h4 class="feature-title">FM 스타일 구단 & 시즌 운영</h4>
-            <p class="feature-text">
-              1년 1시즌의 장기 리그 루프. 출전 누적에 따른 선수 피로도와 부상 위험도 관리, 유스 아카데미 발굴, 구단 훈련장 시설 투자, AI 구단 간 자동 이적 시장을 지원합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-tactics">
-              <i class="fa-solid fa-calculator"></i>
-            </div>
-            <h4 class="feature-title">100% 결정론 (Pure Integer Math)</h4>
-            <p class="feature-text">
-              부동소수점(`Float`/`Double`)을 전면 배제하고 정수와 밀리 단위(1000 = 1.0) 연산으로만 설계되었습니다. xorshift64* 시드 난수와 고정 순회로 리플레이가 바이트 단위까지 100% 일치합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-tactics">
-              <i class="fa-solid fa-bridge"></i>
-            </div>
-            <h4 class="feature-title">초경량 C-ABI 네이티브 브리지</h4>
-            <p class="feature-text">
-              KMP 코어를 macOS 번들, iOS XCFramework(정적 .a), Android .aar로 빌드하고 5개의 순수 C-ABI 함수로 노출하여, Unity C# 클라이언트에서 무상태(Stateless) 고속 통신을 실현했습니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- Golden Test Verification & Architecture -->
-        <div class="arch-box">
-          <div class="arch-header">
-            <div>
-              <h4 class="arch-title">🔬 데이터 기반 무결성 검증 (Golden Parity Verification)</h4>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
-                기획과 수식은 파이썬 시뮬레이터에서 수만 번 검증된 후 KMP 코어로 1:1 이식되어 해시(MD5) 레벨에서 동등성을 증명합니다.
-              </p>
-            </div>
-            <a href="https://github.com/JaeparkYoon/NewGame" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <i class="fa-brands fa-github"></i>
-              <span>NewGame 저장소 방문</span>
-            </a>
-          </div>
-
-          <!-- Golden Hash Matrix -->
-          <div class="golden-matrix">
-            <div class="golden-item">
-              <div class="golden-icon"><i class="fa-solid fa-shield-check"></i></div>
-              <div class="golden-info">
-                <span class="golden-target">전투 엔진 30경기 골든</span>
-                <span class="golden-hash">MD5: 56fec32294edf43f...</span>
-                <span class="golden-status"><i class="fa-solid fa-check"></i> Byte Identical Pass</span>
-              </div>
-            </div>
-
-            <div class="golden-item">
-              <div class="golden-icon"><i class="fa-solid fa-shield-check"></i></div>
-              <div class="golden-info">
-                <span class="golden-target">시즌 엔진 3시즌 골든</span>
-                <span class="golden-hash">MD5: 106b9d51b4a2f5c7...</span>
-                <span class="golden-status"><i class="fa-solid fa-check"></i> Season Loop Pass</span>
-              </div>
-            </div>
-
-            <div class="golden-item">
-              <div class="golden-icon"><i class="fa-solid fa-shield-check"></i></div>
-              <div class="golden-info">
-                <span class="golden-target">선수 기록·평점 20경기</span>
-                <span class="golden-hash">MD5: c7d5c7134886f166...</span>
-                <span class="golden-status"><i class="fa-solid fa-check"></i> Rating Parity Pass</span>
-              </div>
-            </div>
-
-            <div class="golden-item">
-              <div class="golden-icon"><i class="fa-solid fa-shield-check"></i></div>
-              <div class="golden-info">
-                <span class="golden-target">스킬 시스템 20경기</span>
-                <span class="golden-hash">MD5: 970afc6068e7db1f...</span>
-                <span class="golden-status"><i class="fa-solid fa-check"></i> Kit Modular Pass</span>
+              <div class="flow-detail-body" id="flowDetailBody">
+                <p>앱 진입 시 가장 먼저 보이는 메인 화면입니다. 총 보유 자산, 전일 대비 변동, 올해 누적 수익률(YTD), 카테고리별 자산 비중 도넛 차트, 보유 종목 리스트, 월간 배당금 요약이 하나의 스크롤에 정리됩니다.</p>
+                <div class="flow-detail-tech">
+                  <span class="detail-tech-tag"><i class="fa-solid fa-layer-group"></i> ObserveHomeDataUseCase</span>
+                  <span class="detail-tech-tag"><i class="fa-solid fa-database"></i> Room KMP StateFlow</span>
+                  <span class="detail-tech-tag"><i class="fa-solid fa-palette"></i> Compose M3 LazyColumn</span>
+                </div>
               </div>
             </div>
           </div>
@@ -572,10 +435,10 @@
           <div class="about-content">
             <div class="about-avatar">Y</div>
             <h2 class="about-name">윤재박 (Jaepark Yoon)</h2>
-            <div class="about-role">Mobile Architecture & Core Game Systems Engineer</div>
+            <div class="about-role">Mobile Architecture & AI-Driven Product Engineer</div>
             <p class="about-bio">
               문제를 가장 명쾌하고 지속 가능한 방식으로 해결하는 것에 깊은 흥미를 느낍니다.<br />
-              모바일 UI의 섬세한 사용성부터, 1바이트의 오차도 허용하지 않는 결정론적 코어 엔진 설계까지—<br />
+              모바일 UI의 섬세한 사용성부터 AI 비전 파싱 파이프라인, 그리고 견고한 서버 사이드 검증까지—<br />
               탄탄한 아키텍처와 실제 동작하는 제품으로 증명합니다.
             </p>
 
@@ -603,13 +466,13 @@
       <div>
         <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
         <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
-          Hosted with GitHub Pages • Built with Kotlin Multiplatform, Pure HTML5/CSS3/JS
+          Hosted with GitHub Pages · Built with Kotlin Multiplatform, Pure HTML5/CSS3/JS
         </p>
       </div>
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#snapfolio">SnapFolio</a>
-        <a href="#tactics">Tactics RPG</a>
+        <a href="#app-flow">앱 시뮬레이션</a>
         <a href="mailto:jpyoon1122@gmail.com">Email</a>
       </div>
     </div>
