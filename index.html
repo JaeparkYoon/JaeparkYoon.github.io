@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>윤재박 (Jaepark Yoon) — SnapFolio · KMP 기반 올인원 자산 관리 앱</title>
-  <meta name="description" content="스크린샷 한 장으로 흩어진 투자 자산을 모으는 KMP + Gemini AI 올인원 자산 관리 앱, SnapFolio(스냅폴)를 소개합니다." />
+  <title>윤재박 (Jaepark Yoon) — Software Engineer · Android · KMP · AI Agent Orchestration</title>
+  <meta name="description" content="8건의 비즈니스 앱을 개발·운영해온 Android 전문 엔지니어. 온디바이스 AI 연동과 AI 에이전트 오케스트레이션 설계를 다루며, 미브(mevu)·zum 포털·zum 키보드·SnapFolio 등 프로젝트를 소개합니다." />
   <meta name="author" content="Jaepark Yoon" />
 
   <!-- Open Graph / SNS -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jaeparkyoon.github.io/" />
-  <meta property="og:title" content="윤재박 (Jaepark Yoon) — SnapFolio Portfolio" />
-  <meta property="og:description" content="KMP + Gemini AI 기반 올인원 자산 관리 앱 SnapFolio(스냅폴) 프로젝트 소개" />
+  <meta property="og:title" content="윤재박 (Jaepark Yoon) — Software Engineer Portfolio" />
+  <meta property="og:description" content="Android · Kotlin Multiplatform · AI Agent Orchestration. 6년 3개월간 8건의 비즈니스 앱을 개발·운영한 엔지니어의 포트폴리오." />
   <meta property="og:image" content="assets/images/snapfolio/feature-graphic.png" />
 
   <!-- Favicon -->
@@ -38,11 +38,13 @@
       </a>
 
       <nav>
-        <ul class="nav-links">
-          <li><a href="#overview" class="nav-link active">소개</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about" class="nav-link">소개</a></li>
+          <li><a href="#career" class="nav-link">경력</a></li>
+          <li><a href="#projects" class="nav-link">프로젝트</a></li>
           <li><a href="#snapfolio" class="nav-link">SnapFolio</a></li>
-          <li><a href="#app-flow" class="nav-link">앱 시뮬레이션</a></li>
-          <li><a href="#about" class="nav-link">프로필</a></li>
+          <li><a href="#writing" class="nav-link">기술 블로그</a></li>
+          <li><a href="#contact" class="nav-link">연락처</a></li>
         </ul>
       </nav>
 
@@ -51,6 +53,9 @@
           <i class="fa-brands fa-github"></i>
           <span>GitHub</span>
         </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -63,89 +68,399 @@
       <div class="container hero-wrapper">
         <div class="pill-badge">
           <span class="dot"></span>
-          <span>KMP · Gemini AI · Jetpack Compose · SwiftUI</span>
+          <span>Android · Kotlin Multiplatform · AI Agent Orchestration</span>
         </div>
 
         <h1 class="hero-title">
-          스크린샷 한 장으로<br />
-          <span class="gradient-text">투자 자산</span>을 모으다
+          문제의 원인이 앱 밖에 있을 때,<br />
+          <span class="gradient-text">그 경계를 넘어</span> 해결합니다
         </h1>
 
         <p class="hero-subtitle">
-          Kotlin Multiplatform(KMP)과 Gemini AI 기반의 올인원 자산 관리 앱 SnapFolio(스냅폴).<br />
-          복잡한 인증서 연동 없이, 보유 자산 스크린샷만 올리면 AI가 자동 파싱하여<br />
-          포트폴리오를 구축해 주는 100% 바이브 코딩 창작물입니다.
+          8건의 비즈니스 앱을 개발·운영해온 Android 전문 엔지니어입니다.<br />
+          온디바이스 AI 연동과 AI 에이전트 오케스트레이션 설계를 주로 다루며,<br />
+          문제의 원인이 앱 밖에 있을 때 그 경계를 넘어 해결하는 것을 강점으로 삼고 있습니다.
         </p>
 
         <div class="hero-cta">
-          <a href="#snapfolio" class="btn btn-primary">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-            <span>프로젝트 상세 보기</span>
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>프로젝트 보기</span>
           </a>
-          <a href="#app-flow" class="btn btn-secondary">
-            <i class="fa-solid fa-play"></i>
-            <span>앱 흐름 시뮬레이션 체험</span>
+          <a href="#snapfolio" class="btn btn-secondary">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI 오케스트레이션 사례</span>
           </a>
-          <a href="https://github.com/JaeparkYoon/SnapFolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <i class="fa-brands fa-github"></i>
-            <span>GitHub 소스 코드</span>
+          <a href="#writing" class="btn btn-outline">
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>기술 블로그</span>
           </a>
         </div>
 
         <!-- Key Metrics Row -->
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-value">KMP</span>
-            <span class="stat-label">Cross-Platform Core</span>
+            <span class="stat-value">6y 3m</span>
+            <span class="stat-label">총 경력</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">AI</span>
-            <span class="stat-label">Gemini Vision & Chat</span>
+            <span class="stat-value">8</span>
+            <span class="stat-label">비즈니스 앱 개발·운영</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">2</span>
-            <span class="stat-label">Android & iOS</span>
+            <span class="stat-value">15</span>
+            <span class="stat-label">정의한 서브에이전트</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Vibe Coded</span>
+            <span class="stat-value">694</span>
+            <span class="stat-label">에이전트 워크플로우 커밋</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-         Project: SnapFolio (스냅폴)
+         About & Skills
+         ======================================================================== -->
+    <section class="project-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge badge-indigo">
+            <i class="fa-solid fa-user"></i> About
+          </div>
+          <h2 class="section-title">AI를 어디까지 맡길지는 사람이 정합니다</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              회사에서 서비스하고 있는 앱에서 <strong>디자인 QA·배포·커밋을 각각 맡는 서브에이전트</strong>를 정의하고, Figma MCP로 추출한 디자인 스펙과 Compose 구현을 전수 대조해 불일치 리포트를 남기게 했습니다. 배포는 빌드 구성에 맞춰 개발앱·검수앱·스토어 배포 앱 세 갈래 파이프라인을 스킬 하나에 담았고, 이 중 사용자에게 나가는 스토어 경로에만 검증을 겹쳤습니다. 환경별 노출 정책 E2E와 실제 결제가 도는 스모크 테스트를 통과해야 AAB를 만들 수 있고, 업로드는 내부 테스트 트랙까지만 자동입니다. 운영 승격은 사람이 직접 확인한 뒤에 처리합니다.
+            </p>
+            <p>
+              AI는 강력한 도구라고 생각합니다. 다만 도구가 강할수록 어디까지 맡길지를 사람이 정해야 한다고 보고, 오케스트레이션을 어떻게 짜야 더 나은지 직접 실험해 보려고 개인 사이드 프로젝트를 시작했습니다. <strong>역할·도구 권한·모델을 분리한 서브에이전트 15종</strong>을 정의하고, 보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성으로 이어지는 게이트형 워크플로우를 설계했습니다. 에이전트가 무엇을 할 수 있는지보다 <strong>무엇을 하면 안 되는지</strong>를 먼저 정의했고, 되돌릴 수 없는 행위에는 배포 트랙 고정·서명 키 불가침 같은 기계적 불변식을 걸었습니다. 그렇게 만든 도구 위에서 KMP 앱을 설계부터 배포까지 6개월간 퇴근 이후에 만들었습니다.
+            </p>
+          </div>
+
+          <aside class="skills-card">
+            <h3 class="skills-title"><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h3>
+            <dl class="skills-list">
+              <div class="skill-row"><dt>Language</dt><dd>Kotlin, Java, TypeScript</dd></div>
+              <div class="skill-row"><dt>AI Agent / Orchestration</dt><dd>Claude Code Subagents, Agent Skills, Hooks</dd></div>
+              <div class="skill-row"><dt>Agent Interop / Automation</dt><dd>MCP (Figma · Atlassian), n8n</dd></div>
+              <div class="skill-row"><dt>LLM / On-device AI</dt><dd>Gemini(Vertex AI SDK), LiteRT, ML Kit</dd></div>
+              <div class="skill-row"><dt>Architecture</dt><dd>MVI, MVVM, Clean Architecture</dd></div>
+              <div class="skill-row"><dt>UI</dt><dd>Jetpack Compose, XML, Navigation, KMP</dd></div>
+              <div class="skill-row"><dt>Async</dt><dd>Coroutine, Flow</dd></div>
+              <div class="skill-row"><dt>DI / Data</dt><dd>Hilt, kotlin-inject, Room, DataStore, Retrofit2</dd></div>
+              <div class="skill-row"><dt>Backend</dt><dd>Firebase Cloud Functions, Firestore, Ktor</dd></div>
+              <div class="skill-row"><dt>Payment / Analytics</dt><dd>RevenueCat, Hackle, Airbridge</dd></div>
+              <div class="skill-row"><dt>Perf / Media</dt><dd>Baseline Profile, Crashlytics, ExoPlayer(Media3)</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Career
+         ======================================================================== -->
+    <section class="project-section" id="career">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge badge-indigo">
+            <i class="fa-solid fa-briefcase"></i> Career · 총 6년 3개월
+          </div>
+          <h2 class="section-title">경력</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div class="career-head">
+                <div>
+                  <h3 class="career-company">이스트에이드(구 줌인터넷)</h3>
+                  <p class="career-role">AI 콘텐츠 사업실 · Android 개발</p>
+                </div>
+                <div class="career-period">
+                  <span>2024.07 ~ 2026.09</span>
+                  <span class="career-duration">2년 3개월</span>
+                </div>
+              </div>
+              <ul class="career-bullets">
+                <li><a href="#mevu">미브(mevu)</a> — AI 프로필 사진 생성 앱 (2025.10 ~ 2026.09)</li>
+                <li><a href="#zum-portal">zum 포털</a> — 리워드·만보기·AI 이슈 탭 (2025.03 ~ 2025.09)</li>
+                <li><a href="#zum-keyboard">zum 키보드</a> — 0→1 신규 런칭 (2024.07 ~ 2025.02)</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div class="career-head">
+                <div>
+                  <h3 class="career-company">에듀윌</h3>
+                  <p class="career-role">에듀테크연구소 · Android 개발</p>
+                </div>
+                <div class="career-period">
+                  <span>2023.02 ~ 2024.06</span>
+                  <span class="career-duration">1년 5개월</span>
+                </div>
+              </div>
+              <ul class="career-bullets">
+                <li><a href="#edu-pass">합격앱 UI 개편</a> — Compose 전환, 일 크래시 3,000→800건</li>
+                <li>합격앱 유지보수 — CS·스토어 정책 대응, Crashlytics 모니터링</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card">
+              <div class="career-head">
+                <div>
+                  <h3 class="career-company">이우솔루션</h3>
+                  <p class="career-role">개발2팀 연구원 · Android 개발</p>
+                </div>
+                <div class="career-period">
+                  <span>2019.12 ~ 2022.08</span>
+                  <span class="career-duration">2년 7개월</span>
+                </div>
+              </div>
+              <ul class="career-bullets">
+                <li><a href="#onestore">Global OneStore</a> (원스토어) · Ifland (SK텔레콤)</li>
+                <li><a href="#kidsland">아이들나라 AgileTF</a> (LG U+) · <a href="#bluelink">BlueLink</a> (현대자동차) · SmartTag</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Projects
+         ======================================================================== -->
+    <section class="project-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge badge-indigo">
+            <i class="fa-solid fa-mobile-screen-button"></i> Projects
+          </div>
+          <h2 class="section-title">프로젝트</h2>
+          <p class="section-subtitle">회사 서비스와 사이드 프로젝트에서 담당한 앱과 주요 성과입니다. 스크린샷을 클릭하면 확대해서 볼 수 있습니다.</p>
+        </div>
+
+        <!-- 미브(mevu) -->
+        <article class="project-block" id="mevu">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이스트에이드(구 줌인터넷)</span>
+              <span class="project-period">2025.10 ~ 2026.09</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">미브(mevu)</h3>
+            <p class="project-subtitle">AI 프로필 사진 생성 앱 · 신규 기능 개발 및 유지보수</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">DataStore</span><span class="tech-tag">Room</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">RevenueCat</span><span class="tech-tag">Hackle</span><span class="tech-tag">Airbridge</span><span class="tech-tag">LiteRT</span><span class="tech-tag">ML Kit</span><span class="tech-tag">ExoPlayer</span><span class="tech-tag">Claude Code</span><span class="tech-tag">MCP</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>프로젝트 장기 참여자로서 서버 API·Hackle·RevenueCat 등 연동 시스템 전반의 구조를 파악하고, 신규 기능·기획 논의 단계에서 개발 직군 간 설계 합의를 주도</li>
+                <li>결제 미응답 CS를 앱 예외 처리만으로 해결할 수 없다고 판단, 서버 개발자와 RevenueCat 웹훅 검증을 논의하고 펜딩 결제 시 서버가 결제를 인증한 후 생성을 진행하는 파이프라인을 설계하여 <strong>CS 월 10건 → 2건으로 감소</strong></li>
+                <li><strong>On-device AI 필터</strong>: LiteRT 모델로 부적절(NSFW)·마스크 착용 이미지를, ML Kit 얼굴 검출로 인물 미포함 이미지를 서버 호출 전에 차단하여 불필요한 서버 AI 비용 절감</li>
+                <li>모션 탭에서 다수의 ExoPlayer 인스턴스 동시 생성으로 인한 OOM 리스크를 식별하고, 플레이어를 재사용하는 Pool 구조를 설계해 스크롤 지연 없는 재생 확보</li>
+                <li>S3 Presigned URL의 휘발성 파라미터로 인한 Coil 캐시 무효화를 사전에 식별, 고정 키 기반 캐시 키를 공통 컴포넌트로 추상화</li>
+                <li>Baseline Profile 적용으로 <strong>앱 실행 속도 20% 개선</strong></li>
+                <li><strong>AI 에이전트 운영</strong>: 디자인 QA·배포·스토어 업로드·커밋을 전담 에이전트로 분리하고, Figma MCP로 뽑은 스펙과 Compose 구현을 전수 대조해 불일치 리포트를 산출</li>
+                <li><strong>에이전트 기반 배포 파이프라인</strong>: 개발앱·검수앱·스토어 배포 앱 세 경로를 스킬 하나에 통합하고, 사용자에게 나가는 스토어 경로만 환경 매트릭스 E2E → 결제 스모크 → AAB 업로드로 게이트를 나눠, 운영 승격은 사람이 확인한 뒤에 처리</li>
+              </ul>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/mevu-1.jpg" alt="미브 홈 · 트렌드 스타일" loading="lazy" data-lightbox /><figcaption>홈 · 트렌드 스타일</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/mevu-2.jpg" alt="미브 사진 확인 · 온디바이스 필터" loading="lazy" data-lightbox /><figcaption>사진 확인 · 온디바이스 필터</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/mevu-3.jpg" alt="미브 AI 프로필 결과물" loading="lazy" data-lightbox /><figcaption>AI 프로필 결과물</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- zum 포털 -->
+        <article class="project-block" id="zum-portal">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이스트에이드(구 줌인터넷)</span>
+              <span class="project-period">2025.03 ~ 2025.09</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">zum 포털</h3>
+            <p class="project-subtitle">zum 포털 앱 · 리워드·만보기·AI 이슈 탭 신규 기능 개발</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Airbridge</span><span class="tech-tag">Hackle</span><span class="tech-tag">AppLovin</span><span class="tech-tag">Buzzvil</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li><strong>리워드 기능</strong>: AppLovin·AdPopcorn·Buzzvil 제휴 미션 연동, 웹뷰-앱 통신을 JavaScript Interface로 설계</li>
+                <li><strong>만보기</strong>: Service 기반 백그라운드 걸음 수 측정, 시스템 알림 UI 커스텀, AlarmManager 자정 초기화, 재부팅 시 센서 초기화 시나리오 대응</li>
+                <li><strong>AI 이슈 탭</strong>: 긴 글 형태의 숏폼 UI로 다양한 해상도 대응, Airbridge 딥링크 공유 기능</li>
+                <li>혜택 탭 미션 리스트 캐싱으로 <strong>로딩 3초 → 1초</strong>, 웹뷰 캐싱 데이터 설계로 <strong>1초 → 0.5초</strong> 개선</li>
+                <li>화면 꺼짐 상태에서 리워드 알림이 노출되지 않는 헤드업 푸시 미적용 문제를 직접 발견·개선하여 <strong>푸시 경유 PV 30% 증가</strong></li>
+              </ul>
+              <div class="related-articles">
+                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
+                <a href="#writing">Android 만보기 기능 개발 후기</a>
+                <a href="#writing">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</a>
+              </div>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/zum-portal-1.jpg" alt="zum 포털 홈 · AI 이슈 트렌드" loading="lazy" data-lightbox /><figcaption>홈 · AI 이슈 트렌드</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/zum-portal-2.jpg" alt="zum 포털 혜택 탭 · 만보기·미션" loading="lazy" data-lightbox /><figcaption>혜택 탭 · 만보기·미션</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/zum-portal-3.jpg" alt="zum 포털 AI 이슈 숏폼 UI" loading="lazy" data-lightbox /><figcaption>AI 이슈 숏폼 UI</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- zum 키보드 -->
+        <article class="project-block" id="zum-keyboard">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이스트에이드(구 줌인터넷)</span>
+              <span class="project-period">2024.07 ~ 2025.02</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">zum 키보드</h3>
+            <p class="project-subtitle">Android 커스텀 키보드 · 아키텍처 설계부터 스토어 런칭까지 0→1</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Airbridge</span><span class="tech-tag">InputMethodService</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>신규 서비스의 아키텍처 설계부터 스토어 런칭 및 운영까지 <strong>0 to 1 전 과정 단독 수행</strong></li>
+                <li>Android Native 키보드(InputMethodService)의 lifecycle을 이해하고 서비스 구조에 반영</li>
+                <li>직접 사용 중 높낮이 조절 시 깜빡임을 발견, 모든 Flow 방출값이 UI에 반영되는 원인을 파악하고 Flow sample(16ms)로 갱신 주기를 프레임 단위로 제한하여 해결</li>
+              </ul>
+              <div class="related-articles">
+                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
+                <a href="#writing">Android Keyboard의 InputMethodService Lifecycle 분석</a>
+                <a href="#writing">Kotlin Flow의 sample을 이용하여 키보드 앱 UI 개선</a>
+              </div>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/zum-keyboard-1.jpg" alt="zum 키보드 한글 키보드" loading="lazy" data-lightbox /><figcaption>한글 키보드</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/zum-keyboard-2.jpg" alt="zum 키보드 영문 키보드 · 서체 스타일" loading="lazy" data-lightbox /><figcaption>영문 키보드 · 서체 스타일</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/zum-keyboard-3.jpg" alt="zum 키보드 설정" loading="lazy" data-lightbox /><figcaption>키보드 설정</figcaption></figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Side Project: SnapFolio (스냅폴) — AI Agent Orchestration
          ======================================================================== -->
     <section class="project-section snapfolio-theme" id="snapfolio">
       <div class="container">
         <div class="section-header">
           <div class="section-badge badge-snapfolio">
-            <i class="fa-solid fa-sparkles"></i> Featured Mobile App · Fintech & AI
+            <i class="fa-solid fa-robot"></i> Side Project · 2026.04 ~ 진행 중 · 기획 · 개발 · 운영 단독
           </div>
           <h2 class="section-title">
             <img src="assets/images/snapfolio/icon.png" alt="SnapFolio Icon" class="project-logo-img" />
             SnapFolio (스냅폴)
           </h2>
           <p class="section-subtitle">
-            "스크린샷 한 장으로 흩어진 투자 자산을 모으다."<br />
-            복잡한 증권사 공인인증서 연동 없이, 보유 자산 스크린샷을 올리면 Gemini AI가 실시간 자동 파싱하여 포트폴리오를 구축해 주는 KMP 올인원 자산 관리 앱입니다.
+            AI 에이전트 오케스트레이션으로 설계부터 배포까지 만든 KMP 자산관리 앱.<br />
+            역할·도구 권한·모델을 분리한 서브에이전트 15종과 5단 게이트 워크플로우 위에서, 6개월간 퇴근 이후에 만들었습니다.
           </p>
           <div class="tech-tag-list">
-            <span class="tech-tag">Kotlin Multiplatform 2.3</span>
-            <span class="tech-tag">Jetpack Compose M3</span>
-            <span class="tech-tag">SwiftUI 5</span>
-            <span class="tech-tag">Gemini 3.1 Flash-Lite</span>
-            <span class="tech-tag">Firebase AI (Vertex SDK)</span>
-            <span class="tech-tag">Room KMP (SQLite)</span>
-            <span class="tech-tag">Cloud Functions (Node 22/TS)</span>
-            <span class="tech-tag">In-App Purchase</span>
+            <span class="tech-tag">Claude Code Subagents</span><span class="tech-tag">Agent Skills</span><span class="tech-tag">Hooks</span><span class="tech-tag">MCP</span><span class="tech-tag">Gemini</span><span class="tech-tag">Firebase AI Logic</span><span class="tech-tag">Kotlin Multiplatform</span><span class="tech-tag">Compose</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">MVI</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Firestore</span>
           </div>
         </div>
 
-        <!-- SnapFolio Feature Banner -->
-        <div class="snapfolio-banner">
-          <img src="assets/images/snapfolio/feature-graphic.png" alt="SnapFolio Feature Graphic" />
+        <!-- Orchestration achievements + diagram -->
+        <div class="orchestration-grid">
+          <div class="project-content">
+            <h4 class="achievements-title">주요 성과</h4>
+            <ul class="achievements">
+              <li>역할·도구 권한·모델을 분리한 <strong>서브에이전트 15종</strong>을 정의하고 메인 세션이 총괄하는 오케스트레이션 구조를 설계 (복잡한 작업 11종 opus, 배포 sonnet, 커밋 haiku)</li>
+              <li><strong>보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성</strong>으로 이어지는 5단 게이트를 정의, 보안 민감 영역은 착수 전 설계 승인과 구현 후 diff 검수를 모두 통과해야 진행</li>
+              <li>되돌릴 수 없는 행위에 <strong>기계적 불변식</strong>을 부여 — 배포 에이전트는 internal 트랙 리터럴 고정으로 프로덕션 승격 불가, 서명 키·서비스 계정 키는 존재·권한 확인만 허용</li>
+              <li>에이전트 기반 배포 파이프라인 운영: 빌드 검증 → 번들 서명 → 내부 테스트 트랙 업로드, 커밋은 allowlist·denylist·diff 검증을 거치는 전담 에이전트가 수행</li>
+              <li>PreToolUse 훅으로 iOS 빌드 전 Xcode 버전을 .xcode-version과 대조, 불일치 시 차단</li>
+              <li>Gemini(Vertex AI SDK) 기반 스크린샷 파싱·대화형 분석을 탑재한 KMP 앱으로, 6개월간 <strong>커밋 694건 · GitHub Issue 196건</strong>을 이 워크플로우로 처리</li>
+            </ul>
+          </div>
+
+          <div class="agent-diagram" aria-label="에이전트 위임 · 게이트 · 배포 흐름">
+            <div class="agent-orchestrator">
+              <span class="agent-box-label">메인 세션 (오케스트레이터)</span>
+              <span class="agent-box-desc">작업 분해 · 위임 · 승인 중계 · 통합 검증 · 최종 보고</span>
+            </div>
+            <div class="agent-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="agent-columns">
+              <div class="agent-col">
+                <span class="agent-col-title">설계 · 정책</span>
+                <ul>
+                  <li>policy-strategy-advisor</li>
+                  <li>product-designer</li>
+                  <li>design-system</li>
+                </ul>
+                <span class="agent-col-note">결정 레이어 — 코드 미수정</span>
+              </div>
+              <div class="agent-col">
+                <span class="agent-col-title">구현</span>
+                <ul>
+                  <li>android-ui-dev</li>
+                  <li>ios-ui-dev</li>
+                  <li>kmp-logic-dev</li>
+                  <li>server-dev</li>
+                </ul>
+                <span class="agent-col-note">계획 → 승인 → 적용 2단계 호출</span>
+              </div>
+              <div class="agent-col">
+                <span class="agent-col-title">검증 게이트</span>
+                <ul>
+                  <li>security-reviewer</li>
+                  <li>code-reviewer</li>
+                  <li>qa-verifier</li>
+                  <li>doc-gate-auditor</li>
+                </ul>
+                <span class="agent-col-note">반려 판정 시 착수 불가</span>
+              </div>
+            </div>
+            <div class="agent-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="agent-deploy">
+              <span class="agent-box-label">배포 — playstore-deployer / git-committer</span>
+              <span class="agent-box-desc">internal 트랙 고정 · allowlist/denylist/diff 검증</span>
+            </div>
+            <p class="agent-caption">에이전트 위임 · 게이트 · 배포 흐름</p>
+          </div>
+        </div>
+
+        <!-- App screens (PDF p.9) -->
+        <div class="app-screens">
+          <div class="app-screens-text">
+            <h3 class="app-screens-title">SnapFolio — 앱 화면</h3>
+            <p class="app-screens-sub">스크린샷 파싱과 대화형 분석을 Gemini로 처리하는 자산관리 앱 · Android · iOS (KMP)</p>
+            <ul class="achievements">
+              <li><strong>스크린샷 AI 파싱</strong> — 증권사 화면 캡처를 Gemini Flash-Lite로 파싱해 종목·수량·평가금액을 추출하고, 바로 저장하지 않고 검수 화면을 거쳐 사용자가 확정하도록 설계</li>
+              <li><strong>AI 투자 비서</strong> — 보유 종목·비중을 프롬프트에 실어 Gemini Flash로 분석. 화면은 실제 응답으로, 삼성전자 75.2% 집중·업종 편중·통화 편중을 근거와 함께 지적</li>
+              <li><strong>시장 인사이트</strong> — 국내외 지수와 경제 헤드라인을 AI로 요약해 갱신</li>
+            </ul>
+          </div>
+          <div class="shot-row">
+            <figure class="shot"><img src="assets/images/snapfolio/01-screenshot.png" alt="SnapFolio 홈 · 자산 배분·보유 종목" loading="lazy" data-lightbox /><figcaption>홈 · 자산 배분·보유 종목</figcaption></figure>
+            <figure class="shot"><img src="assets/images/snapfolio/03-screenshot.png" alt="SnapFolio AI 투자 비서 · 포트폴리오 분석" loading="lazy" data-lightbox /><figcaption>AI 투자 비서 · 포트폴리오 분석</figcaption></figure>
+            <figure class="shot"><img src="assets/images/snapfolio/05-screenshot.png" alt="SnapFolio 인사이트 · AI 요약" loading="lazy" data-lightbox /><figcaption>인사이트 · AI 요약</figcaption></figure>
+          </div>
         </div>
 
         <!-- Screenshots Carousel Showcase -->
@@ -230,59 +545,16 @@
           </div>
         </div>
 
-        <!-- SnapFolio Key Feature Cards -->
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon-box icon-snapfolio">
-              <i class="fa-solid fa-camera-retro"></i>
-            </div>
-            <h4 class="feature-title">Gemini 3.1 Flash-Lite 비전 파싱</h4>
-            <p class="feature-text">
-              사용자가 증권사 화면을 캡처해 올리면, ML Kit 한국어 OCR 전처리와 Vertex AI 클라우드 파싱 엔진이 결합되어 5초 내로 정형화된 투자 자산 데이터로 복원합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-snapfolio">
-              <i class="fa-solid fa-comments-dollar"></i>
-            </div>
-            <h4 class="feature-title">지능형 포트폴리오 AI 챗봇</h4>
-            <p class="feature-text">
-              사용자의 실제 보유 자산 구조를 컨텍스트로 주입하여, 단순한 챗봇이 아닌 개인 맞춤형 리밸런싱 조언, 거시 경제 영향 분석, 배당 재투자 시나리오를 스트리밍 응답합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-snapfolio">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h4 class="feature-title">Local-First 프라이버시 아키텍처</h4>
-            <p class="feature-text">
-              계좌번호 및 개인 금융 원장은 원격 서버가 아닌 기기 내부 Room KMP(SQLite)에만 암호화 저장됩니다. Firebase는 오직 크레딧 검증 및 인앱 결제 영수증만 취급합니다.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box icon-snapfolio">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <h4 class="feature-title">크로스 플랫폼 인앱 결제 & 보안</h4>
-            <p class="feature-text">
-              Google Play Billing 9.1과 Apple StoreKit 2를 모두 연동하고, Firebase Cloud Functions를 통해 실시간 RTDN 웹훅 및 서버 사이드 영수증 위변조 검증을 수행합니다.
-            </p>
-          </div>
-        </div>
-
         <!-- Architecture Flow Card -->
         <div class="arch-box">
           <div class="arch-header">
             <div>
               <h4 class="arch-title">🏗️ SnapFolio 클린 아키텍처 (Clean MVI Flow)</h4>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">단방향 데이터 흐름(UDF) 기반으로 Android(Compose)와 iOS(SwiftUI)가 코어를 100% 공유합니다.</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">단방향 데이터 흐름(UDF) 기반으로 Android(Compose)와 iOS(SwiftUI)가 코어를 공유합니다.</p>
             </div>
-            <a href="https://github.com/JaeparkYoon/SnapFolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <i class="fa-brands fa-github"></i>
-              <span>SnapFolio 저장소 방문</span>
+            <a href="#app-flow" class="btn btn-secondary">
+              <i class="fa-solid fa-play"></i>
+              <span>앱 흐름 시뮬레이션</span>
             </a>
           </div>
 
@@ -290,22 +562,22 @@
             <div class="flow-step">
               <span class="step-label">UI Layer</span>
               <h5 class="step-title">Feature Modules</h5>
-              <p class="step-desc">Jetpack Compose M3 (Android) & SwiftUI 5 (iOS). MVI Contract(State, Intent, Effect) 기반 단방향 바인딩.</p>
+              <p class="step-desc">Jetpack Compose (Android) & SwiftUI (iOS). MVI Contract(State, Intent, Effect) 기반 단방향 바인딩.</p>
             </div>
             <div class="flow-step">
               <span class="step-label">Domain Layer</span>
-              <h5 class="step-title">17+ Pure UseCases</h5>
+              <h5 class="step-title">Pure UseCases</h5>
               <p class="step-desc">플랫폼 비의존 순수 Kotlin 도메인 모델. 자산 병합, 배당 산출, YTD 환산, 크레딧 트랜잭션 오케스트레이션.</p>
             </div>
             <div class="flow-step">
               <span class="step-label">Data Layer</span>
               <h5 class="step-title">Room KMP & Ktor</h5>
-              <p class="step-desc">14개 Repository 인터페이스와 구현체 분리. kotlin-inject KSP 경량 DI, Room SQLite Bundled 및 Ktor 통신.</p>
+              <p class="step-desc">Repository 인터페이스와 구현체 분리. kotlin-inject KSP 경량 DI, Room SQLite Bundled 및 Ktor 통신.</p>
             </div>
             <div class="flow-step">
               <span class="step-label">Backend</span>
-              <h5 class="step-title">20 Serverless Funcs</h5>
-              <p class="step-desc">Firebase Functions (Node 22 / TS 6). 영수증 검증, Play RTDN, Gemini 파싱 게이트웨이, 크레딧 홀드 보장.</p>
+              <h5 class="step-title">Cloud Functions</h5>
+              <p class="step-desc">Firebase Functions (TypeScript). 영수증 검증, Play RTDN, Gemini 파싱 게이트웨이, 크레딧 홀드 보장.</p>
             </div>
           </div>
         </div>
@@ -373,7 +645,7 @@
                 <div class="flow-step-num">03</div>
                 <div class="flow-step-content">
                   <h4 class="flow-step-title">AI 자동 파싱 & 검수</h4>
-                  <p class="flow-step-desc">Gemini 3.1 Flash-Lite가 종목명·수량·금액을 추출하고, 검수 화면에서 편집 후 확정합니다.</p>
+                  <p class="flow-step-desc">Gemini Flash-Lite가 종목명·수량·금액을 추출하고, 검수 화면에서 편집 후 확정합니다.</p>
                 </div>
                 <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
               </button>
@@ -427,20 +699,205 @@
     </section>
 
     <!-- ========================================================================
-         About Me & Contact
+         Earlier Projects
          ======================================================================== -->
-    <section class="about-section" id="about">
+    <section class="project-section" id="projects-earlier">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge badge-indigo">
+            <i class="fa-solid fa-clock-rotate-left"></i> Earlier Projects
+          </div>
+          <h2 class="section-title">이전 프로젝트</h2>
+        </div>
+
+        <!-- 합격앱 -->
+        <article class="project-block" id="edu-pass">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">에듀윌</span>
+              <span class="project-period">2023.02 ~ 2024.06</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">합격앱</h3>
+            <p class="project-subtitle">에듀윌 합격앱 · UI 개편 및 유지보수</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVVM</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Crashlytics</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>지속적인 VOC로 진행된 UI 개편에서 홈·로그인·나의강의실·타이머·무료특강 화면을 담당하고 모든 UI를 Compose로 작성</li>
+                <li>개편 및 안정화 작업을 통해 <strong>일평균 비정상 종료 3,000건 → 800건(약 76% 감소)</strong>, <strong>ANR 400건 → 200건(50% 감소)</strong></li>
+                <li>CS 및 플레이 스토어 정책 대응 후 배포, 라이브 클래스 플레이어 라이브러리 교체, Crashlytics 모니터링 기반 버그 수정</li>
+                <li>웹뷰-앱 통신을 Scheme 형태 URL로 정의하여 유지보수</li>
+              </ul>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/edu-pass-1.jpg" alt="합격앱 홈" loading="lazy" data-lightbox /><figcaption>홈</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/edu-pass-2.jpg" alt="합격앱 딱풀 · 학습 타이머" loading="lazy" data-lightbox /><figcaption>딱풀 · 학습 타이머</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/edu-pass-3.jpg" alt="합격앱 무료특강" loading="lazy" data-lightbox /><figcaption>무료특강</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- Global OneStore -->
+        <article class="project-block" id="onestore">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이우솔루션 · 원스토어</span>
+              <span class="project-period">2021.07 ~ 2022.05</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">Global OneStore</h3>
+            <p class="project-subtitle">앱 스토어 플랫폼 OneStore 글로벌 버전 개발</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVVM</span><span class="tech-tag">Hilt</span><span class="tech-tag">Paging3</span><span class="tech-tag">Coroutine</span><span class="tech-tag">LiveData</span><span class="tech-tag">Databinding</span><span class="tech-tag">RecyclerView</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>상품 상세 페이지, 리뷰 작성 및 리뷰 리스트, 고객센터 화면 개발 담당</li>
+                <li>RecyclerView ConcatAdapter 기반 카드형 UI 구조를 설계해 View 타입에 따라 단일 Activity에서 다양한 화면 구성을 대응</li>
+                <li>디자인 시안과 Pixel 단위로 대조하며 글로벌 출시 화면의 UI 정합성 확보</li>
+              </ul>
+              <div class="related-articles">
+                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
+                <a href="#writing">Android Paging3 Flow에 왜 cachedIn을 할까?</a>
+              </div>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/onestore-1.jpg" alt="OneStore 상품 상세" loading="lazy" data-lightbox /><figcaption>상품 상세</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/onestore-2.jpg" alt="OneStore 리뷰 리스트" loading="lazy" data-lightbox /><figcaption>리뷰 리스트</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/onestore-3.jpg" alt="OneStore 고객센터 문의" loading="lazy" data-lightbox /><figcaption>고객센터 문의</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- BlueLink -->
+        <article class="project-block" id="bluelink">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이우솔루션 · 현대자동차</span>
+              <span class="project-period">2020.05 ~ 2021.01</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">BlueLink</h3>
+            <p class="project-subtitle">중국 출시 현대·기아 자동차 제어 및 편의 기능 앱</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Java</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Glide</span><span class="tech-tag">RecyclerView</span><span class="tech-tag">SQLite</span><span class="tech-tag">Preference</span>
+            </div>
+          </header>
+          <div class="project-body">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>메인 화면, 자동차 공조 제어 화면, 메인 리스트 편집 화면 UI 구성 및 기능 담당</li>
+                <li>Drag &amp; Drop 기반 리스트 편집, 프레임 애니메이션 등 다양한 인터랙션 구현으로 차량 제어 화면의 조작성 개선</li>
+                <li>오픈소스를 활용해 Activity를 Swipe Back으로 종료하는 기능 구현</li>
+              </ul>
+            </div>
+            <div class="shot-row">
+              <figure class="shot"><img src="assets/images/projects/bluelink-1.jpg" alt="BlueLink 메인 · 차량 상태" loading="lazy" data-lightbox /><figcaption>메인 · 차량 상태</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/bluelink-2.jpg" alt="BlueLink 공조 · 좌석 열선/통풍 제어" loading="lazy" data-lightbox /><figcaption>공조 · 좌석 열선/통풍 제어</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/bluelink-3.jpg" alt="BlueLink 바로가기 편집 · Drag & Drop" loading="lazy" data-lightbox /><figcaption>바로가기 편집 · Drag &amp; Drop</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 아이들나라 AgileTF -->
+        <article class="project-block" id="kidsland">
+          <header class="project-head">
+            <div class="project-meta">
+              <span class="project-org">이우솔루션 · LG U+</span>
+              <span class="project-period">2021.02 ~ 2021.04</span>
+              <span class="project-role">Android 개발</span>
+            </div>
+            <h3 class="project-title">아이들나라 AgileTF</h3>
+            <p class="project-subtitle">아이들나라 모바일 신규 기능 프로토타입 개발</p>
+            <div class="tech-tag-list">
+              <span class="tech-tag">Kotlin</span><span class="tech-tag">OkHttp3</span><span class="tech-tag">Glide</span><span class="tech-tag">Databinding</span><span class="tech-tag">RecyclerView</span>
+            </div>
+          </header>
+          <div class="project-body project-body--landscape">
+            <div class="project-content">
+              <h4 class="achievements-title">주요 성과</h4>
+              <ul class="achievements">
+                <li>아이 프로필 작성, 도움말 화면 개발 담당</li>
+                <li>애자일 방식으로 프로토타입을 빠르게 제공하고 반복 수정하며 기획 변경에 대응, 신규 기능의 사전 검증 지원</li>
+              </ul>
+            </div>
+            <div class="shot-row shot-row--landscape">
+              <figure class="shot"><img src="assets/images/projects/kidsland-1.jpg" alt="아이들나라 아이 프로필 작성" loading="lazy" data-lightbox /><figcaption>아이 프로필 작성</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/kidsland-2.jpg" alt="아이들나라 관심사 선택" loading="lazy" data-lightbox /><figcaption>관심사 선택</figcaption></figure>
+              <figure class="shot"><img src="assets/images/projects/kidsland-3.jpg" alt="아이들나라 캐릭터 선택" loading="lazy" data-lightbox /><figcaption>캐릭터 선택</figcaption></figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Writing (Tech Blog)
+         ======================================================================== -->
+    <section class="project-section" id="writing">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge badge-indigo">
+            <i class="fa-solid fa-pen-nib"></i> Writing · 기술 블로그
+          </div>
+          <h2 class="section-title">문제를 해결한 과정을 글로 남깁니다</h2>
+          <p class="section-subtitle">구현 방법보다 원인을 어떻게 좁혀갔는지에 초점을 맞춰 기록했습니다.</p>
+        </div>
+
+        <div class="writing-grid">
+          <article class="writing-card">
+            <span class="writing-tag">zum 키보드</span>
+            <h3 class="writing-title">Android Keyboard의 InputMethodService Lifecycle 분석</h3>
+            <p class="writing-desc">커스텀 키보드가 시스템과 주고받는 생명주기를 단계별로 추적하고, 각 시점에 어떤 상태를 준비해야 하는지 정리</p>
+          </article>
+          <article class="writing-card">
+            <span class="writing-tag">zum 키보드</span>
+            <h3 class="writing-title">Kotlin Flow의 sample을 이용하여 키보드 앱 UI 개선</h3>
+            <p class="writing-desc">높낮이 조절 시 발생한 깜빡임의 원인을 모든 Flow 방출값의 UI 반영으로 규명하고 sample로 갱신 주기를 제한한 과정</p>
+          </article>
+          <article class="writing-card">
+            <span class="writing-tag">zum 포털</span>
+            <h3 class="writing-title">Android 만보기 기능 개발 후기</h3>
+            <p class="writing-desc">Service 기반 상시 걸음 수 측정, 자정 초기화와 재부팅 시 센서 초기화 시나리오를 다루며 겪은 문제와 해결 방법</p>
+          </article>
+          <article class="writing-card">
+            <span class="writing-tag">zum 포털</span>
+            <h3 class="writing-title">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</h3>
+            <p class="writing-desc">긴 글을 숏폼 형태로 보여주는 UI를 Compose로 구현하며 다양한 해상도에 대응한 방법</p>
+          </article>
+          <article class="writing-card">
+            <span class="writing-tag">Paging3</span>
+            <h3 class="writing-title">Android Paging3 Flow에 왜 cachedIn을 할까?</h3>
+            <p class="writing-desc">cachedIn이 없을 때 발생하는 재구독·중복 로딩 문제를 짚고, 캐싱이 필요한 이유를 동작 원리로 설명</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Closing & Contact
+         ======================================================================== -->
+    <section class="about-section" id="contact">
       <div class="container">
         <div class="about-card">
           <div class="about-content">
             <div class="about-avatar">Y</div>
             <h2 class="about-name">윤재박 (Jaepark Yoon)</h2>
-            <div class="about-role">Mobile Architecture & AI-Driven Product Engineer</div>
-            <p class="about-bio">
-              문제를 가장 명쾌하고 지속 가능한 방식으로 해결하는 것에 깊은 흥미를 느낍니다.<br />
-              모바일 UI의 섬세한 사용성부터 AI 비전 파싱 파이프라인, 그리고 견고한 서버 사이드 검증까지—<br />
-              탄탄한 아키텍처와 실제 동작하는 제품으로 증명합니다.
-            </p>
+            <div class="about-role">Software Engineer · Android · Kotlin Multiplatform · AI Agent Orchestration</div>
+            <blockquote class="closing-quote">
+              도구가 강력해질수록, 그 도구를 제대로 쓰기 위한 학습은 더 많이 필요하다고 생각합니다.<br />
+              판단까지 AI에 외주화하지 않고 스스로 방향을 정하려면, 가고자 하는 분야를 끊임없이 공부해<br />
+              옳은 방향을 가려낼 안목을 길러야 한다고 믿습니다.
+            </blockquote>
 
             <div class="contact-links">
               <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -466,13 +923,15 @@
       <div>
         <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
         <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
-          Hosted with GitHub Pages · Built with Kotlin Multiplatform, Pure HTML5/CSS3/JS
+          Hosted with GitHub Pages · Pure HTML5/CSS3/JS · Last updated 2026.09
         </p>
       </div>
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#career">경력</a>
+        <a href="#projects">프로젝트</a>
         <a href="#snapfolio">SnapFolio</a>
-        <a href="#app-flow">앱 시뮬레이션</a>
+        <a href="#writing">기술 블로그</a>
         <a href="mailto:jpyoon1122@gmail.com">Email</a>
       </div>
     </div>

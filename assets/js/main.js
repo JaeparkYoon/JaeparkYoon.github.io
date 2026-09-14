@@ -16,6 +16,25 @@ function initHeader() {
   const header = document.querySelector(".site-header");
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll("section[id]");
+  const menuToggle = document.getElementById("mobileMenuToggle");
+  const navList = document.getElementById("navLinks");
+
+  if (menuToggle && navList) {
+    menuToggle.addEventListener("click", () => {
+      const open = navList.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.innerHTML = open
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+    navList.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        navList.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      })
+    );
+  }
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 30) {
@@ -72,19 +91,24 @@ function initScreenshotModal() {
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".modal-close-btn");
   const cards = document.querySelectorAll(".screenshot-card");
+  const lightboxImgs = document.querySelectorAll("img[data-lightbox]");
 
   if (!modal || !modalImg) return;
 
+  const openWith = (img) => {
+    if (!img) return;
+    modalImg.src = img.src;
+    modalImg.alt = img.alt || "Screenshot Preview";
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+
   cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const img = card.querySelector("img");
-      if (img) {
-        modalImg.src = img.src;
-        modalImg.alt = img.alt || "Screenshot Preview";
-        modal.classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-    });
+    card.addEventListener("click", () => openWith(card.querySelector("img")));
+  });
+
+  lightboxImgs.forEach((img) => {
+    img.addEventListener("click", () => openWith(img));
   });
 
   const closeModal = () => {
@@ -128,9 +152,9 @@ const FLOW_STEPS = [
     badge: "STEP 02",
     title: "스크린샷 일괄 업로드 & AI 분석",
     img: "assets/images/snapfolio/02-screenshot.png",
-    body: "증권사(키움, 토스, 미래에셋 등) 계좌 스크린샷을 최대 5장까지 동시 선택합니다. 백그라운드 서비스에서 ML Kit OCR 전처리와 Gemini 3.1 Flash-Lite 모델이 결합되어 종목명, 수량, 매입단가, 평가금액을 실시간 자동 파싱합니다.",
+    body: "증권사(키움, 토스, 미래에셋 등) 계좌 스크린샷을 최대 5장까지 동시 선택합니다. 백그라운드 서비스에서 ML Kit OCR 전처리와 Gemini Flash-Lite 모델이 결합되어 종목명, 수량, 매입단가, 평가금액을 실시간 자동 파싱합니다.",
     techTags: [
-      { icon: "fa-robot", text: "Gemini 3.1 Flash-Lite" },
+      { icon: "fa-robot", text: "Gemini Flash-Lite" },
       { icon: "fa-eye", text: "ML Kit Korean OCR" },
       { icon: "fa-gears", text: "Foreground Upload Service" },
     ],
