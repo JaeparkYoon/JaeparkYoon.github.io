@@ -12,10 +12,7 @@
 
 | 섹션 | 내용 |
 | --- | --- |
-| Hero | Software Engineer · Android · Kotlin Multiplatform · AI Agent Orchestration |
-| About / Skills | AI 에이전트 운영 경험, 오케스트레이션 원칙, 기술 스택 |
 | Career | 이스트에이드(구 줌인터넷) · 에듀윌 · 이우솔루션 — 총 6년 3개월 |
-| Projects | 미브(mevu) · zum 포털 · zum 키보드 |
 | SnapFolio | 사이드 프로젝트 — 서브에이전트 15종 · 5단 게이트 워크플로우 · 앱 화면 · 앱 흐름 시뮬레이션 |
 | Earlier Projects | 합격앱 · Global OneStore · BlueLink · 아이들나라 AgileTF |
 | Writing | 기술 블로그 5편 |
@@ -31,7 +28,7 @@ JaeparkYoon.github.io/
 │   ├── css/style.css         # 라이트 테마 디자인 시스템
 │   ├── js/main.js            # 스크롤 스파이 · 모바일 메뉴 · 라이트박스 · 앱 흐름 시뮬레이터
 │   └── images/
-│       ├── projects/         # 회사 프로젝트 스크린샷 (mevu, zum, 합격앱, OneStore, BlueLink, 아이들나라)
+│       ├── projects/         # 회사 프로젝트 스크린샷 (합격앱, OneStore, BlueLink, 아이들나라)
 │       └── snapfolio/        # SnapFolio 스크린샷 및 아이콘
 └── README.md
 ```

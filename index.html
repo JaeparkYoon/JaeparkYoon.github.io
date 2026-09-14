@@ -40,7 +40,7 @@
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="#career" class="nav-link">경력</a></li>
-          <li><a href="#projects" class="nav-link">프로젝트</a></li>
+          <li><a href="#projects-earlier" class="nav-link">프로젝트</a></li>
           <li><a href="#snapfolio" class="nav-link">SnapFolio</a></li>
           <li><a href="#writing" class="nav-link">기술 블로그</a></li>
           <li><a href="#contact" class="nav-link">연락처</a></li>
@@ -87,9 +87,9 @@
                 </div>
               </div>
               <ul class="career-bullets">
-                <li><a href="#mevu">미브(mevu)</a> — AI 프로필 사진 생성 앱 (2025.10 ~ 2026.09)</li>
-                <li><a href="#zum-portal">zum 포털</a> — 리워드·만보기·AI 이슈 탭 (2025.03 ~ 2025.09)</li>
-                <li><a href="#zum-keyboard">zum 키보드</a> — 0→1 신규 런칭 (2024.07 ~ 2025.02)</li>
+                <li>미브(mevu) — AI 프로필 사진 생성 앱 (2025.10 ~ 2026.09)</li>
+                <li>zum 포털 — 리워드·만보기·AI 이슈 탭 (2025.03 ~ 2025.09)</li>
+                <li>zum 키보드 — 0→1 신규 런칭 (2024.07 ~ 2025.02)</li>
               </ul>
             </div>
           </article>
@@ -134,131 +134,6 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         Projects
-         ======================================================================== -->
-    <section class="project-section" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge badge-indigo">
-            <i class="fa-solid fa-mobile-screen-button"></i> Projects
-          </div>
-          <h2 class="section-title">프로젝트</h2>
-          <p class="section-subtitle">회사 서비스와 사이드 프로젝트에서 담당한 앱과 주요 성과입니다. 스크린샷을 클릭하면 확대해서 볼 수 있습니다.</p>
-        </div>
-
-        <!-- 미브(mevu) -->
-        <article class="project-block" id="mevu">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이스트에이드(구 줌인터넷)</span>
-              <span class="project-period">2025.10 ~ 2026.09</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">미브(mevu)</h3>
-            <p class="project-subtitle">AI 프로필 사진 생성 앱 · 신규 기능 개발 및 유지보수</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">DataStore</span><span class="tech-tag">Room</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">RevenueCat</span><span class="tech-tag">Hackle</span><span class="tech-tag">Airbridge</span><span class="tech-tag">LiteRT</span><span class="tech-tag">ML Kit</span><span class="tech-tag">ExoPlayer</span><span class="tech-tag">Claude Code</span><span class="tech-tag">MCP</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>프로젝트 장기 참여자로서 서버 API·Hackle·RevenueCat 등 연동 시스템 전반의 구조를 파악하고, 신규 기능·기획 논의 단계에서 개발 직군 간 설계 합의를 주도</li>
-                <li>결제 미응답 CS를 앱 예외 처리만으로 해결할 수 없다고 판단, 서버 개발자와 RevenueCat 웹훅 검증을 논의하고 펜딩 결제 시 서버가 결제를 인증한 후 생성을 진행하는 파이프라인을 설계하여 <strong>CS 월 10건 → 2건으로 감소</strong></li>
-                <li><strong>On-device AI 필터</strong>: LiteRT 모델로 부적절(NSFW)·마스크 착용 이미지를, ML Kit 얼굴 검출로 인물 미포함 이미지를 서버 호출 전에 차단하여 불필요한 서버 AI 비용 절감</li>
-                <li>모션 탭에서 다수의 ExoPlayer 인스턴스 동시 생성으로 인한 OOM 리스크를 식별하고, 플레이어를 재사용하는 Pool 구조를 설계해 스크롤 지연 없는 재생 확보</li>
-                <li>S3 Presigned URL의 휘발성 파라미터로 인한 Coil 캐시 무효화를 사전에 식별, 고정 키 기반 캐시 키를 공통 컴포넌트로 추상화</li>
-                <li>Baseline Profile 적용으로 <strong>앱 실행 속도 20% 개선</strong></li>
-                <li><strong>AI 에이전트 운영</strong>: 디자인 QA·배포·스토어 업로드·커밋을 전담 에이전트로 분리하고, Figma MCP로 뽑은 스펙과 Compose 구현을 전수 대조해 불일치 리포트를 산출</li>
-                <li><strong>에이전트 기반 배포 파이프라인</strong>: 개발앱·검수앱·스토어 배포 앱 세 경로를 스킬 하나에 통합하고, 사용자에게 나가는 스토어 경로만 환경 매트릭스 E2E → 결제 스모크 → AAB 업로드로 게이트를 나눠, 운영 승격은 사람이 확인한 뒤에 처리</li>
-              </ul>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/mevu-1.jpg" alt="미브 홈 · 트렌드 스타일" loading="lazy" data-lightbox /><figcaption>홈 · 트렌드 스타일</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/mevu-2.jpg" alt="미브 사진 확인 · 온디바이스 필터" loading="lazy" data-lightbox /><figcaption>사진 확인 · 온디바이스 필터</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/mevu-3.jpg" alt="미브 AI 프로필 결과물" loading="lazy" data-lightbox /><figcaption>AI 프로필 결과물</figcaption></figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- zum 포털 -->
-        <article class="project-block" id="zum-portal">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이스트에이드(구 줌인터넷)</span>
-              <span class="project-period">2025.03 ~ 2025.09</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">zum 포털</h3>
-            <p class="project-subtitle">zum 포털 앱 · 리워드·만보기·AI 이슈 탭 신규 기능 개발</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Airbridge</span><span class="tech-tag">Hackle</span><span class="tech-tag">AppLovin</span><span class="tech-tag">Buzzvil</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li><strong>리워드 기능</strong>: AppLovin·AdPopcorn·Buzzvil 제휴 미션 연동, 웹뷰-앱 통신을 JavaScript Interface로 설계</li>
-                <li><strong>만보기</strong>: Service 기반 백그라운드 걸음 수 측정, 시스템 알림 UI 커스텀, AlarmManager 자정 초기화, 재부팅 시 센서 초기화 시나리오 대응</li>
-                <li><strong>AI 이슈 탭</strong>: 긴 글 형태의 숏폼 UI로 다양한 해상도 대응, Airbridge 딥링크 공유 기능</li>
-                <li>혜택 탭 미션 리스트 캐싱으로 <strong>로딩 3초 → 1초</strong>, 웹뷰 캐싱 데이터 설계로 <strong>1초 → 0.5초</strong> 개선</li>
-                <li>화면 꺼짐 상태에서 리워드 알림이 노출되지 않는 헤드업 푸시 미적용 문제를 직접 발견·개선하여 <strong>푸시 경유 PV 30% 증가</strong></li>
-              </ul>
-              <div class="related-articles">
-                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
-                <a href="#writing">Android 만보기 기능 개발 후기</a>
-                <a href="#writing">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</a>
-              </div>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/zum-portal-1.jpg" alt="zum 포털 홈 · AI 이슈 트렌드" loading="lazy" data-lightbox /><figcaption>홈 · AI 이슈 트렌드</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/zum-portal-2.jpg" alt="zum 포털 혜택 탭 · 만보기·미션" loading="lazy" data-lightbox /><figcaption>혜택 탭 · 만보기·미션</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/zum-portal-3.jpg" alt="zum 포털 AI 이슈 숏폼 UI" loading="lazy" data-lightbox /><figcaption>AI 이슈 숏폼 UI</figcaption></figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- zum 키보드 -->
-        <article class="project-block" id="zum-keyboard">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이스트에이드(구 줌인터넷)</span>
-              <span class="project-period">2024.07 ~ 2025.02</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">zum 키보드</h3>
-            <p class="project-subtitle">Android 커스텀 키보드 · 아키텍처 설계부터 스토어 런칭까지 0→1</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVI</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Airbridge</span><span class="tech-tag">InputMethodService</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>신규 서비스의 아키텍처 설계부터 스토어 런칭 및 운영까지 <strong>0 to 1 전 과정 단독 수행</strong></li>
-                <li>Android Native 키보드(InputMethodService)의 lifecycle을 이해하고 서비스 구조에 반영</li>
-                <li>직접 사용 중 높낮이 조절 시 깜빡임을 발견, 모든 Flow 방출값이 UI에 반영되는 원인을 파악하고 Flow sample(16ms)로 갱신 주기를 프레임 단위로 제한하여 해결</li>
-              </ul>
-              <div class="related-articles">
-                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
-                <a href="#writing">Android Keyboard의 InputMethodService Lifecycle 분석</a>
-                <a href="#writing">Kotlin Flow의 sample을 이용하여 키보드 앱 UI 개선</a>
-              </div>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/zum-keyboard-1.jpg" alt="zum 키보드 한글 키보드" loading="lazy" data-lightbox /><figcaption>한글 키보드</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/zum-keyboard-2.jpg" alt="zum 키보드 영문 키보드 · 서체 스타일" loading="lazy" data-lightbox /><figcaption>영문 키보드 · 서체 스타일</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/zum-keyboard-3.jpg" alt="zum 키보드 설정" loading="lazy" data-lightbox /><figcaption>키보드 설정</figcaption></figure>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -828,7 +703,7 @@
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#career">경력</a>
-        <a href="#projects">프로젝트</a>
+        <a href="#projects-earlier">프로젝트</a>
         <a href="#snapfolio">SnapFolio</a>
         <a href="#writing">기술 블로그</a>
         <a href="mailto:jpyoon1122@gmail.com">Email</a>
