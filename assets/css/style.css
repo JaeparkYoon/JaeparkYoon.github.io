@@ -1975,3 +1975,12 @@ img {
     display: none;
   }
 }
+
+/* First section sits under the fixed header */
+.first-section {
+  padding-top: calc(var(--header-height) + 60px);
+}
+
+.first-section::before {
+  display: none;
+}

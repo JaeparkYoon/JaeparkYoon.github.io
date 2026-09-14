@@ -39,7 +39,6 @@
 
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#about" class="nav-link">소개</a></li>
           <li><a href="#career" class="nav-link">경력</a></li>
           <li><a href="#projects" class="nav-link">프로젝트</a></li>
           <li><a href="#snapfolio" class="nav-link">SnapFolio</a></li>
@@ -62,109 +61,9 @@
 
   <main>
     <!-- ========================================================================
-         Hero Section
-         ======================================================================== -->
-    <section class="hero-section" id="overview">
-      <div class="container hero-wrapper">
-        <div class="pill-badge">
-          <span class="dot"></span>
-          <span>Android · Kotlin Multiplatform · AI Agent Orchestration</span>
-        </div>
-
-        <h1 class="hero-title">
-          문제의 원인이 앱 밖에 있을 때,<br />
-          <span class="gradient-text">그 경계를 넘어</span> 해결합니다
-        </h1>
-
-        <p class="hero-subtitle">
-          8건의 비즈니스 앱을 개발·운영해온 Android 전문 엔지니어입니다.<br />
-          온디바이스 AI 연동과 AI 에이전트 오케스트레이션 설계를 주로 다루며,<br />
-          문제의 원인이 앱 밖에 있을 때 그 경계를 넘어 해결하는 것을 강점으로 삼고 있습니다.
-        </p>
-
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>프로젝트 보기</span>
-          </a>
-          <a href="#snapfolio" class="btn btn-secondary">
-            <i class="fa-solid fa-robot"></i>
-            <span>AI 오케스트레이션 사례</span>
-          </a>
-          <a href="#writing" class="btn btn-outline">
-            <i class="fa-solid fa-pen-nib"></i>
-            <span>기술 블로그</span>
-          </a>
-        </div>
-
-        <!-- Key Metrics Row -->
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">6y 3m</span>
-            <span class="stat-label">총 경력</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">8</span>
-            <span class="stat-label">비즈니스 앱 개발·운영</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">15</span>
-            <span class="stat-label">정의한 서브에이전트</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">694</span>
-            <span class="stat-label">에이전트 워크플로우 커밋</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         About & Skills
-         ======================================================================== -->
-    <section class="project-section" id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge badge-indigo">
-            <i class="fa-solid fa-user"></i> About
-          </div>
-          <h2 class="section-title">AI를 어디까지 맡길지는 사람이 정합니다</h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              회사에서 서비스하고 있는 앱에서 <strong>디자인 QA·배포·커밋을 각각 맡는 서브에이전트</strong>를 정의하고, Figma MCP로 추출한 디자인 스펙과 Compose 구현을 전수 대조해 불일치 리포트를 남기게 했습니다. 배포는 빌드 구성에 맞춰 개발앱·검수앱·스토어 배포 앱 세 갈래 파이프라인을 스킬 하나에 담았고, 이 중 사용자에게 나가는 스토어 경로에만 검증을 겹쳤습니다. 환경별 노출 정책 E2E와 실제 결제가 도는 스모크 테스트를 통과해야 AAB를 만들 수 있고, 업로드는 내부 테스트 트랙까지만 자동입니다. 운영 승격은 사람이 직접 확인한 뒤에 처리합니다.
-            </p>
-            <p>
-              AI는 강력한 도구라고 생각합니다. 다만 도구가 강할수록 어디까지 맡길지를 사람이 정해야 한다고 보고, 오케스트레이션을 어떻게 짜야 더 나은지 직접 실험해 보려고 개인 사이드 프로젝트를 시작했습니다. <strong>역할·도구 권한·모델을 분리한 서브에이전트 15종</strong>을 정의하고, 보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성으로 이어지는 게이트형 워크플로우를 설계했습니다. 에이전트가 무엇을 할 수 있는지보다 <strong>무엇을 하면 안 되는지</strong>를 먼저 정의했고, 되돌릴 수 없는 행위에는 배포 트랙 고정·서명 키 불가침 같은 기계적 불변식을 걸었습니다. 그렇게 만든 도구 위에서 KMP 앱을 설계부터 배포까지 6개월간 퇴근 이후에 만들었습니다.
-            </p>
-          </div>
-
-          <aside class="skills-card">
-            <h3 class="skills-title"><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h3>
-            <dl class="skills-list">
-              <div class="skill-row"><dt>Language</dt><dd>Kotlin, Java, TypeScript</dd></div>
-              <div class="skill-row"><dt>AI Agent / Orchestration</dt><dd>Claude Code Subagents, Agent Skills, Hooks</dd></div>
-              <div class="skill-row"><dt>Agent Interop / Automation</dt><dd>MCP (Figma · Atlassian), n8n</dd></div>
-              <div class="skill-row"><dt>LLM / On-device AI</dt><dd>Gemini(Vertex AI SDK), LiteRT, ML Kit</dd></div>
-              <div class="skill-row"><dt>Architecture</dt><dd>MVI, MVVM, Clean Architecture</dd></div>
-              <div class="skill-row"><dt>UI</dt><dd>Jetpack Compose, XML, Navigation, KMP</dd></div>
-              <div class="skill-row"><dt>Async</dt><dd>Coroutine, Flow</dd></div>
-              <div class="skill-row"><dt>DI / Data</dt><dd>Hilt, kotlin-inject, Room, DataStore, Retrofit2</dd></div>
-              <div class="skill-row"><dt>Backend</dt><dd>Firebase Cloud Functions, Firestore, Ktor</dd></div>
-              <div class="skill-row"><dt>Payment / Analytics</dt><dd>RevenueCat, Hackle, Airbridge</dd></div>
-              <div class="skill-row"><dt>Perf / Media</dt><dd>Baseline Profile, Crashlytics, ExoPlayer(Media3)</dd></div>
-            </dl>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
          Career
          ======================================================================== -->
-    <section class="project-section" id="career">
+    <section class="project-section first-section" id="career">
       <div class="container">
         <div class="section-header">
           <div class="section-badge badge-indigo">
