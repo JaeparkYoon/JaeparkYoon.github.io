@@ -1675,6 +1675,7 @@ img {
 }
 
 .agent-diagram {
+  min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -1725,15 +1726,16 @@ img {
 
 .agent-columns {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
 .agent-col {
+  min-width: 0;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1762,10 +1764,9 @@ img {
   background: #fff;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  padding: 4px 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 4px 7px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .agent-col-note {
