@@ -1358,7 +1358,8 @@ img {
 .timeline-marker {
   position: absolute;
   left: -32px;
-  top: 26px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 20px;
   height: 20px;
   border-radius: 50%;

@@ -40,7 +40,6 @@
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="#career" class="nav-link">경력</a></li>
-          <li><a href="#projects-earlier" class="nav-link">프로젝트</a></li>
           <li><a href="#snapfolio" class="nav-link">SnapFolio</a></li>
           <li><a href="#writing" class="nav-link">기술 블로그</a></li>
           <li><a href="#contact" class="nav-link">연락처</a></li>
@@ -108,7 +107,7 @@
                 </div>
               </div>
               <ul class="career-bullets">
-                <li><a href="#edu-pass">합격앱 UI 개편</a> — Compose 전환, 일 크래시 3,000→800건</li>
+                <li>합격앱 UI 개편 — Compose 전환, 일 크래시 3,000→800건</li>
                 <li>합격앱 유지보수 — CS·스토어 정책 대응, Crashlytics 모니터링</li>
               </ul>
             </div>
@@ -128,8 +127,8 @@
                 </div>
               </div>
               <ul class="career-bullets">
-                <li><a href="#onestore">Global OneStore</a> (원스토어) · Ifland (SK텔레콤)</li>
-                <li><a href="#kidsland">아이들나라 AgileTF</a> (LG U+) · <a href="#bluelink">BlueLink</a> (현대자동차) · SmartTag</li>
+                <li>Global OneStore (원스토어) · Ifland (SK텔레콤)</li>
+                <li>아이들나라 AgileTF (LG U+) · BlueLink (현대자동차) · SmartTag</li>
               </ul>
             </div>
           </article>
@@ -326,10 +325,6 @@
               <h4 class="arch-title">🏗️ SnapFolio 클린 아키텍처 (Clean MVI Flow)</h4>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">단방향 데이터 흐름(UDF) 기반으로 Android(Compose)와 iOS(SwiftUI)가 코어를 공유합니다.</p>
             </div>
-            <a href="#app-flow" class="btn btn-secondary">
-              <i class="fa-solid fa-play"></i>
-              <span>앱 흐름 시뮬레이션</span>
-            </a>
           </div>
 
           <div class="arch-flow-diagram">
@@ -355,262 +350,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         SnapFolio App Flow Simulation
-         ======================================================================== -->
-    <section class="project-section" id="app-flow">
-      <div class="container">
-        <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto 48px;">
-          <div class="section-badge badge-snapfolio">
-            <i class="fa-solid fa-play"></i> Interactive App Flow
-          </div>
-          <h2 class="section-title" style="justify-content: center;">앱 흐름 시뮬레이션</h2>
-          <p class="section-subtitle" style="margin: 0 auto;">
-            SnapFolio의 핵심 사용자 여정을 단계별로 체험해 보세요.<br />
-            아래 단계 버튼을 클릭하면 실제 서비스 화면과 함께 각 단계의 동작 원리가 표시됩니다.
-          </p>
-        </div>
-
-        <div class="app-sim-container">
-          <!-- Phone Mockup -->
-          <div class="phone-mockup-wrapper">
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <img src="assets/images/snapfolio/01-screenshot.png" alt="App Flow Screen" id="simScreenImg" class="sim-screen-img" />
-              </div>
-              <div class="phone-home-bar"></div>
-            </div>
-            <div class="phone-step-indicator">
-              <span class="step-dot active" data-step="0"></span>
-              <span class="step-dot" data-step="1"></span>
-              <span class="step-dot" data-step="2"></span>
-              <span class="step-dot" data-step="3"></span>
-              <span class="step-dot" data-step="4"></span>
-              <span class="step-dot" data-step="5"></span>
-            </div>
-          </div>
-
-          <!-- Flow Steps Panel -->
-          <div class="flow-panel">
-            <div class="flow-step-list">
-              <button class="flow-step-btn active" data-step="0">
-                <div class="flow-step-num">01</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">홈 대시보드</h4>
-                  <p class="flow-step-desc">앱을 열면 총자산, 일간 변동, YTD 수익률이 한눈에 보입니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-
-              <button class="flow-step-btn" data-step="1">
-                <div class="flow-step-num">02</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">스크린샷 업로드</h4>
-                  <p class="flow-step-desc">증권사 앱 캡처 이미지를 최대 5장까지 한 번에 올립니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-
-              <button class="flow-step-btn" data-step="2">
-                <div class="flow-step-num">03</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">AI 자동 파싱 & 검수</h4>
-                  <p class="flow-step-desc">Gemini Flash-Lite가 종목명·수량·금액을 추출하고, 검수 화면에서 편집 후 확정합니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-
-              <button class="flow-step-btn" data-step="3">
-                <div class="flow-step-num">04</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">자산 추이 & 차트</h4>
-                  <p class="flow-step-desc">1일~전체 8개 구간의 시계열 차트로 자산 변동 추이를 추적합니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-
-              <button class="flow-step-btn" data-step="4">
-                <div class="flow-step-num">05</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">배당 & 시장 인사이트</h4>
-                  <p class="flow-step-desc">배당 예측 캘린더와 투자 구루 포트폴리오를 비교 분석합니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-
-              <button class="flow-step-btn" data-step="5">
-                <div class="flow-step-num">06</div>
-                <div class="flow-step-content">
-                  <h4 class="flow-step-title">설정 & 프라이버시</h4>
-                  <p class="flow-step-desc">테마 전환, 액센트 컬러, 금액 숨김, CSV 백업/복원을 관리합니다.</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-step-arrow"></i>
-              </button>
-            </div>
-
-            <!-- Detail Panel -->
-            <div class="flow-detail-card" id="flowDetailCard">
-              <div class="flow-detail-header">
-                <span class="flow-detail-badge" id="flowDetailBadge">STEP 01</span>
-                <h4 class="flow-detail-title" id="flowDetailTitle">홈 대시보드</h4>
-              </div>
-              <div class="flow-detail-body" id="flowDetailBody">
-                <p>앱 진입 시 가장 먼저 보이는 메인 화면입니다. 총 보유 자산, 전일 대비 변동, 올해 누적 수익률(YTD), 카테고리별 자산 비중 도넛 차트, 보유 종목 리스트, 월간 배당금 요약이 하나의 스크롤에 정리됩니다.</p>
-                <div class="flow-detail-tech">
-                  <span class="detail-tech-tag"><i class="fa-solid fa-layer-group"></i> ObserveHomeDataUseCase</span>
-                  <span class="detail-tech-tag"><i class="fa-solid fa-database"></i> Room KMP StateFlow</span>
-                  <span class="detail-tech-tag"><i class="fa-solid fa-palette"></i> Compose M3 LazyColumn</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         Earlier Projects
-         ======================================================================== -->
-    <section class="project-section" id="projects-earlier">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge badge-indigo">
-            <i class="fa-solid fa-clock-rotate-left"></i> Earlier Projects
-          </div>
-          <h2 class="section-title">이전 프로젝트</h2>
-        </div>
-
-        <!-- 합격앱 -->
-        <article class="project-block" id="edu-pass">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">에듀윌</span>
-              <span class="project-period">2023.02 ~ 2024.06</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">합격앱</h3>
-            <p class="project-subtitle">에듀윌 합격앱 · UI 개편 및 유지보수</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVVM</span><span class="tech-tag">Compose</span><span class="tech-tag">Coroutine</span><span class="tech-tag">Flow</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Hilt</span><span class="tech-tag">Coil</span><span class="tech-tag">Crashlytics</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>지속적인 VOC로 진행된 UI 개편에서 홈·로그인·나의강의실·타이머·무료특강 화면을 담당하고 모든 UI를 Compose로 작성</li>
-                <li>개편 및 안정화 작업을 통해 <strong>일평균 비정상 종료 3,000건 → 800건(약 76% 감소)</strong>, <strong>ANR 400건 → 200건(50% 감소)</strong></li>
-                <li>CS 및 플레이 스토어 정책 대응 후 배포, 라이브 클래스 플레이어 라이브러리 교체, Crashlytics 모니터링 기반 버그 수정</li>
-                <li>웹뷰-앱 통신을 Scheme 형태 URL로 정의하여 유지보수</li>
-              </ul>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/edu-pass-1.jpg" alt="합격앱 홈" loading="lazy" data-lightbox /><figcaption>홈</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/edu-pass-2.jpg" alt="합격앱 딱풀 · 학습 타이머" loading="lazy" data-lightbox /><figcaption>딱풀 · 학습 타이머</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/edu-pass-3.jpg" alt="합격앱 무료특강" loading="lazy" data-lightbox /><figcaption>무료특강</figcaption></figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- Global OneStore -->
-        <article class="project-block" id="onestore">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이우솔루션 · 원스토어</span>
-              <span class="project-period">2021.07 ~ 2022.05</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">Global OneStore</h3>
-            <p class="project-subtitle">앱 스토어 플랫폼 OneStore 글로벌 버전 개발</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">MVVM</span><span class="tech-tag">Hilt</span><span class="tech-tag">Paging3</span><span class="tech-tag">Coroutine</span><span class="tech-tag">LiveData</span><span class="tech-tag">Databinding</span><span class="tech-tag">RecyclerView</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>상품 상세 페이지, 리뷰 작성 및 리뷰 리스트, 고객센터 화면 개발 담당</li>
-                <li>RecyclerView ConcatAdapter 기반 카드형 UI 구조를 설계해 View 타입에 따라 단일 Activity에서 다양한 화면 구성을 대응</li>
-                <li>디자인 시안과 Pixel 단위로 대조하며 글로벌 출시 화면의 UI 정합성 확보</li>
-              </ul>
-              <div class="related-articles">
-                <span class="related-label"><i class="fa-solid fa-pen-nib"></i> 관련 기술 아티클</span>
-                <a href="#writing">Android Paging3 Flow에 왜 cachedIn을 할까?</a>
-              </div>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/onestore-1.jpg" alt="OneStore 상품 상세" loading="lazy" data-lightbox /><figcaption>상품 상세</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/onestore-2.jpg" alt="OneStore 리뷰 리스트" loading="lazy" data-lightbox /><figcaption>리뷰 리스트</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/onestore-3.jpg" alt="OneStore 고객센터 문의" loading="lazy" data-lightbox /><figcaption>고객센터 문의</figcaption></figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- BlueLink -->
-        <article class="project-block" id="bluelink">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이우솔루션 · 현대자동차</span>
-              <span class="project-period">2020.05 ~ 2021.01</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">BlueLink</h3>
-            <p class="project-subtitle">중국 출시 현대·기아 자동차 제어 및 편의 기능 앱</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Java</span><span class="tech-tag">Retrofit2</span><span class="tech-tag">Glide</span><span class="tech-tag">RecyclerView</span><span class="tech-tag">SQLite</span><span class="tech-tag">Preference</span>
-            </div>
-          </header>
-          <div class="project-body">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>메인 화면, 자동차 공조 제어 화면, 메인 리스트 편집 화면 UI 구성 및 기능 담당</li>
-                <li>Drag &amp; Drop 기반 리스트 편집, 프레임 애니메이션 등 다양한 인터랙션 구현으로 차량 제어 화면의 조작성 개선</li>
-                <li>오픈소스를 활용해 Activity를 Swipe Back으로 종료하는 기능 구현</li>
-              </ul>
-            </div>
-            <div class="shot-row">
-              <figure class="shot"><img src="assets/images/projects/bluelink-1.jpg" alt="BlueLink 메인 · 차량 상태" loading="lazy" data-lightbox /><figcaption>메인 · 차량 상태</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/bluelink-2.jpg" alt="BlueLink 공조 · 좌석 열선/통풍 제어" loading="lazy" data-lightbox /><figcaption>공조 · 좌석 열선/통풍 제어</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/bluelink-3.jpg" alt="BlueLink 바로가기 편집 · Drag & Drop" loading="lazy" data-lightbox /><figcaption>바로가기 편집 · Drag &amp; Drop</figcaption></figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- 아이들나라 AgileTF -->
-        <article class="project-block" id="kidsland">
-          <header class="project-head">
-            <div class="project-meta">
-              <span class="project-org">이우솔루션 · LG U+</span>
-              <span class="project-period">2021.02 ~ 2021.04</span>
-              <span class="project-role">Android 개발</span>
-            </div>
-            <h3 class="project-title">아이들나라 AgileTF</h3>
-            <p class="project-subtitle">아이들나라 모바일 신규 기능 프로토타입 개발</p>
-            <div class="tech-tag-list">
-              <span class="tech-tag">Kotlin</span><span class="tech-tag">OkHttp3</span><span class="tech-tag">Glide</span><span class="tech-tag">Databinding</span><span class="tech-tag">RecyclerView</span>
-            </div>
-          </header>
-          <div class="project-body project-body--landscape">
-            <div class="project-content">
-              <h4 class="achievements-title">주요 성과</h4>
-              <ul class="achievements">
-                <li>아이 프로필 작성, 도움말 화면 개발 담당</li>
-                <li>애자일 방식으로 프로토타입을 빠르게 제공하고 반복 수정하며 기획 변경에 대응, 신규 기능의 사전 검증 지원</li>
-              </ul>
-            </div>
-            <div class="shot-row shot-row--landscape">
-              <figure class="shot"><img src="assets/images/projects/kidsland-1.jpg" alt="아이들나라 아이 프로필 작성" loading="lazy" data-lightbox /><figcaption>아이 프로필 작성</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/kidsland-2.jpg" alt="아이들나라 관심사 선택" loading="lazy" data-lightbox /><figcaption>관심사 선택</figcaption></figure>
-              <figure class="shot"><img src="assets/images/projects/kidsland-3.jpg" alt="아이들나라 캐릭터 선택" loading="lazy" data-lightbox /><figcaption>캐릭터 선택</figcaption></figure>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -703,7 +442,6 @@
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#career">경력</a>
-        <a href="#projects-earlier">프로젝트</a>
         <a href="#snapfolio">SnapFolio</a>
         <a href="#writing">기술 블로그</a>
         <a href="mailto:jpyoon1122@gmail.com">Email</a>
