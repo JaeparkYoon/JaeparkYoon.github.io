@@ -136,40 +136,6 @@ img {
   height: 100%;
 }
 
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.02em;
-}
-
-.brand-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--accent-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  color: white;
-  font-size: 1rem;
-  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
-}
-
-.brand-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 12px;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--accent-primary);
-  border: 1px solid rgba(79, 70, 229, 0.2);
-  letter-spacing: normal;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
