@@ -149,14 +149,10 @@
         <!-- Orchestration achievements + diagram -->
         <div class="orchestration-grid">
           <div class="project-content">
-            <h4 class="achievements-title">주요 성과</h4>
             <ul class="achievements">
               <li>역할·도구 권한·모델을 분리한 <strong>서브에이전트 15종</strong>을 정의하고 메인 세션이 총괄하는 오케스트레이션 구조를 설계 (복잡한 작업 11종 opus, 배포 sonnet, 커밋 haiku)</li>
               <li><strong>보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성</strong>으로 이어지는 5단 게이트를 정의, 보안 민감 영역은 착수 전 설계 승인과 구현 후 diff 검수를 모두 통과해야 진행</li>
-              <li>되돌릴 수 없는 행위에 <strong>기계적 불변식</strong>을 부여 — 배포 에이전트는 internal 트랙 리터럴 고정으로 프로덕션 승격 불가, 서명 키·서비스 계정 키는 존재·권한 확인만 허용</li>
               <li>에이전트 기반 배포 파이프라인 운영: 빌드 검증 → 번들 서명 → 내부 테스트 트랙 업로드, 커밋은 allowlist·denylist·diff 검증을 거치는 전담 에이전트가 수행</li>
-              <li>PreToolUse 훅으로 iOS 빌드 전 Xcode 버전을 .xcode-version과 대조, 불일치 시 차단</li>
-              <li>Gemini(Vertex AI SDK) 기반 스크린샷 파싱·대화형 분석을 탑재한 KMP 앱으로, 6개월간 <strong>커밋 694건 · GitHub Issue 196건</strong>을 이 워크플로우로 처리</li>
             </ul>
           </div>
 
@@ -202,7 +198,6 @@
               <span class="agent-box-label">배포 — playstore-deployer / git-committer</span>
               <span class="agent-box-desc">internal 트랙 고정 · allowlist/denylist/diff 검증</span>
             </div>
-            <p class="agent-caption">에이전트 위임 · 게이트 · 배포 흐름</p>
           </div>
         </div>
 
@@ -394,7 +389,7 @@
           <div class="about-content">
             <div class="about-avatar">Y</div>
             <h2 class="about-name">윤재박 (Jaepark Yoon)</h2>
-            <div class="about-role">Software Engineer · Android · Kotlin Multiplatform · AI Agent Orchestration</div>
+            <div class="about-role">Software Engineer · Android · Kotlin Multiplatform</div>
             <blockquote class="closing-quote">
               도구가 강력해질수록, 그 도구를 제대로 쓰기 위한 학습은 더 많이 필요하다고 생각합니다.<br />
               판단까지 AI에 외주화하지 않고 스스로 방향을 정하려면, 가고자 하는 분야를 끊임없이 공부해<br />
