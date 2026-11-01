@@ -49,14 +49,12 @@
       <header class="post-header">
         <h1 class="post-title">Android RecyclerView fadingEdge 상단만 적용하는 방법</h1>
         <div class="post-meta">
-          <span>2분 분량</span>
-          <span>·</span>
           <a href="https://medium.com/@jpyoon1122/android-recyclerview-fadingedge-%EC%83%81%EB%8B%A8%EB%A7%8C-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-01e2876464d5" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </header>
 
       <div class="post-body">
-<blockquote><em>리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.</em></blockquote><figure><img src="../assets/images/blog/01e2876464d5/01.png" alt="" loading="lazy" /></figure><p>RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p><p>android:fadingEdge=”horizontal”<br>android:fadingEdgeLength=”100dp”<br>android:requiresFadingEdge=”vertical”</p><p>위쪽만 주고싶다면 다음 순서에 맞게 코드를 작성하시면 됩니다.</p><p><strong>RecyclerView를 커스텀하는 class를 하나 파서 다음과 같이 만듭니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">class CustomRecyclerView(
+<blockquote><em>리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.</em></blockquote><figure><img src="../assets/images/blog/01e2876464d5/842ed27bf84c.png" alt="" loading="lazy" /></figure><p>RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p><p>android:fadingEdge=”horizontal”<br>android:fadingEdgeLength=”100dp”<br>android:requiresFadingEdge=”vertical”</p><p>위쪽만 주고싶다면 다음 순서에 맞게 코드를 작성하시면 됩니다.</p><p><strong>RecyclerView를 커스텀하는 class를 하나 파서 다음과 같이 만듭니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">class CustomRecyclerView(
   context: Context, 
   attrs: AttributeSet?
 ) : RecyclerView(context, attrs) {
@@ -73,8 +71,8 @@
       </div>
 
       <nav class="post-nav">
-        <span class="post-nav-item prev"></span>
-        <a class="post-nav-item next" href="016311476cb6.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Android Paging3 Flow에 왜 CachedIn을 할까?</span></a>
+        <a class="post-nav-item prev" href="016311476cb6.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Android Paging3 Flow에 왜 CachedIn을 할까?</span></a>
+        <span class="post-nav-item next"></span>
       </nav>
     </article>
   </main>

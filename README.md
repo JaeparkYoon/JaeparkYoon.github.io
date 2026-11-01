@@ -25,7 +25,9 @@ Medium에 새 글을 올린 뒤 아래 명령을 실행하면 `blog/` 글 페이
 python3 tools/build_blog.py
 ```
 
-- 글 순서는 Medium 프로필과 같고, 작성일은 표시하지 않습니다.
+- 글 순서는 Medium 프로필과 같고, 작성일·분량은 표시하지 않습니다.
+- 「제목 — 1」「제목 — 2」 같은 연재 글은 1편부터 붙여서 보여줍니다.
+- 홈페이지에서 뺄 본문 이미지는 스크립트의 `REMOVE_FIGURES`에 등록합니다.
 - 본문 이미지는 `assets/images/blog/<글 ID>/`에 내려받습니다.
 - Medium 코드 임베드는 GitHub Gist 원본 코드로 바꿉니다. 비밀 Gist까지 찾으려면 `gh` CLI 로그인이 필요합니다.
 - 각 글 페이지는 Medium 원문을 canonical로 지정합니다.
