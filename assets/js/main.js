@@ -41,24 +41,28 @@ function initHeader() {
     } else {
       header.classList.remove("scrolled");
     }
+  });
 
-    // Scroll spy
-    let current = "";
+  // Tab pages: show only the section matching the URL hash
+  const ids = Array.from(sections, (section) => section.id);
+
+  const showPage = () => {
+    const hash = location.hash.slice(1);
+    const current = ids.includes(hash) ? hash : ids[0];
+
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.clientHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute("id");
-      }
+      section.hidden = section.id !== current;
     });
 
     navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
+      link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
     });
-  });
+
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
+  window.addEventListener("hashchange", showPage);
+  showPage();
 }
 
 /* ==========================================================================

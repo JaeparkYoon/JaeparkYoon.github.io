@@ -1849,3 +1849,16 @@ img {
 .first-section::before {
   display: none;
 }
+
+/* Tab pages: each visible section is the top of its own page */
+main > section[id] {
+  padding-top: calc(var(--header-height) + 60px);
+}
+
+main > section[id]::before {
+  display: none;
+}
+
+main > section[hidden] {
+  display: none;
+}
