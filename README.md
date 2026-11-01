@@ -19,6 +19,33 @@
 
 ## 기술 블로그
 
+### 새 글 쓰기
+
+1. 새 글 파일을 만듭니다. 글 주소는 영문 소문자·숫자·하이픈만 씁니다(주소가 `blog/<글 주소>.html`이 됩니다).
+
+   ```bash
+   python3 tools/build_blog.py new ime-keyboard-tips "키보드 앱 성능 개선 기록"
+   ```
+
+2. 만들어진 `posts/<글 주소>.md`에 Markdown으로 글을 씁니다. 양식은 `posts/_template.md`와 같습니다.
+   - 맨 위 머리말의 `title`은 글 제목, `date`는 작성일입니다. 작성일은 **화면에 표시하지 않고 목록 순서에만** 씁니다(최신 글이 위).
+   - `## 소제목`, `### 작은 소제목`, 목록(`-`, `1.`), 인용(`>`), `**굵게**`, `` `코드` ``, `[링크](주소)`를 쓸 수 있습니다.
+   - 한 문단 안에서 줄을 바꾸면 화면에서도 줄이 바뀝니다. 문단은 빈 줄로 나눕니다.
+   - 코드 블록은 ` ```kotlin title="파일이름.kt" `처럼 언어와 파일 이름을 적으면 기존 글과 같은 코드 상자로 나옵니다.
+   - 이미지는 `assets/images/blog/<글 주소>/`에 넣고 `![설명](파일이름.png "캡션")`으로 씁니다. 세로로 긴 다이어그램은 끝에 ` {full}`을 붙이면 높이 제한 없이 원래 크기로 보입니다.
+   - 첫 문단이 기술 블로그 목록 카드의 소개 문구가 됩니다.
+   - 제목을 `○○ — 1`, `○○ — 2`처럼 쓰면 연재 글로 묶여 1편부터 나란히 보입니다.
+3. 글 페이지와 목록을 만듭니다.
+
+   ```bash
+   python3 tools/build_blog.py
+   ```
+
+4. 화면을 확인하려면 `python3 -m http.server`를 실행하고 `http://localhost:8000/#writing`을 엽니다. 확인 후 커밋·푸시하면 사이트에 올라갑니다.
+
+### Medium에서 옮겨 온 글
+
+
 Medium 블로그는 삭제했고(2026-11-01), 글 8편은 이 사이트로 옮겨 왔습니다. 글 원본은 삭제 전에 받아 둔 사본 `tools/medium-export.xml`이 유일합니다 — **지우지 마세요.**
 
 아래 명령을 실행하면 사본으로 `blog/` 글 페이지와 기술 블로그 탭 목록을 다시 만듭니다. 글 표시 방식이나 아래 설정을 바꾼 뒤에 실행합니다.
@@ -41,6 +68,7 @@ python3 tools/build_blog.py
 JaeparkYoon.github.io/
 ├── .nojekyll                 # GitHub Pages Jekyll 처리 방지
 ├── index.html                # 탭 구성 포트폴리오
+├── posts/                    # 새 블로그 글 원본 (Markdown, _template.md = 작성 양식)
 ├── blog/                     # 기술 블로그 글 페이지 (tools/build_blog.py로 생성)
 ├── tools/build_blog.py       # 블로그 글 페이지 생성 스크립트
 ├── tools/medium-export.xml   # 삭제한 Medium 블로그의 글 원본 사본

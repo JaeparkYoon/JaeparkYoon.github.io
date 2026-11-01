@@ -2,7 +2,11 @@
 """
 Medium에서 옮겨 온 글을 홈페이지 블로그 페이지로 만든다.
 
-  python3 tools/build_blog.py
+  python3 tools/build_blog.py                                # 글 페이지·목록 생성
+  python3 tools/build_blog.py new <글 주소> "<제목>"           # 새 글 파일 만들기
+
+- 새 글은 posts/<글 주소>.md 에 Markdown 으로 쓴다(이름이 _ 로 시작하면 제외).
+  머리말 title·date 필수. date 는 목록 순서에만 쓰고 화면에는 표시하지 않는다.
 
 - Medium 블로그는 삭제됐다(2026-11-01). 글 원본은 삭제 전에 받아 둔 RSS 사본
   tools/medium-export.xml 이 유일한 소스다 — 지우지 말 것.
@@ -222,6 +226,187 @@ def group_series(posts):
     return ordered
 
 
+# ---------------------------------------------------------------------------
+# 새 글: posts/<글 주소>.md (Markdown) -> 기존 글과 같은 글 페이지
+# ---------------------------------------------------------------------------
+
+POSTS_DIR = ROOT / "posts"
+
+NEW_POST_TEMPLATE = """---
+title: {title}
+date: {date}
+---
+
+글의 첫 문단은 기술 블로그 목록 카드의 소개 문구로도 쓰입니다.
+
+## 소제목
+
+본문 문단입니다. **굵게**, *기울임*, `인라인 코드`, [링크](https://developer.android.com)를 쓸 수 있습니다.
+한 문단 안에서 줄을 바꾸면 그대로 줄바꿈됩니다.
+
+### 작은 소제목
+
+- 목록 항목
+- 목록 항목
+
+1. 순서 있는 목록
+2. 순서 있는 목록
+
+> 인용문입니다.
+
+![이미지 설명](sample.png "이미지 아래에 보일 캡션")
+
+```kotlin title="MainActivity.kt"
+fun main() {{
+    println("코드 블록")
+}}
+```
+"""
+
+
+def inline_md(text):
+    """한 줄 안의 Markdown(코드·굵게·기울임·링크)을 HTML 로 바꾼다."""
+    codes = []
+
+    def keep_code(m):
+        codes.append(f"<code>{html.escape(m.group(1))}</code>")
+        return f"\x00{len(codes) - 1}\x00"
+
+    text = re.sub(r"`([^`]+)`", keep_code, text)
+    text = html.escape(text, quote=False)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", text)
+
+    def link(m):
+        label, href = m.group(1), m.group(2)
+        external = href.startswith("http")
+        attrs = ' target="_blank" rel="noopener noreferrer"' if external else ""
+        return f'<a href="{html.escape(href)}"{attrs}>{label}</a>'
+
+    text = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, text)
+    return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], text)
+
+
+def markdown_to_html(md, slug):
+    """posts/*.md 본문을 기존 글 본문과 같은 HTML 구조로 바꾼다."""
+    out, para = [], []
+    lines = md.splitlines()
+    i = 0
+
+    def flush():
+        if para:
+            out.append("<p>" + "<br>".join(inline_md(l) for l in para) + "</p>")
+            para.clear()
+
+    while i < len(lines):
+        line = lines[i]
+        stripped = line.strip()
+
+        fence = re.match(r"```(\w+)?(?:\s+title=\"([^\"]+)\")?\s*$", stripped)
+        if fence:
+            flush()
+            code = []
+            i += 1
+            while i < len(lines) and lines[i].strip() != "```":
+                code.append(lines[i])
+                i += 1
+            out.append(code_block("\n".join(code), (fence.group(1) or "").lower(), fence.group(2)))
+            i += 1
+            continue
+
+        if not stripped:
+            flush()
+            i += 1
+            continue
+
+        heading = re.match(r"(#{2,3})\s+(.*)", stripped)
+        if heading:
+            flush()
+            tag = "h3" if len(heading.group(1)) == 2 else "h4"
+            out.append(f"<{tag}>{inline_md(heading.group(2))}</{tag}>")
+            i += 1
+            continue
+
+        image = re.match(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)\s*(\{full\})?$', stripped)
+        if image:
+            flush()
+            alt, src, caption, full = image.groups()
+            if not src.startswith(("http", "/", "../")):
+                src = f"../assets/images/blog/{slug}/{src}"
+            cls = ' class="full-size"' if full else ""
+            cap = f"<figcaption>{inline_md(caption)}</figcaption>" if caption else ""
+            out.append(f'<figure><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"{cls} />{cap}</figure>')
+            i += 1
+            continue
+
+        if stripped.startswith(">"):
+            flush()
+            quote = []
+            while i < len(lines) and lines[i].strip().startswith(">"):
+                quote.append(inline_md(lines[i].strip()[1:].strip()))
+                i += 1
+            out.append("<blockquote>" + "<br>".join(quote) + "</blockquote>")
+            continue
+
+        bullet = re.match(r"([-*]|\d+\.)\s+", stripped)
+        if bullet:
+            flush()
+            tag = "ol" if bullet.group(1)[0].isdigit() else "ul"
+            items = []
+            while i < len(lines) and re.match(r"([-*]|\d+\.)\s+", lines[i].strip()):
+                items.append("<li>" + inline_md(re.sub(r"^([-*]|\d+\.)\s+", "", lines[i].strip())) + "</li>")
+                i += 1
+            out.append(f"<{tag}>" + "".join(items) + f"</{tag}>")
+            continue
+
+        para.append(stripped)
+        i += 1
+
+    flush()
+    return "".join(out)
+
+
+def load_markdown_posts():
+    """posts/*.md (이름이 _ 로 시작하는 파일 제외)를 읽는다. 날짜 최신순."""
+    posts = []
+    for path in sorted(POSTS_DIR.glob("*.md")):
+        if path.name.startswith("_"):
+            continue
+        text = path.read_text(encoding="utf-8")
+        m = re.match(r"---\n(.*?)\n---\n(.*)", text, flags=re.S)
+        if not m:
+            sys.exit(f"{path.name}: 맨 위에 --- 로 감싼 title·date 머리말이 필요합니다.")
+        meta = dict(
+            (k.strip(), v.strip()) for k, v in
+            (line.split(":", 1) for line in m.group(1).splitlines() if ":" in line)
+        )
+        if not meta.get("title") or not meta.get("date"):
+            sys.exit(f"{path.name}: 머리말에 title 과 date 가 모두 있어야 합니다.")
+        slug = path.stem
+        posts.append({
+            "id": slug,
+            "slug": slug,
+            "title": meta["title"],
+            "date": meta["date"],
+            "body": markdown_to_html(m.group(2), slug),
+        })
+    # 작성일은 화면에 표시하지 않고 목록 순서에만 쓴다
+    return sorted(posts, key=lambda p: p["date"], reverse=True)
+
+
+def new_post(slug, title):
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", slug):
+        sys.exit("글 주소는 영문 소문자·숫자·하이픈만 씁니다. 예: ime-keyboard-tips")
+    path = POSTS_DIR / f"{slug}.md"
+    if path.exists():
+        sys.exit(f"{path.relative_to(ROOT)} 가 이미 있습니다.")
+    POSTS_DIR.mkdir(exist_ok=True)
+    path.write_text(NEW_POST_TEMPLATE.format(title=title, date=datetime.now().strftime("%Y-%m-%d")), encoding="utf-8")
+    (IMAGE_DIR / slug).mkdir(parents=True, exist_ok=True)
+    print(f"새 글을 만들었습니다: {path.relative_to(ROOT)}")
+    print(f"이미지는 {(IMAGE_DIR / slug).relative_to(ROOT)}/ 에 넣고 본문에서 파일 이름으로 씁니다.")
+
+
 POST_TEMPLATE = """<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -328,27 +513,34 @@ def card(post):
 def main():
     xml = EXPORT.read_bytes()
     items = ET.fromstring(xml).findall("channel/item")
-    print(f"글 {len(items)}편")
+    print(f"Medium 에서 옮겨 온 글 {len(items)}편")
 
     gists = load_gists()
     print(f"Gist 코드 {len({id(v) for v in gists.values()})}개")
 
-    posts = []
+    medium_posts = []
     for item in items:
         link = item.findtext("link")
-        posts.append({
+        medium_posts.append({
             "id": post_id(link),
             "slug": post_id(link),
             "title": TITLE_OVERRIDES.get(post_id(link), item.findtext("title").strip()),
             "raw": item.find("content:encoded", NS).text,
         })
-    posts = group_series(posts)
+
+    # 새 글(posts/*.md)이 위, Medium 에서 옮겨 온 글이 아래
+    markdown_posts = load_markdown_posts()
+    print(f"새 글 {len(markdown_posts)}편")
+    posts = group_series(markdown_posts + medium_posts)
     local_links = {p["id"]: p["slug"] for p in posts}
 
     BLOG_DIR.mkdir(exist_ok=True)
     for i, post in enumerate(posts):
         print(f"- {post['title']}")
-        body = convert(post["raw"], post["slug"], gists, local_links)
+        if "body" in post:
+            body = post["body"]
+        else:
+            body = convert(post["raw"], post["slug"], gists, local_links)
         post["excerpt"] = excerpt(body)
         # 이전/다음 글은 목록 순서를 따른다
         prev_post = posts[i - 1] if i > 0 else None
@@ -378,4 +570,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) >= 2 and sys.argv[1] == "new":
+        if len(sys.argv) != 4:
+            sys.exit('사용법: python3 tools/build_blog.py new <글 주소> "<제목>"')
+        new_post(sys.argv[2], sys.argv[3])
+    else:
+        main()
