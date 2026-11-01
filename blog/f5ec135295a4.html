@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android 만보기 기능 개발 회고 — 2 — 윤재박 기술 블로그</title>
+  <meta name="description" content="1편에서는 만보기 기능을 개발하기 위해 Google Health Connect와 걸음 수 센서 중 어떤 기술로 걸음 수 데이터를 가져올지 고민했던 과정과, 결국 센서 기반으로 다시 개발하게 된 이야…" />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-%EB%A7%8C%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%8A%A5-%EA%B0%9C%EB%B0%9C-%ED%9A%8C%EA%B3%A0-2-f5ec135295a4" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android 만보기 기능 개발 회고 — 2" />
+  <meta property="og:description" content="1편에서는 만보기 기능을 개발하기 위해 Google Health Connect와 걸음 수 센서 중 어떤 기술로 걸음 수 데이터를 가져올지 고민했던 과정과, 결국 센서 기반으로 다시 개발하게 된 이야…" />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android 만보기 기능 개발 회고 — 2</h1>
+        <div class="post-meta">
+          <span>16분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-%EB%A7%8C%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%8A%A5-%EA%B0%9C%EB%B0%9C-%ED%9A%8C%EA%B3%A0-2-f5ec135295a4" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<p>1편에서는 만보기 기능을 개발하기 위해 Google Health Connect와 걸음 수 센서 중 어떤 기술로 걸음 수 데이터를 가져올지 고민했던 과정과, 결국 센서 기반으로 다시 개발하게 된 이야기를 공유했습니다. (<a href="fa5bc2fbce7d.html">1편 보러 가기</a>)</p><p>센서 기반 개발은 개발 공수가 크다는 단점을 말씀드렸는데, 실제로 개발을 진행해 보니 걸음 수 센서로 만보기를 만드는 것은 정말 쉬운 작업이 아니었습니다. 이번 2편에서는 개발을 진행하면서 겪은 기술적인 시행착오와 이를 해결했던 방법을 공유하고자 합니다.</p><h3>생각보다 까다로웠던 걸음 수 센서</h3><p>Android에서 걸음 수를 측정할 수 있는 센서는 두 가지가 있습니다.</p><ol><li>TYPE_STEP_COUNTER : 마지막 부팅 이후 누적된 걸음 수를 반환하며, 앱이 리스닝하지 않는 동안에도 하드웨어에서 계속 집계하는 센서</li><li>TYPE_STEP_DETECTOR : 걸음이 감지될 때마다 이벤트를 전달하며, 앱이 리스닝 중일 때만 집계되는 센서</li></ol><p>저는 앱이 센서를 리스닝하지 않는 동안에도 걸음 수가 집계되는 TYPE_STEP_COUNTER를 사용했습니다. 그리고 앱에서 측정한 걸음 수를 나타내기 위해 다음과 같은 사항들을 고려해야 했습니다.</p><ul><li>걸음 센서는 시스템 부팅 시간 기준으로 누적되며, 재부팅 시 값이 초기화된다.</li><li>앱에서 표시할 걸음 수는 사용자가 앱에서 만보기를 켜는 시점부터 카운팅한다.</li><li>자정 이후 걸음 수는 반드시 초기화되어야 한다.</li></ul><p>즉, 센서가 알려주는 값은 ‘오늘 걸은 걸음 수’가 아니라 ‘부팅 이후 누적된 걸음 수’입니다. 그래서 센서 값을 그대로 쓰지 않고, <strong>센서 이벤트가 들어올 때마다 직전 센서 값과의 차이(증가분)만 구해서 날짜별 걸음 수에 더해가는 방식</strong>으로 개발했습니다.</p><ul><li>마지막으로 받은 센서 값은 Preference(sensorStepCount)에 저장</li><li>걸음 수는 Room DB에 날짜(해당 날짜 자정의 timestamp)별 레코드로 저장</li><li>센서 이벤트가 오면 ‘현재 센서 값 — 마지막 센서 값’을 오늘 레코드의 걸음 수에 더하고, 마지막 센서 값을 갱신</li></ul><p>이 로직은 포그라운드 서비스인 PedometerService의 onSensorChanged()에서 동작하며, 코드로 표현하면 다음과 같습니다.</p><figure class="code-block"><div class="code-filename">StepSensorDelta.kt</div><figure class="code-block"><pre><code class="language-kotlin">// 만보기 서비스 - 걸음 센서 이벤트 수신
+onSensorChanged(event) {
+    current = event.센서값                       // 부팅 이후 누적 걸음 수
+
+    if (sensorStepCountSaveDate == 0) {           // 만보기 첫 진입
+        sensorStepCount = current                 // 현재 센서 값을 기준으로 설정
+        sensorStepCountSaveDate = now
+    }
+
+    delta = current - sensorStepCount             // 직전 이벤트 이후 증가분
+    todaySteps = DB.오늘_걸음수() + delta
+
+    if (todaySteps &gt; 0) {
+        DB.오늘_레코드_저장(todaySteps)           // 없으면 insert, 있으면 update
+        sensorStepCount = current                 // 마지막 센서 값 갱신
+    } else if (todaySteps &lt; 0) {
+        sensorStepCount = 0                       // 기준값이 어긋난 경우 → 다음 이벤트에서 다시 설정
+    }
+}</code></pre></figure></figure><p>만보기를 처음 켰을 때는 저장된 날짜가 없기 때문에(sensorStepCountSaveDate == 0) 현재 센서 값을 기준으로 잡아 0걸음부터 카운팅을 시작합니다. 이렇게 ‘만보기를 켠 시점부터 카운팅한다’는 조건은 충족했지만, 개발 전에 미처 고려하지 못한 시나리오들이 남아 있었습니다.</p><h3>새벽 자동 재시작으로 사라지는 걸음 수</h3><p>재부팅은 휴대폰을 껐다 켜거나 OS 업데이트를 할 때만 일어나는 드문 상황이라고 생각했습니다. 하지만 생각보다 많은 사용자들이 휴대폰 최적화를 위해 자정 이후 새벽 시간대에 휴대폰이 자동으로 재시작되도록 설정해 두고 있었습니다. 대표적으로 갤럭시의 자동 최적화(자동 재시작) 기능이 그렇습니다. <strong>이런 사용자에게 재부팅은 예외 상황이 아니라 매일 일어나는 일상이었습니다.</strong></p><p>휴대폰이 재부팅되면 센서 값은 0부터 다시 누적되는데, Preference에 저장된 마지막 센서 값은 재부팅 전의 큰 값으로 남아 있습니다. 이 상태에서 증가분을 계산하면 ‘현재 센서 값 — 마지막 센서 값’이 큰 음수가 되어 걸음 수가 비정상적으로 계산됩니다. 또한 포그라운드 서비스도 재부팅과 함께 종료되기 때문에, 사용자가 앱을 다시 실행하기 전까지는 걸음 수가 집계되지 않는 문제도 있었습니다.</p><p>이를 해결하기 위해 BOOT_COMPLETED를 수신하는 BootCompletedReceiver를 추가했습니다.</p><figure class="code-block"><div class="code-filename">BootCompletedReceiver.kt</div><figure class="code-block"><pre><code class="language-kotlin">// BOOT_COMPLETED 수신
+onReceive(BOOT_COMPLETED) {
+    sensorStepCount = 0                           // 센서 값이 0부터 다시 시작되므로 기준값 초기화
+
+    if (신체활동 권한 있음) {
+        startForegroundService(만보기 서비스)      // 재부팅으로 종료된 서비스 재실행
+    }
+}</code></pre></figure></figure><ol><li>부팅이 완료되면 마지막 센서 값(sensorStepCount)을 0으로 초기화</li><li>신체활동 권한이 있다면 포그라운드 서비스를 다시 실행</li><li>서비스에서 첫 센서 이벤트를 받으면 sensorStepCount가 0이므로 현재 센서 값을 새로운 기준으로 저장</li></ol><p><strong>걸음 수 자체는 Room DB의 오늘 레코드에 누적되어 있기 때문에, 기준값만 다시 잡아주면 재부팅 전에 걸었던 걸음 수는 그대로 유지</strong>됩니다. 재부팅 이후의 걸음은 새로운 기준값으로부터 증가분이 계산되어 기존 걸음 수에 이어서 더해집니다.</p><p>또한 기준값이 어긋나 오늘 걸음 수가 음수로 계산되는 경우에는 DB에 저장하지 않고 sensorStepCount를 0으로 초기화하도록 방어 코드를 두었습니다(앞의 코드에서 todaySteps &lt; 0 조건). 이렇게 하면 다음 센서 이벤트에서 기준값이 다시 잡히게 됩니다.</p><p>참고로 Android 14(API 34)를 타깃으로 하면 포그라운드 서비스 타입 선언이 필수이기 때문에, 만보기 서비스에는 foregroundServiceType=”health”와 FOREGROUND_SERVICE_HEALTH 권한을 선언했습니다. 또한 android:stopWithTask=”false”로 설정하여 사용자가 최근 앱 목록에서 앱을 닫아도 서비스가 함께 종료되지 않도록 했습니다.</p><h3>Doze 모드에서 동작하지 않은 자정 초기화</h3><p>자정에 걸음 수를 초기화하는 로직은 처음에 WorkManager를 이용해 개발했습니다. 백그라운드 작업에는 WorkManager 사용이 권장되기도 하고, 앱이 종료되거나 재부팅되어도 작업이 유지된다는 장점이 있었기 때문입니다. 하지만 Doze 모드에서는 WorkManager가 자정에 동작하지 않는다는 점을 고려하지 못했습니다.</p><p>WorkManager는 정확한 시간에 실행되는 것이 아니라 ‘언젠가는 반드시 실행되는 것’을 보장하는 API입니다. 자정 무렵의 휴대폰은 대부분 화면이 꺼진 채 충전 중이거나 방치되어 있어 Doze 모드에 진입한 상태인데, 이때 예약된 작업은 시스템의 유지보수 윈도우(maintenance window)까지 미뤄지게 됩니다. 결국 자정이 한참 지난 시간에 초기화가 실행될 수 있었습니다.</p><p>자정 초기화가 필요한 이유는 걸음 수 데이터 때문만은 아니었습니다. 걸음 수는 Room DB에 날짜별로 저장되기 때문에 날짜가 바뀌면 새로운 레코드에 쌓입니다. 하지만 다음 항목들은 자정에 직접 초기화해 주어야 했습니다.</p><ul><li>알림바에 표시되는 걸음 수 : 알림은 getTodayStepCount()의 Flow를 구독하는데, 이 Flow는 생성 시점의 오늘 날짜로 쿼리하기 때문에 자정이 지나도 전날 레코드를 계속 바라보게 됩니다.</li><li>걸음 수 미션 알림의 발송 여부 플래그(sendPedometerAlert)</li><li>증가분 계산의 기준이 되는 마지막 센서 값과 저장 날짜</li></ul><p>그래서 자정 초기화를 Doze 모드에서도 지정한 시간에 실행되는 AlarmManager의 setExactAndAllowWhileIdle()로 변경했습니다.</p><figure class="code-block"><div class="code-filename">SetMidnightAlarm.kt</div><figure class="code-block"><pre><code class="language-kotlin">setMidnightAlarm() {
+    triggerAt = 오늘 자정
+    if (triggerAt &lt;= now) triggerAt = 내일 자정   // 이미 자정이 지났다면 내일 자정으로
+
+    // Doze 모드에서도 지정한 시간에 실행되는 정확한 알람
+    alarmManager.setExactAndAllowWhileIdle(RTC_WAKEUP, triggerAt, 자정 리시버)
+}</code></pre></figure></figure><p>알람을 받는 MidnightReceiver에서는 센서 리스너를 잠시 등록해 현재 센서 값을 받아오고, 자정이 지났는지 확인한 뒤 초기화를 진행합니다.</p><figure class="code-block"><div class="code-filename">MidnightReceiver.kt</div><figure class="code-block"><pre><code class="language-kotlin">// 자정 알람 수신
+onReceive() {
+    걸음 센서 리스너 등록 { event -&gt;
+        if (isPassedNextMidnight(sensorStepCountSaveDate)) {
+            sensorStepCount = event.센서값         // 현재 센서 값을 새로운 기준으로
+            sensorStepCountSaveDate = now
+            미션 알림 플래그 초기화()
+            리스너 해제()
+
+            if (신체활동 권한 있음) {
+                startForegroundService(만보기 서비스)  // 오늘 날짜 기준으로 알림 재구독
+            }
+        }
+    }
+    setMidnightAlarm()                            // 다음 날 자정 알람 재등록
+}</code></pre></figure></figure><p>정리하면 다음과 같은 흐름으로 동작합니다.</p><ol><li>Application.onCreate()에서 다음 자정 알람을 등록</li><li>자정에 MidnightReceiver가 실행되면 저장 날짜(sensorStepCountSaveDate) 기준으로 다음 날 자정이 지났는지 확인(isPassedNextMidnight)</li><li>지났다면 현재 센서 값을 새로운 기준으로 저장하고 미션 알림 플래그를 초기화</li><li>포그라운드 서비스를 다시 실행하여, onStartCommand()에서 오늘 날짜 기준의 Flow로 알림을 다시 구독</li><li>정확한 알람은 반복 예약이 되지 않기 때문에 다음 날 자정 알람을 다시 등록</li></ol><p>재부팅 시에는 예약된 알람이 모두 사라지는데, BOOT_COMPLETED를 받아 앱 프로세스가 실행되면서 Application.onCreate()가 호출되기 때문에 자정 알람도 다시 등록됩니다. 또한 정확한 알람을 사용하기 위해 Manifest에 SCHEDULE_EXACT_ALARM, USE_EXACT_ALARM 권한을 선언했습니다.</p><h3>상시 포그라운드 서비스를 구동할 때 유의해야 할 앱 시작 흐름</h3><p>만보기 기능을 붙이고 나서는 예상하지 못한 곳에서도 문제가 생겼습니다. 포그라운드 서비스로 만보기 기능이 활성화된 사용자의 경우, 기존에 당연하게 생각하던 Cold Start에 유의해야 했습니다.</p><p>일반적인 앱은 최근 앱 목록에서 앱을 완전히 닫으면 대부분 프로세스까지 정리되기 때문에, 다시 실행하면 프로세스 생성 → Application.onCreate() → Activity 생성 순서로 Cold Start가 일어납니다. 하지만 만보기처럼 포그라운드 서비스가 계속 살아있는 앱은 앱을 닫아도 Activity만 제거될 뿐, 서비스가 프로세스를 계속 붙잡고 있습니다. 그래서 <strong>앱을 완전히 닫고 다시 실행해도 Cold Start가 아닌 Warm Start가 되며, Application.onCreate()가 다시 호출되지 않습니다.</strong></p><p>줌 앱에서는 앱 실행 이벤트를 로깅할 때 Cold Start인지 Warm Start인지를 함께 수집하고 있었으며, 구조는 다음과 같았습니다.</p><ul><li>Application.onCreate()에서 isColdStart를 true로 초기화</li><li>ProcessLifecycleOwner의 ON_START 시점에 앱 실행 이벤트를 보내며 launchType을 cold_start / warm_start로 구분</li><li>ON_STOP(백그라운드 진입) 시점에 isColdStart를 false로 변경</li><li>MainActivity에서는 isColdStart일 때만 Hackle 앱 실행 이벤트를 전송</li></ul><p>이 구조는 ‘앱을 닫으면 프로세스도 종료되고, 다시 실행하면 Application.onCreate()가 호출된다’는 전제 위에 있습니다. 하지만 만보기 서비스가 살아있는 사용자는 앱을 완전히 닫아도 Application.onCreate()가 다시 호출되지 않기 때문에 isColdStart가 false로 남게 됩니다. 그 결과 <strong>사용자는 앱을 새로 실행했는데도 warm_start로 집계되고, Hackle 앱 실행 이벤트도 누락되는 문제</strong>가 생겼습니다.</p><p>이를 해결하기 위해 Service의 onTaskRemoved()를 이용했습니다. onTaskRemoved()는 사용자가 최근 앱 목록에서 앱을 닫아 태스크가 제거될 때 서비스에 호출되는 콜백으로, 앞서 stopWithTask=”false”로 설정해 두었기 때문에 서비스는 종료되지 않고 이 시점을 알 수 있습니다.</p><figure class="code-block"><div class="code-filename">OnTaskRemoved.kt</div><figure class="code-block"><pre><code class="language-kotlin">// 만보기 서비스
+onTaskRemoved() {                                 // 최근 앱 목록에서 앱을 닫아 태스크가 제거됨
+    isTaskRemoved = true
+    isColdStart = true
+}</code></pre></figure></figure><figure class="code-block"><div class="code-filename">SetIsColdStart.kt</div><figure class="code-block"><pre><code class="language-kotlin">// Application
+setIsColdStart(value) {
+    // 태스크가 제거됐다면 ON_STOP 등에서 false가 들어와도 Cold Start 유지
+    isColdStart = if (isTaskRemoved) true else value
+}</code></pre></figure></figure><p>태스크가 제거되면 isTaskRemoved를 true로 표시하고 isColdStart를 true로 되돌립니다. 그리고 setIsColdStart()에서는 isTaskRemoved가 true라면 항상 Cold Start로 판단하도록 하여, 이후 ON_STOP에서 false로 덮어쓰이지 않도록 했습니다. 이렇게 프로세스는 살아있더라도 사용자가 앱을 완전히 닫고 다시 실행한 경우를 Cold Start로 집계할 수 있었습니다.</p><p>참고로 adb shell am start -W 명령어로 앱을 실행하면 출력 결과의 LaunchState에서 시스템 기준의 COLD, WARM 여부를 확인할 수 있습니다. 포그라운드 서비스가 켜진 상태에서 앱을 닫고 다시 실행해 보면, 시스템 기준으로는 Cold Start가 아니라는 것을 직접 확인할 수 있습니다.</p><h3>이번 만보기 개발을 통해 배운 것들</h3><h4>걸음 수 센서 값은 그대로 쓰지 않고 증가분만 쌓기</h4><p>걸음 수 센서의 값은 재부팅 시 초기화되기 때문에 그 자체를 오늘 걸음 수의 기준으로 삼기 어렵습니다. 센서 값은 직전 값과의 증가분을 구하는 용도로만 사용하고 실제 걸음 수는 날짜별로 DB에 누적하니, 재부팅이 일어나도 기준값만 다시 잡으면 되는 단순한 구조가 됐습니다.</p><h4>정확한 시간이 중요한 작업은 WorkManager가 아닌 AlarmManager로</h4><p>WorkManager는 작업이 언젠가 실행되는 것을 보장할 뿐, 정확한 시간을 보장하지 않습니다. 자정 초기화처럼 시간이 중요한 작업은 setExactAndAllowWhileIdle()로 Doze 모드에서도 실행되도록 하고, 정확한 알람은 반복되지 않으며 재부팅 시 사라진다는 점까지 함께 고려해야 한다는 것을 배웠습니다.</p><h4>포그라운드 서비스는 앱의 시작 흐름을 바꾼다</h4><p>포그라운드 서비스가 상주하는 순간, 앱을 닫는 것과 프로세스가 종료되는 것은 더 이상 같은 의미가 아니었습니다. Application.onCreate()가 ‘앱을 실행할 때마다’ 호출된다는 전제로 작성된 코드는 없는지 점검하고, 필요하다면 Service의 onTaskRemoved()처럼 사용자가 앱을 닫은 시점을 알 수 있는 콜백을 활용해야 한다는 것을 알게 됐습니다.</p><p>센서 하나로 시작한 기능이었지만, Android의 부팅, 전원 관리, 프로세스 생명주기까지 깊게 이해할 수 있었던 값진 경험이었습니다.</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="post-nav-item prev" href="35e5b2344a2b.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Android Keyboard의 InputMethodService Lifecycle 분석</span></a>
+        <span class="post-nav-item next"></span>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

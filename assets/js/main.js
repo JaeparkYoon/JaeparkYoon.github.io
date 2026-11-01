@@ -1,10 +1,9 @@
 /**
- * Jaepark Yoon Portfolio - Navigation, Carousel & Lightbox
+ * Jaepark Yoon Portfolio - Navigation & Lightbox
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
-  initSnapfolioCarousel();
   initScreenshotModal();
 });
 
@@ -44,7 +43,9 @@ function initHeader() {
   });
 
   // Tab pages: show only the section matching the URL hash
+  // (blog post pages have no tab sections)
   const ids = Array.from(sections, (section) => section.id);
+  if (!ids.length) return;
 
   const showPage = () => {
     const hash = location.hash.slice(1);
@@ -66,34 +67,12 @@ function initHeader() {
 }
 
 /* ==========================================================================
-   SnapFolio Screenshot Carousel
-   ========================================================================== */
-function initSnapfolioCarousel() {
-  const track = document.getElementById("snapfolioCarousel");
-  const prevBtn = document.getElementById("carouselPrev");
-  const nextBtn = document.getElementById("carouselNext");
-
-  if (!track || !prevBtn || !nextBtn) return;
-
-  const scrollAmount = 300;
-
-  prevBtn.addEventListener("click", () => {
-    track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  });
-
-  nextBtn.addEventListener("click", () => {
-    track.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
-}
-
-/* ==========================================================================
    Screenshot Lightbox Modal
    ========================================================================== */
 function initScreenshotModal() {
   const modal = document.getElementById("screenshotModal");
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".modal-close-btn");
-  const cards = document.querySelectorAll(".screenshot-card");
   const lightboxImgs = document.querySelectorAll("img[data-lightbox]");
 
   if (!modal || !modalImg) return;
@@ -105,10 +84,6 @@ function initScreenshotModal() {
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
   };
-
-  cards.forEach((card) => {
-    card.addEventListener("click", () => openWith(card.querySelector("img")));
-  });
 
   lightboxImgs.forEach((img) => {
     img.addEventListener("click", () => openWith(img));

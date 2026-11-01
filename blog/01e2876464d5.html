@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android RecyclerView fadingEdge 상단만 적용하는 방법 — 윤재박 기술 블로그</title>
+  <meta name="description" content="RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데" />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-recyclerview-fadingedge-%EC%83%81%EB%8B%A8%EB%A7%8C-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-01e2876464d5" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android RecyclerView fadingEdge 상단만 적용하는 방법" />
+  <meta property="og:description" content="RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데" />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android RecyclerView fadingEdge 상단만 적용하는 방법</h1>
+        <div class="post-meta">
+          <span>2분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-recyclerview-fadingedge-%EC%83%81%EB%8B%A8%EB%A7%8C-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-01e2876464d5" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<blockquote><em>리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.</em></blockquote><figure><img src="../assets/images/blog/01e2876464d5/01.png" alt="" loading="lazy" /></figure><p>RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p><p>android:fadingEdge=”horizontal”<br>android:fadingEdgeLength=”100dp”<br>android:requiresFadingEdge=”vertical”</p><p>위쪽만 주고싶다면 다음 순서에 맞게 코드를 작성하시면 됩니다.</p><p><strong>RecyclerView를 커스텀하는 class를 하나 파서 다음과 같이 만듭니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">class CustomRecyclerView(
+  context: Context, 
+  attrs: AttributeSet?
+) : RecyclerView(context, attrs) {
+    //하단 Alpha 제거
+    override fun getBottomFadingEdgeStrength(): Float {
+        return 0f
+    }
+}</code></pre></figure><p><strong>만약에 상단 Alpha값을 제거 하고 싶으면 다음 코드만 추가합니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">override fun getTopFadingEdgeStrength(): Float { 
+  return 0f
+}</code></pre></figure><p><strong>그 이후로 적용하고 싶은 레이아웃 파일로 들어가서 CustomRecyclerView를 쓰면 됩니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">&lt;CustomRecyclerView&gt;
+  android:layout_width=&quot;match_parent&quot; 
+  android:layout_height=&quot;match_parent&quot;
+&lt;/CustomRecyclerView&gt;</code></pre></figure>
+      </div>
+
+      <nav class="post-nav">
+        <span class="post-nav-item prev"></span>
+        <a class="post-nav-item next" href="016311476cb6.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Android Paging3 Flow에 왜 CachedIn을 할까?</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>윤재박 (Jaepark Yoon) — Software Engineer · Android · KMP · AI Agent Orchestration</title>
-  <meta name="description" content="8건의 비즈니스 앱을 개발·운영해온 Android 전문 엔지니어. 온디바이스 AI 연동과 AI 에이전트 오케스트레이션 설계를 다루며, 미브(mevu)·zum 포털·zum 키보드·SnapFolio 등 프로젝트를 소개합니다." />
+  <meta name="description" content="8건의 비즈니스 앱을 개발·운영해온 Android 전문 엔지니어. 온디바이스 AI 연동과 AI 에이전트 오케스트레이션 설계를 다루며, 미브(mevu)·zum 포털·zum 키보드·Enopy(에노피) 등 프로젝트를 소개합니다." />
   <meta name="author" content="Jaepark Yoon" />
 
   <!-- Open Graph / SNS -->
@@ -12,10 +12,10 @@
   <meta property="og:url" content="https://jaeparkyoon.github.io/" />
   <meta property="og:title" content="윤재박 (Jaepark Yoon) — Software Engineer Portfolio" />
   <meta property="og:description" content="Android · Kotlin Multiplatform · AI Agent Orchestration. 6년 3개월간 8건의 비즈니스 앱을 개발·운영한 엔지니어의 포트폴리오." />
-  <meta property="og:image" content="assets/images/snapfolio/feature-graphic.png" />
+  <meta property="og:image" content="assets/images/enopy/icon.png" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/snapfolio/icon.png" />
+  <link rel="icon" type="image/png" href="assets/images/enopy/icon.png" />
 
   <!-- Pretendard & FontAwesome Icons -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -34,7 +34,7 @@
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="#career" class="nav-link">경력</a></li>
-          <li><a href="#snapfolio" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="#enopy" class="nav-link">사이드 프로젝트</a></li>
           <li><a href="#writing" class="nav-link">기술 블로그</a></li>
           <li><a href="#contact" class="nav-link">연락처</a></li>
         </ul>
@@ -128,31 +128,67 @@
     </section>
 
     <!-- ========================================================================
-         Side Project: SnapFolio (스냅폴) — AI Agent Orchestration
+         Side Project: Enopy (에노피) — AI Agent Orchestration
          ======================================================================== -->
-    <section class="project-section snapfolio-theme" id="snapfolio">
+    <section class="project-section enopy-theme" id="enopy">
       <div class="container">
         <div class="section-header">
+          <div class="section-badge badge-enopy">
+            <i class="fa-solid fa-mobile-screen"></i> Side Project · 2026.04 ~ 진행 중 · 기획·개발·운영 단독
+          </div>
           <h2 class="section-title">
-            <img src="assets/images/snapfolio/icon.png" alt="SnapFolio Icon" class="project-logo-img" />
-            SnapFolio (스냅폴)
+            <img src="assets/images/enopy/icon.png" alt="Enopy 아이콘" class="project-logo-img" />
+            Enopy (에노피)
           </h2>
           <p class="section-subtitle">
-            AI 에이전트 오케스트레이션으로 설계부터 배포까지 만든 KMP 자산관리 앱.<br />
-            역할·도구 권한·모델을 분리한 서브에이전트 15종과 5단 게이트 워크플로우 위에서, 6개월간 퇴근 이후에 만들었습니다.
+            스크린샷 파싱과 대화형 분석을 Gemini로 처리하는 자산관리 앱.<br />
+            Android(Kotlin)·iOS(Swift)를 각각 네이티브로, 역할을 나눈 서브에이전트 15종과 5단 게이트 워크플로우 위에서 만들고 있습니다.
           </p>
           <div class="tech-tag-list">
-            <span class="tech-tag">Claude Code Subagents</span><span class="tech-tag">Agent Skills</span><span class="tech-tag">Hooks</span><span class="tech-tag">MCP</span><span class="tech-tag">Gemini</span><span class="tech-tag">Firebase AI Logic</span><span class="tech-tag">Kotlin Multiplatform</span><span class="tech-tag">Compose</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">MVI</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Firestore</span>
+            <span class="tech-tag">Kotlin</span><span class="tech-tag">Compose</span><span class="tech-tag">Swift</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">MVI</span><span class="tech-tag">Firebase AI Logic</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Firestore</span><span class="tech-tag">Claude Code Subagents</span><span class="tech-tag">Agent Skills</span>
+          </div>
+        </div>
+
+        <!-- App screens -->
+        <div class="app-screens">
+          <div class="app-screens-text">
+            <div class="brand-note">
+              <img src="assets/images/enopy/icon.png" alt="" class="brand-note-icon" />
+              <div>
+                <h3 class="app-screens-title">앱 이름 — 에노피 (Enopy)</h3>
+                <p class="app-screens-sub">계획적인 포트폴리오로 짓는 나의 자산 지붕</p>
+              </div>
+            </div>
+            <ul class="achievements brand-meaning">
+              <li>에셋(Asset, 자산)과 캐노피(Canopy, 숲 위를 덮는 나무 지붕)를 합친 이름. 정글 같은 세상에서 비바람을 막아 주는 지붕처럼, 내 자산이 나를 지켜 주는 구조를 만든다는 취지</li>
+              <li>아이콘의 층층이 쌓인 E는 위로 갈수록 넓어지는 세 층이 커져 가는 자산의 지붕을, 세로 기둥이 그 지붕을 받치는 나를 의미</li>
+            </ul>
+            <ul class="achievements">
+              <li><strong>스크린샷 AI 파싱</strong> — 증권사 화면 캡처를 Gemini Flash-Lite로 파싱해 종목·수량·평가금액을 추출하고, 바로 저장하지 않고 검수 화면을 거쳐 사용자가 확정하도록 설계</li>
+              <li><strong>AI 투자 비서</strong> — 보유 종목·비중을 프롬프트에 실어 Gemini Flash로 분석. 화면은 실제 응답으로, 반도체 두 종목 64.7% 집중과 KODEX 200을 통한 간접 중복 보유를 근거와 함께 지적</li>
+              <li><strong>시장 인사이트</strong> — 국내외 지수와 함께 주요국 기준금리(BIS)와 중앙은행 정책 발표(미 연준·한국은행)를 공식 출처에서 받아 갱신</li>
+              <li><strong>혜택 탭 · 리워드 광고</strong> — AdMob 보상형 광고는 서버 SSV(Google 서명 검증)로만 크레딧을 지급하고, 일일 횟수·쿨다운·중복 콜백을 서버 트랜잭션 안에서 차단하도록 설계</li>
+            </ul>
+          </div>
+          <div class="shot-row">
+            <figure class="shot"><img src="assets/images/enopy/01-home.jpg" alt="Enopy 홈 · 자산 배분·보유 종목" loading="lazy" data-lightbox /><figcaption>홈 · 자산 배분·보유 종목</figcaption></figure>
+            <figure class="shot"><img src="assets/images/enopy/02-ai-assistant.jpg" alt="Enopy AI 투자 비서 · 포트폴리오 분석" loading="lazy" data-lightbox /><figcaption>AI 투자 비서 · 포트폴리오 분석</figcaption></figure>
+            <figure class="shot"><img src="assets/images/enopy/03-insight.jpg" alt="Enopy 인사이트 · 기준금리·정책 발표" loading="lazy" data-lightbox /><figcaption>인사이트 · 기준금리·정책 발표</figcaption></figure>
           </div>
         </div>
 
         <!-- Orchestration achievements + diagram -->
         <div class="orchestration-grid">
           <div class="project-content">
+            <h3 class="achievements-title">주요 성과</h3>
             <ul class="achievements">
               <li>역할·도구 권한·모델을 분리한 <strong>서브에이전트 15종</strong>을 정의하고 메인 세션이 총괄하는 오케스트레이션 구조를 설계 (복잡한 작업 11종 opus, 배포 sonnet, 커밋 haiku)</li>
               <li><strong>보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성</strong>으로 이어지는 5단 게이트를 정의, 보안 민감 영역은 착수 전 설계 승인과 구현 후 diff 검수를 모두 통과해야 진행</li>
-              <li>에이전트 기반 배포 파이프라인 운영: 빌드 검증 → 번들 서명 → 내부 테스트 트랙 업로드, 커밋은 allowlist·denylist·diff 검증을 거치는 전담 에이전트가 수행</li>
+              <li>Android와 iOS를 각각 네이티브로 개발하면서, Android 테스트가 만든 기대 결과를 iOS 테스트가 그대로 재현하는지 비교하는 방식으로 두 앱의 비즈니스 로직이 같게 동작하도록 검증</li>
+              <li>배포 에이전트는 내부 테스트 트랙에만 업로드하도록 고정해 프로덕션 출시는 사람만 할 수 있게 하고, 서명 키·서비스 계정 키는 내용을 읽지 않고 존재 여부만 확인하도록 제한</li>
+              <li>에이전트 기반 배포 파이프라인 운영: 빌드 검증 → 번들 서명 → Play 내부 테스트·TestFlight 업로드, 커밋은 allowlist·denylist·diff 검증을 거치는 전담 에이전트가 수행</li>
+              <li>PreToolUse 훅으로 iOS 빌드 전 Xcode 버전을 <code>.xcode-version</code>과 대조, 불일치 시 차단</li>
+              <li>Gemini(Vertex AI SDK) 기반 스크린샷 파싱·대화형 분석을 탑재한 앱으로, 7개월간 <strong>커밋 1,066건 · GitHub Issue 279건</strong>을 이 워크플로우로 처리</li>
             </ul>
           </div>
 
@@ -175,9 +211,8 @@
               <div class="agent-col">
                 <span class="agent-col-title">구현</span>
                 <ul>
-                  <li>android-ui-dev</li>
-                  <li>ios-ui-dev</li>
-                  <li>kmp-logic-dev</li>
+                  <li>android-dev</li>
+                  <li>ios-dev</li>
                   <li>server-dev</li>
                 </ul>
                 <span class="agent-col-note">계획 → 승인 → 적용 2단계 호출</span>
@@ -195,110 +230,10 @@
             </div>
             <div class="agent-arrow"><i class="fa-solid fa-arrow-down"></i></div>
             <div class="agent-deploy">
-              <span class="agent-box-label">배포 — playstore-deployer / git-committer</span>
-              <span class="agent-box-desc">internal 트랙 고정 · allowlist/denylist/diff 검증</span>
+              <span class="agent-box-label">배포 — store-deployer / git-committer</span>
+              <span class="agent-box-desc">내부 테스트 트랙 고정 · allowlist/denylist/diff 검증</span>
             </div>
-          </div>
-        </div>
-
-        <!-- App screens (PDF p.9) -->
-        <div class="app-screens">
-          <div class="app-screens-text">
-            <h3 class="app-screens-title">SnapFolio — 앱 화면</h3>
-            <p class="app-screens-sub">스크린샷 파싱과 대화형 분석을 Gemini로 처리하는 자산관리 앱 · Android · iOS (KMP)</p>
-            <ul class="achievements">
-              <li><strong>스크린샷 AI 파싱</strong> — 증권사 화면 캡처를 Gemini Flash-Lite로 파싱해 종목·수량·평가금액을 추출하고, 바로 저장하지 않고 검수 화면을 거쳐 사용자가 확정하도록 설계</li>
-              <li><strong>AI 투자 비서</strong> — 보유 종목·비중을 프롬프트에 실어 Gemini Flash로 분석. 화면은 실제 응답으로, 삼성전자 75.2% 집중·업종 편중·통화 편중을 근거와 함께 지적</li>
-              <li><strong>시장 인사이트</strong> — 국내외 지수와 경제 헤드라인을 AI로 요약해 갱신</li>
-              <li><strong>혜택 탭 · 리워드 광고</strong> — AdMob 보상형 광고는 서버 SSV(Google 서명 검증)로만 크레딧을 지급하고, 일일 횟수·쿨다운·중복 콜백을 서버 트랜잭션 안에서 차단하도록 설계</li>
-            </ul>
-          </div>
-          <div class="shot-row">
-            <figure class="shot"><img src="assets/images/snapfolio/01-screenshot.png" alt="SnapFolio 홈 · 자산 배분·보유 종목" loading="lazy" data-lightbox /><figcaption>홈 · 자산 배분·보유 종목</figcaption></figure>
-            <figure class="shot"><img src="assets/images/snapfolio/04-screenshot.png" alt="SnapFolio AI 투자 비서 · 포트폴리오 분석" loading="lazy" data-lightbox /><figcaption>AI 투자 비서 · 포트폴리오 분석</figcaption></figure>
-            <figure class="shot"><img src="assets/images/snapfolio/05-screenshot.png" alt="SnapFolio 인사이트 · AI 요약" loading="lazy" data-lightbox /><figcaption>인사이트 · AI 요약</figcaption></figure>
-          </div>
-        </div>
-
-        <!-- Screenshots Carousel Showcase -->
-        <div class="screenshot-showcase">
-          <div class="showcase-header">
-            <div>
-              <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 4px;">실제 서비스 화면 미리보기</h3>
-              <p style="font-size: 0.88rem; color: var(--text-secondary);">카드를 클릭하면 고해상도 전체 화면으로 확대할 수 있습니다.</p>
-            </div>
-            <div class="carousel-controls">
-              <button class="carousel-nav-btn" id="carouselPrev" aria-label="이전 스크린샷"><i class="fa-solid fa-chevron-left"></i></button>
-              <button class="carousel-nav-btn" id="carouselNext" aria-label="다음 스크린샷"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-          </div>
-
-          <div class="screenshot-carousel-track" id="snapfolioCarousel">
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/01-screenshot.png" alt="홈 대시보드" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 01</div>
-                <h4 class="screenshot-title">한눈에 보는 통합 대시보드</h4>
-                <p class="screenshot-desc">총자산, 일간 변동, YTD 수익률, 카테고리별 비중 및 배당금 요약을 직관적으로 제공합니다.</p>
-              </div>
-            </div>
-
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/02-screenshot.png" alt="AI 스크린샷 파싱" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 02</div>
-                <h4 class="screenshot-title">AI 스크린샷 자동 파싱</h4>
-                <p class="screenshot-desc">최대 5장의 계좌 스크린샷을 Gemini AI가 즉시 분석하여 종목명, 수량, 평가금액을 자동 추출합니다.</p>
-              </div>
-            </div>
-
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/04-screenshot.png" alt="AI 포트폴리오 채팅" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 03</div>
-                <h4 class="screenshot-title">Gemini AI 자산 진단 챗</h4>
-                <p class="screenshot-desc">자산군 편중도 진단, 섹터별 리밸런싱 아이디어, 배당 투자 전략을 실시간 대화로 조언받습니다.</p>
-              </div>
-            </div>
-
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/03-screenshot.png" alt="자산 추이 차트" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 04</div>
-                <h4 class="screenshot-title">정밀한 시계열 자산 추이</h4>
-                <p class="screenshot-desc">1일~전체 8개 구간 인터랙티브 차트와 카테고리별 수익 기여도를 손쉽게 추적합니다.</p>
-              </div>
-            </div>
-
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/05-screenshot.png" alt="배당 및 인사이트" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 05</div>
-                <h4 class="screenshot-title">배당 예측 & 시장 인사이트</h4>
-                <p class="screenshot-desc">월별/연간 예상 배당 캘린더와 거물 투자자의 포트폴리오를 비교 분석합니다.</p>
-              </div>
-            </div>
-
-            <div class="screenshot-card">
-              <div class="screenshot-img-wrapper">
-                <img src="assets/images/snapfolio/06-screenshot.png" alt="프라이버시 & 설정" loading="lazy" />
-              </div>
-              <div class="screenshot-info">
-                <div class="screenshot-num">Step 06</div>
-                <h4 class="screenshot-title">로컬 퍼스트 & 개인정보 보호</h4>
-                <p class="screenshot-desc">민감 정보는 기기 내부 Room DB에만 보관되며, 계좌번호 자동 마스킹 및 오프라인 조회가 지원됩니다.</p>
-              </div>
-            </div>
+            <p class="agent-caption">에이전트 위임 · 게이트 · 배포 흐름</p>
           </div>
         </div>
       </div>
@@ -314,35 +249,60 @@
             <i class="fa-solid fa-pen-nib"></i> Writing · 기술 블로그
           </div>
           <h2 class="section-title">문제를 해결한 과정을 글로 남깁니다</h2>
-          <p class="section-subtitle">구현 방법보다 원인을 어떻게 좁혀갔는지에 초점을 맞춰 기록했습니다.</p>
+          <p class="section-subtitle">구현 방법보다 원인을 어떻게 좁혀갔는지에 초점을 맞춰 기록했습니다. <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer" class="text-link">Medium에서도 볼 수 있습니다 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
         </div>
 
         <div class="writing-grid">
-          <article class="writing-card">
-            <span class="writing-tag">zum 키보드</span>
+          <!-- BLOG:START -->
+          <a class="writing-card" href="blog/f5ec135295a4.html">
+            <span class="writing-date">16분 분량</span>
+            <h3 class="writing-title">Android 만보기 기능 개발 회고 — 2</h3>
+            <p class="writing-desc">1편에서는 만보기 기능을 개발하기 위해 Google Health Connect와 걸음 수 센서 중 어떤 기술로 걸음 수 데이터를 가져올지 고민했던 과정과, 결국 센서 기반으로 다시 개발하게 된 이야…</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/35e5b2344a2b.html">
+            <span class="writing-date">3분 분량</span>
             <h3 class="writing-title">Android Keyboard의 InputMethodService Lifecycle 분석</h3>
-            <p class="writing-desc">커스텀 키보드가 시스템과 주고받는 생명주기를 단계별로 추적하고, 각 시점에 어떤 상태를 준비해야 하는지 정리</p>
-          </article>
-          <article class="writing-card">
-            <span class="writing-tag">zum 키보드</span>
-            <h3 class="writing-title">Kotlin Flow의 sample을 이용하여 키보드 앱 UI 개선</h3>
-            <p class="writing-desc">높낮이 조절 시 발생한 깜빡임의 원인을 모든 Flow 방출값의 UI 반영으로 규명하고 sample로 갱신 주기를 제한한 과정</p>
-          </article>
-          <article class="writing-card">
-            <span class="writing-tag">zum 포털</span>
-            <h3 class="writing-title">Android 만보기 기능 개발 후기</h3>
-            <p class="writing-desc">Service 기반 상시 걸음 수 측정, 자정 초기화와 재부팅 시 센서 초기화 시나리오를 다루며 겪은 문제와 해결 방법</p>
-          </article>
-          <article class="writing-card">
-            <span class="writing-tag">zum 포털</span>
+            <p class="writing-desc">커스텀 키보드를 개발하기 위해서는 무조건 InputMethodService를 등록해야 합니다. 키보드 UI가 휴대폰 화면에 올라올 때 InputMethodSerivce의 lifecycle을 타기 때…</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/de567c8338fc.html">
+            <span class="writing-date">10분 분량</span>
             <h3 class="writing-title">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</h3>
-            <p class="writing-desc">긴 글을 숏폼 형태로 보여주는 UI를 Compose로 구현하며 다양한 해상도에 대응한 방법</p>
-          </article>
-          <article class="writing-card">
-            <span class="writing-tag">Paging3</span>
-            <h3 class="writing-title">Android Paging3 Flow에 왜 cachedIn을 할까?</h3>
-            <p class="writing-desc">cachedIn이 없을 때 발생하는 재구독·중복 로딩 문제를 짚고, 캐싱이 필요한 이유를 동작 원리로 설명</p>
-          </article>
+            <p class="writing-desc">이스트에이드(구 줌인터넷)에 입사한 지 6개월이 지나 줌 앱 스쿼드로 조직을 이동하고 나서 첫 프로젝트로 숏츠 형식의 뉴스 기사 기능을 개발을 하게 됐습니다. 첫 기획안을 들었을 땐 정말 도전적이고…</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/fa5bc2fbce7d.html">
+            <span class="writing-date">5분 분량</span>
+            <h3 class="writing-title">Android 만보기 기능 개발 회고 — 1</h3>
+            <p class="writing-desc">만보기 기능 개발에 대한 경험은 개인적으로 기술에 대한 성장과 구글 헬스 커넥트의 현실을 마주할 수 있어서 공유할 가치가 있다고 생각했기 때문에 이렇게 글을 남기게 됩니다.</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/921dcc912cba.html">
+            <span class="writing-date">9분 분량</span>
+            <h3 class="writing-title">Android Preference commit과 apply의 차이</h3>
+            <p class="writing-desc">Android Preference에서 data를 추가하기 위해서 Editor의 commit(), apply() 두 가지 방법을 이용합니다. Preference 코드를 작성하면서 추후에 왜 이런 코드…</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/6ab23b4448f1.html">
+            <span class="writing-date">2분 분량</span>
+            <h3 class="writing-title">Kotlin flow의 sample을 이용하여 키보드 앱 UI 개선</h3>
+            <p class="writing-desc">제가 만들고 있는 키보드 앱에서는 키보드 높낮이를 조절하는 기능이 있습니다. datastore에 키보드 높낮이 비율을 flow 값으로 갖고 있고, 이를 collect 하여 높낮이 비율 기준으로 계산…</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/016311476cb6.html">
+            <span class="writing-date">4분 분량</span>
+            <h3 class="writing-title">Android Paging3 Flow에 왜 CachedIn을 할까?</h3>
+            <p class="writing-desc">Paging3의 장점 중 하나인 페이징 된 데이터의 메모리 캐싱인데 그렇다면 이 캐싱된 데이터는 어떻게 활용 되는지 궁금해졌습니다.</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="writing-card" href="blog/01e2876464d5.html">
+            <span class="writing-date">2분 분량</span>
+            <h3 class="writing-title">Android RecyclerView fadingEdge 상단만 적용하는 방법</h3>
+            <p class="writing-desc">RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p>
+            <span class="writing-more">읽기 <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <!-- BLOG:END -->
         </div>
       </div>
     </section>
@@ -393,7 +353,7 @@
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#career">경력</a>
-        <a href="#snapfolio">사이드 프로젝트</a>
+        <a href="#enopy">사이드 프로젝트</a>
         <a href="#writing">기술 블로그</a>
         <a href="mailto:jpyoon1122@gmail.com">Email</a>
       </div>

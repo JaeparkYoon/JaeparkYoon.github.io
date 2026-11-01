@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android 만보기 기능 개발 회고 — 1 — 윤재박 기술 블로그</title>
+  <meta name="description" content="만보기 기능 개발에 대한 경험은 개인적으로 기술에 대한 성장과 구글 헬스 커넥트의 현실을 마주할 수 있어서 공유할 가치가 있다고 생각했기 때문에 이렇게 글을 남기게 됩니다." />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-%EB%A7%8C%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%8A%A5-%EA%B0%9C%EB%B0%9C-%ED%9B%84%EA%B8%B0-fa5bc2fbce7d" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android 만보기 기능 개발 회고 — 1" />
+  <meta property="og:description" content="만보기 기능 개발에 대한 경험은 개인적으로 기술에 대한 성장과 구글 헬스 커넥트의 현실을 마주할 수 있어서 공유할 가치가 있다고 생각했기 때문에 이렇게 글을 남기게 됩니다." />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android 만보기 기능 개발 회고 — 1</h1>
+        <div class="post-meta">
+          <span>5분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-%EB%A7%8C%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%8A%A5-%EA%B0%9C%EB%B0%9C-%ED%9B%84%EA%B8%B0-fa5bc2fbce7d" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<p>만보기 기능 개발에 대한 경험은 개인적으로 기술에 대한 성장과 구글 헬스 커넥트의 현실을 마주할 수 있어서 공유할 가치가 있다고 생각했기 때문에 이렇게 글을 남기게 됩니다.</p><p>이번 개발 회고 1편은 어떤 기술로 걸음수 데이터를 가져와야 하는지 고민하고 겪은 시행착오를 적었으며 2편에는 기술적인 시행착오를 겪은 내용을 담고자 합니다.</p><p>만보기 기능을 개발 하려면 걸음수 데이터를 가져와야하는데, Android에서는 두 가지 옵션이 있습니다.</p><ol><li>Google Health Connect API를 이용하여 걸음수 데이터를 사용.</li><li>디바이스에 장착된 Step Counter Sensor를 이용하여 걸음수 데이터를 사용.</li></ol><p>두 가지 선택 옵션을 두었을 때 리서치한 장단점은 다음과 같았습니다.</p><h3>Google Health Connect</h3><h4>장점</h4><ul><li>Google Health Connect에서 제공하는 걸음수를 가져와 별도의 걸음 수 관련된 개발을 하지 않아도 돼 개발 공수가 작습니다.</li></ul><h4>단점</h4><ul><li>Google Health Connect는 Android 14 이상에서는 프레임워크화 돼 있지만, Android 13 이하 에서는 Google Health Connect 앱을 깔아야 하며, 앱에서 Google Health Connect의 데이터를 가져오기 위한 별도의 권한 요청을 해야 하기 때문에 유저 입장에서는 진입장벽이 매우 크게 다가올 수 있습니다.</li></ul><h3>Sensor</h3><h4>장점</h4><ul><li>신체활동 권한만 물어보는 과정만 있기 때문에 유저에게 있어 만보기 진입장벽이 낮습니다.</li><li>Health Connect API에 의존하지 않고 자체적인 걸음 수 데이터를 가질 수 있습니다.</li></ul><h4>단점</h4><ul><li>디바이스 센서를 이용하기 때문에 걸음 수를 일별로 LocalDB에 저장하는 로직을 추가해야 하고, 더 나아가서는 서버에 저장하는 고도화 과정을 겪어야 하기 때문에 개발 공수가 큽니다.</li></ul><h3>Google Health Connect를 이용하여 개발하기로 결정</h3><p>기능 개발에 앞서 타사 만보기 앱을 리서치 했을 때 대부분의 앱들은 기기 Sensor를 이용하여 걸음수를 가져와 서비스를 하고 있습니다. 처음 리서치했을 때 구글에서 제공하는 걸음 데이터를 이용하여 별도의 데이터 저장 로직 없이 쉽고 빠르게 개발할 수 있는 것으로 보임에도 왜 Sensor를 이용했을까요? 저는 이런 의문을 가지면서 짧은 개발 기간 때문에 Google Health Connect를 사용하기로 결정을 하고 나서 그 이유를 알게 됐습니다.</p><h3>생각보다 유저 진입 장벽이 매우 높은 Google Health Connect</h3><p>주어진 개발 기간내에 완료하는 것이 더욱 중요했기 때문에 앞서 리서치 했던 Android 14 이상과 14 미만으로 나뉘는 Google Health Connect 앱 설치 Flow를 감안하는 판단하에 개발을 진행했습니다. 하지만, 내부 동작을 상세하게 살펴보니 생각보다 더 복잡한 Flow가 존재했습니다.</p><p>공식 문서에서는 Google Fit 앱에서 Google Health Connect로 건강 기록을 저장한 데이터를 사용할 수 있다는 점을 명시했는데, 저는 이 글을 읽고 Android의 대표적인 디바이스인 갤럭시에서 삼성 헬스 앱에서도 Google Health Connect에 자동으로 기록을 하고 있을 거라는 생각을 했습니다. 하지만 제 생각과는 달리 <strong>삼성 헬스 앱에서는 Google Health Connect와 동기화 설정을 했음에도 걸음 수 데이터를 Google Health Connect에 보내고 있지 않다는 점을 확인했습니다.</strong></p><p>삼성 갤럭시에서는 삼성 헬스 앱이 대부분 깔려 있기 때문에 별도의 앱 설치 없이 권한 허용만 해주면 된다는 제 생각이 완전히 벗어난 상황이었습니다. 삼성 갤럭시에서는 Google Fit 앱이 필수로 설치가 되어있지 않아, 회사에서 만든 만보기 기능을 이용하려면 Google Fit 앱을 별도로 설치하는 User Flow를 만들어야 했습니다.</p><h3>결국 Sensor 기반으로 다시 개발</h3><p>저의 부족한 사전 조사에 양해를 구하고 Google Health Connect에서 Sensor 기반으로 개발을 진행했습니다. 비록 개발 공수가 많이 들더라도 유저에게 있어서 간단한 Flow를 제시하여 서비스할 수 있다면, 기쁜 마음으로 Sensor 기반으로 개발하고 싶고, 앱을 기획, 디자인하시는 분들의 뜻도 맞기에 이런 결정을 쉽게 내릴 수 있었습니다.</p><h3>뭔가 아쉽게 느껴진 Health Connect의 생태계</h3><p>만보기 기능 개발에 있어, 두 가지 선택 옵션 간에 어떤 것이 좋다 나쁘다 할 수 없습니다. 유저 Flow가 간단하더라도 센서 기반으로 개발하게 된다면 결국은 백그라운드에서 걸음 수 수집을 해야 하기 때문에 배터리를 많이 소모하게 될 것입니다. 반대로 Google Health Connect를 사용하게 된다면, Google Fit 앱에서 걸음수를 수집한 데이터 기반으로 하기 때문에 만보기에서 Google Health Connect와 연동한 앱들만 설치해서 이용하게 된다면 배터리를 많이 소모하지 않게 될 것입니다.</p><p>이번 만보기 기능 개발을 하면서 Android의 건강 데이터 생태계 구축이 아직까지는 갈 길이 멀다고 느껴졌습니다. Android는 iOS와 달리 모바일 디바이스 제조사가 많다는 특징이 있지만, 제조사의 대표적인 건강 앱들은 Google Health Connect API에 데이터를 쓰는 것(Write)을 의무화했으면 좋지 않았을까 하는 아쉬움이 남았던 프로젝트였습니다.</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="post-nav-item prev" href="921dcc912cba.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Android Preference commit과 apply의 차이</span></a>
+        <a class="post-nav-item next" href="de567c8338fc.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

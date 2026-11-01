@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android Preference commit과 apply의 차이 — 윤재박 기술 블로그</title>
+  <meta name="description" content="Android Preference에서 data를 추가하기 위해서 Editor의 commit(), apply() 두 가지 방법을 이용합니다. Preference 코드를 작성하면서 추후에 왜 이런 코드…" />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-preference-commit%EA%B3%BC-apply%EC%9D%98-%EC%B0%A8%EC%9D%B4-921dcc912cba" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android Preference commit과 apply의 차이" />
+  <meta property="og:description" content="Android Preference에서 data를 추가하기 위해서 Editor의 commit(), apply() 두 가지 방법을 이용합니다. Preference 코드를 작성하면서 추후에 왜 이런 코드…" />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android Preference commit과 apply의 차이</h1>
+        <div class="post-meta">
+          <span>9분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-preference-commit%EA%B3%BC-apply%EC%9D%98-%EC%B0%A8%EC%9D%B4-921dcc912cba" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<p>Android Preference에서 data를 추가하기 위해서 Editor의 commit(), apply() 두 가지 방법을 이용합니다. Preference 코드를 작성하면서 추후에 왜 이런 코드를 짰는지에 대한 명확한 이유를 설명하기 위해서는 commit()과 apply()의 차이점에 대해 알고 갈 필요가 있습니다.</p><h3>commit()과 apply()의 차이</h3><h3>commit()</h3><p>commit()은 결괏값을 boolean 값으로 return 하며 순차적으로 진행이 됩니다. 만약 두 개 이상의 editor가 commit()을 했을 경우, 제일 마지막에 호출한 commit()이 Preference에 반영되어 저장합니다. 내부 코드는 어떻게 구현이 되어있을까요?</p><figure class="code-block"><pre><code class="language-kotlin">@Override
+public boolean commit() {
+    long startTime = 0;
+
+    if (DEBUG) {
+        startTime = System.currentTimeMillis();
+    }
+
+    MemoryCommitResult mcr = commitToMemory();
+
+    SharedPreferencesImpl.this.enqueueDiskWrite(
+        mcr, null /* sync write on this thread okay */);
+    try {
+        mcr.writtenToDiskLatch.await();
+    } catch (InterruptedException e) {
+        return false;
+    } finally {
+        if (DEBUG) {
+            Log.d(TAG, mFile.getName() + &quot;:&quot; + mcr.memoryStateGeneration
+                    + &quot; committed after &quot; + (System.currentTimeMillis() - startTime)
+                    + &quot; ms&quot;);
+        }
+    }
+    notifyListeners(mcr);
+    return mcr.writeToDiskResult;
+}</code></pre></figure><p>내부 코드에서는 Preference의 값을 디스크에 write 명령을 내린 후 끝날 때까지 await()를 하여 write가 끝나면 그 결괏값을 boolean 값으로 return 하여 정상적으로 값이 반영됐는지 확인할 수 있습니다. 공식 문서에 나온 설명대로 write의 결괏값을 리턴 받을 수 있는 장점이 있지만, 메인 스레드에서 Preference를 commit() 했을 때 자칫 ANR이 걸릴 수 있다는 단점이 존재합니다.</p><h3>apply()</h3><p>apply()는 commit()과는 달리 처리 결과를 boolean으로 반환하지 않습니다. 다수의 에디터가 동시에 apply()를 호출할 경우, 메모리(In-Memory)에는 즉각적으로 반영되어 원자성을 보장하지만 디스크에 쓰는 작업은 비동기적으로 예약됩니다. 실제 동작 원리를 파악하기 위해 apply()의 내부 코드를 살펴봤습니다.</p><figure class="code-block"><pre><code class="language-kotlin">@Override
+public void apply() {
+    final long startTime = System.currentTimeMillis();
+
+    final MemoryCommitResult mcr = commitToMemory();
+    final Runnable awaitCommit = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mcr.writtenToDiskLatch.await();
+                } catch (InterruptedException ignored) {
+                }
+
+                if (DEBUG &amp;&amp; mcr.wasWritten) {
+                    Log.d(TAG, mFile.getName() + &quot;:&quot; + mcr.memoryStateGeneration
+                            + &quot; applied after &quot; + (System.currentTimeMillis() - startTime)
+                            + &quot; ms&quot;);
+                }
+            }
+        };
+
+    QueuedWork.addFinisher(awaitCommit);
+
+    Runnable postWriteRunnable = new Runnable() {
+            @Override
+            public void run() {
+                awaitCommit.run();
+                QueuedWork.removeFinisher(awaitCommit);
+            }
+        };
+
+    SharedPreferencesImpl.this.enqueueDiskWrite(mcr, postWriteRunnable);
+
+    // Okay to notify the listeners before it&#x27;s hit disk
+    // because the listeners should always get the same
+    // SharedPreferences instance back, which has the
+    // changes reflected in memory.
+    notifyListeners(mcr);
+}</code></pre></figure><p>내부 코드를 살펴보면 apply()는 디스크 쓰기를 위해 <strong>매번 별도의 </strong><strong>Thread를 새로 생성하는 것이 아닙니다.</strong> 대신 가벼운 Runnable(작업 명세서) 객체만 생성한 뒤, 프레임워크 내부에서 싱글톤으로 유지되는 단일 백그라운드 스레드(QueuedWork)의 대기열에 작업을 넘겨 비동기적으로 처리합니다.</p><p>이러한 방식은 무거운 스레드 생성 오버헤드가 없기 때문에 객체 생성 측면에서 매우 가벼우며, 호출 스레드를 즉시 차단하며 디스크 I/O를 수행하는 commit()에 비해 호출부의 성능이 훨씬 뛰어나다는 장점이 있습니다.</p><p>하지만 흔히 알려진 오해와 달리 <strong>apply() 역시 ANR 발생 위험에서 완전히 자유롭지는 않습니다.</strong> apply()의 실행 자체는 비동기지만, 안드로이드 시스템은 앱 종료 시 데이터 유실을 방지하기 위해 Activity의 생명주기 전환(onPause(), onStop()) 시점에 내부적으로 QueuedWork.waitToFinish()를 호출합니다.</p><p>이때 큐에 남은 디스크 쓰기 작업이 모두 완료될 때까지 <strong>메인 스레드가 강제로 대기(Blocking)</strong> 상태에 빠지게 되므로, 저장할 데이터가 많거나 디스크 속도가 저하된 상태라면 결국 메인 스레드 지연으로 인한 ANR이 발생할 수 있는 구조적 한계를 가지고 있습니다.</p><p>이는 ANR 발생 조건 중 입력 전송 시간 초과(5초)에 해당하며, QueuedWork.waitToFinish()로 인해 메인 스레드가 블로킹된 상태에서 사용자의 터치나 키 이벤트가 5초 이내에 처리되지 못하면서 발생합니다.</p><h3>개선방법</h3><p>commit()과 apply()의 차이점을 살펴보면 Preference의 한계점을 알 수 있습니다.</p><ol><li>commit()과 apply()의 내부 동작을 살펴보면 SharedPreferences 구조 자체가 가진 근본적인 한계점을 알 수 있습니다.</li><li><strong>원자성 보장의 딜레마:</strong> 다중 스레드 환경에서 안전하게 데이터를 쓰고 결과를 반환받기 위해 commit()을 사용하면, 동기적인 디스크 I/O 작업으로 인해 <strong>메인 스레드가 차단되어 ANR이 발생할 위험</strong>이 높습니다.</li><li><strong>apply()의 숨겨진 병목:</strong> 이를 피하기 위해 apply()를 사용하면 비동기적으로 작업이 처리되지만 결과값을 반환받지 못합니다. 더 큰 문제는, apply() 역시 비동기 작업임에도 불구하고 앱이 백그라운드로 전환(onPause, onStop)될 때 <strong>프레임워크 내부(</strong><strong>QueuedWork)에서 메인 스레드를 강제로 대기(Blocking)</strong> 시키기 때문에 결국 ANR의 위험에서 완전히 벗어날 수 없습니다.</li></ol><figure class="code-block"><pre><code class="language-kotlin">fun runJob() {
+    // 기본적으로 Main Dispatcher를 사용하는 viewModelScope
+    viewModelScope.launch { 
+        val isSuccess = setPreferenceData(&quot;data&quot;)
+        if (isSuccess) {
+            // 디스크 I/O가 끝난 후 UI 업데이트 등 성공 시 동작 처리
+        }
+    }
+}
+
+// IO Dispatcher로 스레드를 전환하여 블로킹 방지
+suspend fun setPreferenceData(value: String): Boolean {
+    return withContext(Dispatchers.IO) {
+        editor.putString(&quot;KEY&quot;, value)
+        editor.commit() // 백그라운드 스레드에서 안전하게 동기 처리 및 결과 반환
+    }
+}</code></pre></figure><p>이렇게 코루틴의 Dispatchers.IO를 활용해 commit()을 백그라운드로 완전히 밀어내면, apply()가 가진 Activity 생명주기 종속성(QueuedWork 블로킹) 문제와 commit()의 메인 스레드 차단 문제를 동시에 피하면서 성공 여부까지 안전하게 리턴 받을 수 있습니다.</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="post-nav-item prev" href="6ab23b4448f1.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Kotlin flow의 sample을 이용하여 키보드 앱 UI 개선</span></a>
+        <a class="post-nav-item next" href="fa5bc2fbce7d.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Android 만보기 기능 개발 회고 — 1</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

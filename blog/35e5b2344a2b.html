@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android Keyboard의 InputMethodService Lifecycle 분석 — 윤재박 기술 블로그</title>
+  <meta name="description" content="커스텀 키보드를 개발하기 위해서는 무조건 InputMethodService를 등록해야 합니다. 키보드 UI가 휴대폰 화면에 올라올 때 InputMethodSerivce의 lifecycle을 타기 때…" />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-keyboard%EC%9D%98-inputmethodservice-lifecycle-%EB%B6%84%EC%84%9D-35e5b2344a2b" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android Keyboard의 InputMethodService Lifecycle 분석" />
+  <meta property="og:description" content="커스텀 키보드를 개발하기 위해서는 무조건 InputMethodService를 등록해야 합니다. 키보드 UI가 휴대폰 화면에 올라올 때 InputMethodSerivce의 lifecycle을 타기 때…" />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android Keyboard의 InputMethodService Lifecycle 분석</h1>
+        <div class="post-meta">
+          <span>3분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-keyboard%EC%9D%98-inputmethodservice-lifecycle-%EB%B6%84%EC%84%9D-35e5b2344a2b" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<p>커스텀 키보드를 개발하기 위해서는 무조건 InputMethodService를 등록해야 합니다. 키보드 UI가 휴대폰 화면에 올라올 때 InputMethodSerivce의 lifecycle을 타기 때문에 커스텀 키보드 개발에 있어서 매우 중요하다 볼 수 있습니다. 커스텀 키보드를 개발하면서 조사했던 내용을 공유하고자 합니다.</p><figure><img src="../assets/images/blog/35e5b2344a2b/01.png" alt="" loading="lazy" /></figure><h4><strong>onCreate()</strong></h4><ul><li>커스텀한 키보드 서비스(InputMethodService)가 기본 키보드로 등록 됐을 때 한번 호출 됩니다.</li></ul><h4>onDestroy()</h4><ul><li>커스텀한 키보드 서비스(InputMethodService)가 다른 키보드로 변경되어 기본 키보드에서 해지 됐을 때 한번 호출 됩니다.</li></ul><h4>OnCreateInputView(), onCreateCandidatesView()</h4><ul><li>커스텀한 키보드가 기본 키보드로 등록되고 난 후 UI가 최초로 보여지는 시점에 한번만 호출됩니다.</li><li>커스텀한 UI의 View를 return하여 메인 키보드 영역에 커스텀한 UI를 표시합니다.</li></ul><h4>onBindInput()</h4><ul><li>input method가 새로운 client(텍스트 필드)에 종속 됐을 때 호출이 됩니다. 즉 새로운 앱이나 화면에서 키보드가 전환 됐을 때 onBindInput이 호출됩니다.</li></ul><h4>onStartInput(EditorInfo attribute, boolean restarting)</h4><ul><li>editor에서 문자 입력이 시작 됐다는 정보를 받으면 onStartInput 메서드가 호출됩니다.</li><li>attribute 함수 인자를 통해 입력이 시작된 editor의 정보를 얻을 수 있습니다.</li></ul><h4>onStartInputView(EditorInfo attribute, boolean restarting)</h4><ul><li>키보드의 UI가 보이는 시점에서 onStartInputView가 호출 됩니다.</li></ul><h4>onFinishInput()</h4><ul><li>editor에서 문자 입력이 종료 됐다는 정보를 받으면 onFinishInput 메서드가 호출됩니다.</li><li>같은 editor에서 키보드가 restart 된다면 해당 메서드는 호출되지 않습니다.</li></ul><h4>onFinishInputView(boolean finishingInput)</h4><ul><li>UI가 보이지 않는 시점에서 onFinishInputView가 호출됩니다.</li></ul><h4>onUpdateSelection(int oldSelStart, int oldSelEnd, int newSelStart, int newSelEnd, int candidatesStart, int candidatesEnd)</h4><ul><li>application에서 editor의 text 입력 영역이 변경됐다고 알릴 때 마다 호출됩니다.</li></ul><h4>메서드 호출 순서에 대한 분석</h4><ul><li>onBindInput 메서드가 호출된다면, onStartInputView, onFinishInputView 둘 중 하나의 메서드가 같이 호출됩니다. 화면 전환 여부와 상관없이 키보드 UI가 올라오면 onStartInputView 메서드만 호출되고, UI가 내려가면 onFinishInputView만 호출됩니다.</li><li>만약 A앱에서 키보드가 올라온 상황에서 B앱으로 화면 전환이 됐다면 onFinishInputView → onBindInput 순서로 호출되며, 새로운 앱에서 키보드가 올라왔다면 onBindInput → onStartInputView 순서로 메서드가 호출됩니다.</li></ul>
+      </div>
+
+      <nav class="post-nav">
+        <a class="post-nav-item prev" href="de567c8338fc.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Android Compose로 숏츠 형식의 뉴스 기사 기능 개발 후기</span></a>
+        <a class="post-nav-item next" href="f5ec135295a4.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Android 만보기 기능 개발 회고 — 2</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

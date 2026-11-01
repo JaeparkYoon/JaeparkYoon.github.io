@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android Paging3 Flow에 왜 CachedIn을 할까? — 윤재박 기술 블로그</title>
+  <meta name="description" content="Paging3의 장점 중 하나인 페이징 된 데이터의 메모리 캐싱인데 그렇다면 이 캐싱된 데이터는 어떻게 활용 되는지 궁금해졌습니다." />
+  <meta name="author" content="Jaepark Yoon" />
+  <link rel="canonical" href="https://medium.com/@jpyoon1122/android-paging3-flow%EC%97%90-%EC%99%9C-cachedin%EC%9D%84-%ED%95%A0%EA%B9%8C-016311476cb6" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Android Paging3 Flow에 왜 CachedIn을 할까?" />
+  <meta property="og:description" content="Paging3의 장점 중 하나인 페이징 된 데이터의 메모리 캐싱인데 그렇다면 이 캐싱된 데이터는 어떻게 활용 되는지 궁금해졌습니다." />
+
+  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../#career" class="nav-link">경력</a></li>
+          <li><a href="../#enopy" class="nav-link">사이드 프로젝트</a></li>
+          <li><a href="../#writing" class="nav-link active">기술 블로그</a></li>
+          <li><a href="../#contact" class="nav-link">연락처</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer" class="github-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-page">
+    <article class="container post">
+      <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
+      <header class="post-header">
+        <h1 class="post-title">Android Paging3 Flow에 왜 CachedIn을 할까?</h1>
+        <div class="post-meta">
+          <span>4분 분량</span>
+          <span>·</span>
+          <a href="https://medium.com/@jpyoon1122/android-paging3-flow%EC%97%90-%EC%99%9C-cachedin%EC%9D%84-%ED%95%A0%EA%B9%8C-016311476cb6" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </header>
+
+      <div class="post-body">
+<p>Paging3의 장점 중 하나인 페이징 된 데이터의 메모리 캐싱인데 그렇다면 이 캐싱된 데이터는 어떻게 활용 되는지 궁금해졌습니다.</p><p>공식 문서를 보면 페이징 캐싱에 관한 구현은 다음과 같이 돼있습니다.</p><figure class="code-block"><pre><code class="language-kotlin">val flow = Pager(
+  // Configure how data is loaded by passing additional properties to
+  // PagingConfig, such as prefetchDistance.
+  PagingConfig(pageSize = 20)
+) {
+  ExamplePagingSource(backend, query)
+}.flow
+  .cachedIn(viewModelScope)</code></pre></figure><p>paging data를 캐싱하는 부분은 cachedIn입니다. 이에 대해 가이드 문서에는 짧게 설명이 돼있습니다.</p><blockquote><em>cachedIn() 연산자는 데이터 스트림을 공유 가능하게 만들고, 제공된 CoroutineScope를 사용하여 로드 된 데이터를 캐시한다. 이 예제는 Lifecycle lifecycle-viewmodel-ktx 아티팩트에서 제공하는 viewModelScope를 사용한다.</em></blockquote><p>이 부분만 읽어서는 캐싱 데이터가 어느 상황에서 사용되는지 판단할 수 없었습니다. 하지만 캐싱을 사용하는 주목적 중 하나는 같은 데이터를 로드할 메모리 캐시영역에서 빠르게 가져오는 것이 목적임으로 <strong>config change 할 때 같은 페이징 데이터를 사용함으로 캐싱을 하지 않으면 다시 서버를 찔러서 데이터를 가져오고, 캐싱을 한다면 서버를 다시 찌르지 않고 캐싱된 데이터를 가져온다는 추측을 할 수 있었습니다.</strong><br>이 추측이 맞는지 직접 눈으로 확인하기 위해 키워드를 검색하고 검색 결과를 페이징 처리해주는 앱을 통해 실험을 진행하였습니다.</p><p>실험 케이스는 2가지로 나뉘었습니다. flow데이터에 cachedIn을 한것과 하지 않은것 두가지로 다음과 같이 나누었습니다.</p><figure class="code-block"><pre><code class="language-kotlin">private var _searchResultFlow: Flow&lt;PagingData&lt;SearchResult&gt;&gt; = emptyFlow()
+val searchResultFlow get() = _searchResultFlow
+
+fun getSearchResult(query: String) = viewModelScope.launch {
+    //case1 cachedIn 적용하지 않은 코드
+    _searchResultFlow = mainRepository.getSearchResult(query).flow
+    //case2 cachedIn 적용 코드
+    _searchResultFlow = mainRepository.getSearchResult(query).flow.cachedIn(viewModelScope)
+}</code></pre></figure><p>시나리오를 다음과 같이 진행했습니다.</p><ol><li>키워드를 검색</li><li>검색 결과가 보여진 후 화면 회전</li><li>로그를 확인하여 서버를 다시 찌르는지 확인</li></ol><h4>Case1 cachedIn을 적용하지 않은 코드 로그</h4><figure><img src="../assets/images/blog/016311476cb6/01.png" alt="" loading="lazy" /></figure><h4>Case2 cachedIn을 적용한 코드 로그</h4><figure><img src="../assets/images/blog/016311476cb6/02.png" alt="" loading="lazy" /></figure><p>cachedIn을 하지 않았을 경우 화면 회전을하면 페이징 내부에서 서버를 다시 찌르는 로직을 타는 반면, cachedIn 적용 후 화면 회전을 하면 캐싱된 데이터를 적재하여 서버를 다시 찌르지 않았습니다. config change 시나리오와 같이 같은 데이터를 쓰게 될 경우 라이브러리가 알아서 캐싱 된 데이터를 가져와 초기화해줌으로써 서버를 다시 찌르는 번거로움이 없어졌으며, 이는 페이징 라이브러리의 큰 장점 중 하나인 메모리 캐싱을 이용하는 사례가 될 수 있습니다.</p><p>이를 통해 왜 페이징 flow에 cachedIn을 하는지 알게 됐습니다.</p>
+      </div>
+
+      <nav class="post-nav">
+        <a class="post-nav-item prev" href="01e2876464d5.html"><span class="post-nav-label">이전 글</span><span class="post-nav-title">Android RecyclerView fadingEdge 상단만 적용하는 방법</span></a>
+        <a class="post-nav-item next" href="6ab23b4448f1.html"><span class="post-nav-label">다음 글</span><span class="post-nav-title">Kotlin flow의 sample을 이용하여 키보드 앱 UI 개선</span></a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
+        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
+          이 글은 <a href="https://medium.com/@jpyoon1122" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../#career">경력</a>
+        <a href="../#enopy">사이드 프로젝트</a>
+        <a href="../#writing">기술 블로그</a>
+        <a href="mailto:jpyoon1122@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
