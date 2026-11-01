@@ -54,7 +54,7 @@
       </header>
 
       <div class="post-body">
-<blockquote><em>리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.</em></blockquote><figure><img src="../assets/images/blog/01e2876464d5/842ed27bf84c.png" alt="" loading="lazy" /></figure><p>RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p><p>android:fadingEdge=”horizontal”<br>android:fadingEdgeLength=”100dp”<br>android:requiresFadingEdge=”vertical”</p><p>위쪽만 주고싶다면 다음 순서에 맞게 코드를 작성하시면 됩니다.</p><p><strong>RecyclerView를 커스텀하는 class를 하나 파서 다음과 같이 만듭니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">class CustomRecyclerView(
+<blockquote><em>리스트를 구성하다 보면 다음과 같이 상단 부분만 Alpha를 주고 싶은 경우가 있습니다.</em></blockquote><figure><img src="../assets/images/blog/01e2876464d5/fading-edge.png" alt="" loading="lazy" /></figure><p>RecyclerView에 다음 속성만 추가하면 위 아래로 Edge가 적용 되는데</p><p>android:fadingEdge=”horizontal”<br>android:fadingEdgeLength=”100dp”<br>android:requiresFadingEdge=”vertical”</p><p>위쪽만 주고싶다면 다음 순서에 맞게 코드를 작성하시면 됩니다.</p><p><strong>RecyclerView를 커스텀하는 class를 하나 파서 다음과 같이 만듭니다.</strong></p><figure class="code-block"><pre><code class="language-kotlin">class CustomRecyclerView(
   context: Context, 
   attrs: AttributeSet?
 ) : RecyclerView(context, attrs) {

@@ -48,6 +48,11 @@ REMOVE_FIGURES = {
     "6ab23b4448f1": {1},  # Kotlin flow sample — 맨 위 표지 이미지
 }
 
+# Medium 원본이 저해상도라 다시 그린 이미지로 바꿔 쓴다: Medium 이미지 주소 -> 글 이미지 폴더 안의 파일명
+IMAGE_OVERRIDES = {
+    "https://cdn-images-1.medium.com/max/500/0*LIZhF4ZzO9xm_uAC": "fading-edge.png",  # RecyclerView fadingEdge — overlay view
+}
+
 NS = {"content": "http://purl.org/rss/1.0/modules/content/"}
 UA = {"User-Agent": "Mozilla/5.0 (blog builder)"}
 
@@ -149,6 +154,10 @@ def convert(body, slug, gists, local_links):
 
     def replace_img(m):
         src = m.group(1)
+        alt = re.search(r'alt="([^"]*)"', m.group(0))
+        alt = alt.group(1) if alt else ""
+        if src in IMAGE_OVERRIDES:
+            return f'<img src="../assets/images/blog/{slug}/{IMAGE_OVERRIDES[src]}" alt="{alt}" loading="lazy" />'
         ext = Path(src.split("?")[0]).suffix.lower()
         if ext not in (".png", ".jpg", ".jpeg", ".gif", ".webp"):
             ext = ".png"
@@ -157,8 +166,6 @@ def convert(body, slug, gists, local_links):
         if not path.exists():
             target.mkdir(parents=True, exist_ok=True)
             path.write_bytes(fetch(src))
-        alt = re.search(r'alt="([^"]*)"', m.group(0))
-        alt = alt.group(1) if alt else ""
         return f'<img src="../assets/images/blog/{slug}/{name}" alt="{alt}" loading="lazy" />'
 
     body = re.sub(r'<img[^>]*?src="(https://cdn-images-1\.medium\.com/[^"]+)"[^>]*>', replace_img, body)
