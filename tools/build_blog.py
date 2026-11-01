@@ -421,7 +421,8 @@ POST_TEMPLATE = """<!DOCTYPE html>
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{description}" />
 
-  <link rel="icon" type="image/png" href="../assets/images/enopy/icon.png" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon/favicon.svg" />
+  <link rel="apple-touch-icon" href="../assets/images/favicon/apple-touch-icon.png" />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
