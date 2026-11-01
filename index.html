@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://jaeparkyoon.github.io/" />
   <meta property="og:title" content="윤재박 (Jaepark Yoon) — Software Engineer Portfolio" />
   <meta property="og:description" content="Android · Kotlin Multiplatform · AI Agent Orchestration. 6년 3개월간 8건의 비즈니스 앱을 개발·운영한 엔지니어의 포트폴리오." />
-  <meta property="og:image" content="assets/images/enopy/icon.png" />
+  <meta property="og:image" content="assets/images/enopy/feature-graphic.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/enopy/icon.png" />
@@ -128,114 +128,163 @@
     </section>
 
     <!-- ========================================================================
-         Side Project: Enopy (에노피) — AI Agent Orchestration
+         Side Project: Enopy (에노피) — 서비스 소개
          ======================================================================== -->
     <section class="project-section enopy-theme" id="enopy">
       <div class="container">
-        <div class="section-header">
-          <div class="section-badge badge-enopy">
-            <i class="fa-solid fa-mobile-screen"></i> Side Project · 2026.04 ~ 진행 중 · 기획·개발·운영 단독
+
+        <!-- Hero -->
+        <div class="ep-hero">
+          <div class="ep-hero-text">
+            <div class="section-badge badge-enopy">
+              <i class="fa-solid fa-mobile-screen"></i> Side Project · 기획 · 디자인 · 개발 · 운영
+            </div>
+            <h2 class="ep-hero-title">
+              <img src="assets/images/enopy/icon.png" alt="에노피 아이콘" class="project-logo-img" />
+              에노피 <span class="ep-hero-en">Enopy</span>
+            </h2>
+            <p class="ep-hero-tagline">계획적인 포트폴리오로 짓는 나의 자산 지붕</p>
+            <p class="ep-hero-desc">
+              증권사·코인 앱에 흩어진 자산을 스크린샷 한 장으로 모으고, 한눈에 확인하며 다음 계획을 세우는 자산관리 앱입니다.
+              Android와 iOS로 출시해 운영하고 있습니다.
+            </p>
+            <div class="ep-store-links">
+              <a class="ep-store-btn" href="https://play.google.com/store/apps/details?id=jpyoon.snapfolio" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-google-play"></i> Google Play
+              </a>
+              <a class="ep-store-btn" href="https://apps.apple.com/kr/app/id6820932133" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-apple"></i> App Store
+              </a>
+            </div>
           </div>
-          <h2 class="section-title">
-            <img src="assets/images/enopy/icon.png" alt="Enopy 아이콘" class="project-logo-img" />
-            Enopy (에노피)
-          </h2>
-          <p class="section-subtitle">
-            스크린샷 파싱과 대화형 분석을 Gemini로 처리하는 자산관리 앱.<br />
-            Android(Kotlin)·iOS(Swift)를 각각 네이티브로, 역할을 나눈 서브에이전트 15종과 5단 게이트 워크플로우 위에서 만들고 있습니다.
-          </p>
-          <div class="tech-tag-list">
-            <span class="tech-tag">Kotlin</span><span class="tech-tag">Compose</span><span class="tech-tag">Swift</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">MVI</span><span class="tech-tag">Firebase AI Logic</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Firestore</span><span class="tech-tag">Claude Code Subagents</span><span class="tech-tag">Agent Skills</span>
+          <img class="ep-hero-visual" src="assets/images/enopy/feature-graphic.jpg" alt="에노피 소개 이미지 — 계획적인 포트폴리오로 짓는 나의 자산 지붕" />
+        </div>
+
+        <!-- Problem -->
+        <div class="ep-block">
+          <h3 class="ep-block-title">왜 만들었나</h3>
+          <p class="ep-block-lead">자산을 관리하고 싶은 마음은 있는데, 관리가 꾸준히 이어지지 않는 이유를 세 가지로 봤습니다.</p>
+          <div class="ep-problem-grid">
+            <article class="ep-problem-card">
+              <span class="ep-problem-num">01</span>
+              <h4>자산이 여러 앱에 흩어져 있다</h4>
+              <p>증권사 계좌, 코인 거래소, 연금·ISA 계좌가 앱마다 따로 있어서 내 전체 자산이 얼마이고 어디에 쏠려 있는지 한 번에 보기 어렵습니다.</p>
+            </article>
+            <article class="ep-problem-card">
+              <span class="ep-problem-num">02</span>
+              <h4>기록이 번거로우면 관리가 끊긴다</h4>
+              <p>종목·수량·금액을 하나씩 손으로 옮겨 적는 방식은 몇 번 하다 멈추게 됩니다. 입력이 가벼워야 기록이 쌓이고, 기록이 쌓여야 흐름이 보입니다.</p>
+            </article>
+            <article class="ep-problem-card">
+              <span class="ep-problem-num">03</span>
+              <h4>AI가 있어도 쓰는 법을 모른다</h4>
+              <p>범용 챗봇에 내 포트폴리오를 설명하는 일부터가 진입장벽입니다. 프롬프트를 익히지 않아도, 앱을 여는 것만으로 AI의 도움을 받을 수 있게 하고 싶었습니다.</p>
+            </article>
           </div>
         </div>
 
-        <!-- App screens -->
-        <div class="app-screens">
-          <div class="app-screens-text">
-            <div class="brand-note">
-              <img src="assets/images/enopy/icon.png" alt="" class="brand-note-icon" />
-              <div>
-                <h3 class="app-screens-title">앱 이름 — 에노피 (Enopy)</h3>
-                <p class="app-screens-sub">계획적인 포트폴리오로 짓는 나의 자산 지붕</p>
-              </div>
-            </div>
-            <ul class="achievements brand-meaning">
-              <li>에셋(Asset, 자산)과 캐노피(Canopy, 숲 위를 덮는 나무 지붕)를 합친 이름. 정글 같은 세상에서 비바람을 막아 주는 지붕처럼, 내 자산이 나를 지켜 주는 구조를 만든다는 취지</li>
-              <li>아이콘의 층층이 쌓인 E는 위로 갈수록 넓어지는 세 층이 커져 가는 자산의 지붕을, 세로 기둥이 그 지붕을 받치는 나를 의미</li>
-            </ul>
-            <ul class="achievements">
-              <li><strong>스크린샷 AI 파싱</strong> — 증권사 화면 캡처를 Gemini Flash-Lite로 파싱해 종목·수량·평가금액을 추출하고, 바로 저장하지 않고 검수 화면을 거쳐 사용자가 확정하도록 설계</li>
-              <li><strong>AI 투자 비서</strong> — 보유 종목·비중을 프롬프트에 실어 Gemini Flash로 분석. 화면은 실제 응답으로, 반도체 두 종목 64.7% 집중과 KODEX 200을 통한 간접 중복 보유를 근거와 함께 지적</li>
-              <li><strong>시장 인사이트</strong> — 국내외 지수와 함께 주요국 기준금리(BIS)와 중앙은행 정책 발표(미 연준·한국은행)를 공식 출처에서 받아 갱신</li>
-              <li><strong>혜택 탭 · 리워드 광고</strong> — AdMob 보상형 광고는 서버 SSV(Google 서명 검증)로만 크레딧을 지급하고, 일일 횟수·쿨다운·중복 콜백을 서버 트랜잭션 안에서 차단하도록 설계</li>
-            </ul>
-          </div>
-          <div class="shot-row">
-            <figure class="shot"><img src="assets/images/enopy/01-home.jpg" alt="Enopy 홈 · 자산 배분·보유 종목" loading="lazy" data-lightbox /><figcaption>홈 · 자산 배분·보유 종목</figcaption></figure>
-            <figure class="shot"><img src="assets/images/enopy/02-ai-assistant.jpg" alt="Enopy AI 투자 비서 · 포트폴리오 분석" loading="lazy" data-lightbox /><figcaption>AI 투자 비서 · 포트폴리오 분석</figcaption></figure>
-            <figure class="shot"><img src="assets/images/enopy/03-insight.jpg" alt="Enopy 인사이트 · 기준금리·정책 발표" loading="lazy" data-lightbox /><figcaption>인사이트 · 기준금리·정책 발표</figcaption></figure>
+        <!-- Name -->
+        <div class="ep-block ep-name">
+          <img src="assets/images/enopy/icon.png" alt="" class="ep-name-icon" />
+          <div>
+            <h3 class="ep-block-title">이름에 담은 생각</h3>
+            <p>
+              <strong>에셋(Asset, 자산)</strong>과 <strong>캐노피(Canopy, 숲 위를 덮는 나무 지붕)</strong>를 합친 이름입니다.
+              정글 같은 세상에서 비바람을 막아 주는 지붕처럼, 내 자산이 나를 지켜 주는 구조를 만든다는 뜻을 담았습니다.
+            </p>
+            <p>
+              아이콘의 E는 위로 갈수록 넓어지는 세 층이 커져 가는 자산의 지붕을, 그 지붕을 받치는 세로 기둥이 나를 의미합니다.
+            </p>
           </div>
         </div>
 
-        <!-- Orchestration achievements + diagram -->
-        <div class="orchestration-grid">
-          <div class="project-content">
-            <h3 class="achievements-title">주요 성과</h3>
-            <ul class="achievements">
-              <li>역할·도구 권한·모델을 분리한 <strong>서브에이전트 15종</strong>을 정의하고 메인 세션이 총괄하는 오케스트레이션 구조를 설계 (복잡한 작업 11종 opus, 배포 sonnet, 커밋 haiku)</li>
-              <li><strong>보안 승인 → 구현 → 코드 리뷰 → QA → 문서 정합성</strong>으로 이어지는 5단 게이트를 정의, 보안 민감 영역은 착수 전 설계 승인과 구현 후 diff 검수를 모두 통과해야 진행</li>
-              <li>Android와 iOS를 각각 네이티브로 개발하면서, Android 테스트가 만든 기대 결과를 iOS 테스트가 그대로 재현하는지 비교하는 방식으로 두 앱의 비즈니스 로직이 같게 동작하도록 검증</li>
-              <li>배포 에이전트는 내부 테스트 트랙에만 업로드하도록 고정해 프로덕션 출시는 사람만 할 수 있게 하고, 서명 키·서비스 계정 키는 내용을 읽지 않고 존재 여부만 확인하도록 제한</li>
-              <li>에이전트 기반 배포 파이프라인 운영: 빌드 검증 → 번들 서명 → Play 내부 테스트·TestFlight 업로드, 커밋은 allowlist·denylist·diff 검증을 거치는 전담 에이전트가 수행</li>
-              <li>PreToolUse 훅으로 iOS 빌드 전 Xcode 버전을 <code>.xcode-version</code>과 대조, 불일치 시 차단</li>
-              <li>Gemini(Vertex AI SDK) 기반 스크린샷 파싱·대화형 분석을 탑재한 앱으로, 7개월간 <strong>커밋 1,066건 · GitHub Issue 279건</strong>을 이 워크플로우로 처리</li>
-            </ul>
-          </div>
+        <!-- Experience -->
+        <div class="ep-block">
+          <h3 class="ep-block-title">어떻게 쓰나요</h3>
+          <p class="ep-block-lead">모으고(입력) → 보고(홈·추이) → 묻고(AI 대화) → 계획하는 흐름으로 화면을 설계했습니다. 화면마다 기획하면서 정한 원칙을 함께 적었습니다.</p>
 
-          <div class="agent-diagram" aria-label="에이전트 위임 · 게이트 · 배포 흐름">
-            <div class="agent-orchestrator">
-              <span class="agent-box-label">메인 세션 (오케스트레이터)</span>
-              <span class="agent-box-desc">작업 분해 · 위임 · 승인 중계 · 통합 검증 · 최종 보고</span>
-            </div>
-            <div class="agent-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="agent-columns">
-              <div class="agent-col">
-                <span class="agent-col-title">설계 · 정책</span>
-                <ul>
-                  <li>policy-strategy-advisor</li>
-                  <li>product-designer</li>
-                  <li>design-system</li>
-                </ul>
-                <span class="agent-col-note">결정 레이어 — 코드 미수정</span>
+          <div class="ep-features">
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-01-home.jpg" alt="홈 화면 — 내 자산 지붕, 한눈에" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">01 · 홈</span>
+                <h4>내 자산 지붕, 한눈에</h4>
+                <p>흩어진 계좌의 자산을 한 화면에 모읍니다. 원화와 달러 환산, 자산 종류별 비중, 보유 종목까지 첫 화면에서 확인합니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> 앱을 열자마자 「지금 내 자산이 얼마이고, 어디에 쏠려 있나」에 답하는 것을 홈의 역할로 정했습니다.</p>
               </div>
-              <div class="agent-col">
-                <span class="agent-col-title">구현</span>
-                <ul>
-                  <li>android-dev</li>
-                  <li>ios-dev</li>
-                  <li>server-dev</li>
-                </ul>
-                <span class="agent-col-note">계획 → 승인 → 적용 2단계 호출</span>
+            </article>
+
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-02-upload.jpg" alt="스크린샷 인식 화면 — 기록은 가볍게, 스크린샷 한 장" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">02 · 스크린샷 입력</span>
+                <h4>기록은 가볍게, 스크린샷 한 장</h4>
+                <p>증권사·코인 앱 화면을 올리면 AI가 종목·수량·평가금액을 읽어 냅니다. 여러 장을 한 번에 올릴 수 있습니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> AI가 읽은 결과를 바로 저장하지 않고 확인 화면을 거치게 했습니다. 값이 이상해 보이는 항목은 미리 선택을 풀어 두고 이유를 보여 줍니다. AI는 틀릴 수 있으니, 마지막 결정은 사용자가 합니다.</p>
               </div>
-              <div class="agent-col">
-                <span class="agent-col-title">검증 게이트</span>
-                <ul>
-                  <li>security-reviewer</li>
-                  <li>code-reviewer</li>
-                  <li>qa-verifier</li>
-                  <li>doc-gate-auditor</li>
-                </ul>
-                <span class="agent-col-note">반려 판정 시 착수 불가</span>
+            </article>
+
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-03-trend.jpg" alt="자산 추이 화면 — 쌓인 기록으로 흐름을 봐요" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">03 · 자산 추이</span>
+                <h4>쌓인 기록으로 흐름을 봐요</h4>
+                <p>기간별 자산 변화와 자산 종류별 기여도를 보며 다음 계획을 세웁니다. 매일 기록이 남아 오래 쓸수록 볼 수 있는 흐름이 길어집니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> 가격은 거래소가 확정한 종가만 반영하고 기준일을 함께 표시합니다. 장중 시세나 AI가 추정한 값은 평가금액에 넣지 않습니다.</p>
               </div>
-            </div>
-            <div class="agent-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="agent-deploy">
-              <span class="agent-box-label">배포 — store-deployer / git-committer</span>
-              <span class="agent-box-desc">내부 테스트 트랙 고정 · allowlist/denylist/diff 검증</span>
-            </div>
-            <p class="agent-caption">에이전트 위임 · 게이트 · 배포 흐름</p>
+            </article>
+
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-04-chat.jpg" alt="AI 대화 화면 — 계획 전에, 먼저 물어보세요" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">04 · AI 대화</span>
+                <h4>계획 전에, 먼저 물어보세요</h4>
+                <p>내 포트폴리오 내용을 함께 보내 Gemini AI에게 묻습니다. 포트폴리오를 따로 설명하지 않아도 되고, 질문에 맞게 모델을 고를 수 있습니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> AI는 비중·집중도 같은 사실을 정리해 보여 주는 역할로 한정했습니다. 특정 종목을 사라·팔라고 권하지 않으며, 투자 자문이 아니라는 안내를 항상 함께 보여 줍니다.</p>
+              </div>
+            </article>
+
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-05-insight.jpg" alt="인사이트 화면 — 주요국 금리, 한눈에" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">05 · 인사이트</span>
+                <h4>주요국 금리, 한눈에</h4>
+                <p>오늘의 시장 지수와 주요국 기준금리, 중앙은행의 통화정책 발표를 한곳에서 봅니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> 금리·정책 발표는 국제결제은행(BIS), 미 연준, 한국은행처럼 공식 출처에서 받은 데이터만 보여 줍니다.</p>
+              </div>
+            </article>
+
+            <article class="ep-feature">
+              <img src="assets/images/enopy/store-06-private.jpg" alt="설정 화면 — 내 자산 데이터는, 내 폰 안에" loading="lazy" data-lightbox />
+              <div class="ep-feature-text">
+                <span class="ep-feature-step">06 · 개인정보</span>
+                <h4>내 자산 데이터는, 내 폰 안에</h4>
+                <p>보유 종목·수량·평가액은 이 기기 안에만 저장됩니다. 내가 고른 스크린샷과 질문을 보낼 때만, 분석에 필요한 내용이 함께 전송됩니다.</p>
+                <p class="ep-feature-note"><strong>기획 포인트</strong> 계좌번호는 마지막 네 자리만 남기고 자동으로 가립니다. 기기를 바꿀 때는 사용자가 직접 백업 파일로 옮기도록 했습니다.</p>
+              </div>
+            </article>
           </div>
         </div>
+
+        <!-- Decisions -->
+        <div class="ep-block">
+          <h3 class="ep-block-title">기획하며 내린 결정</h3>
+          <div class="ep-decisions">
+            <article class="ep-decision">
+              <h4>자동 연동 대신 스크린샷 입력</h4>
+              <p>증권 계좌를 자동으로 불러오는 마이데이터는 금융당국 허가를 받은 법인만 할 수 있고, 증권사 로그인을 대신하는 방식은 약관 위반이라 처음부터 제외했습니다. 개인이 지금 만들 수 있는 가장 가벼운 입력으로 스크린샷을 골랐습니다.</p>
+            </article>
+            <article class="ep-decision">
+              <h4>입력 경로를 하나 더</h4>
+              <p>스크린샷 외에 문자·텍스트 붙여넣기를 지원합니다. Android에서는 증권사 체결 알림을 기기 안에서 읽어 매수·매도 내역을 제안하고, 사용자가 확정해야 반영됩니다. 알림 원문은 저장하지 않습니다.</p>
+            </article>
+            <article class="ep-decision">
+              <h4>AI 비용은 광고로</h4>
+              <p>처음 설치하면 무료 크레딧을 드리고, 스크린샷 분석과 AI 대화에 크레딧을 씁니다. 크레딧은 혜택 탭에서 보상형 광고를 보고 충전합니다. 유료 결제 없이 AI 호출 비용을 광고 수익으로 감당하는 구조입니다.</p>
+            </article>
+          </div>
+        </div>
+
       </div>
     </section>
 

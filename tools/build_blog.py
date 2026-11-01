@@ -53,6 +53,11 @@ IMAGE_OVERRIDES = {
     "https://cdn-images-1.medium.com/max/500/0*LIZhF4ZzO9xm_uAC": "fading-edge.png",  # RecyclerView fadingEdge — overlay view
 }
 
+# 세로로 긴 다이어그램처럼 높이 제한(480px) 없이 원본 크기로 보여 줄 이미지: Medium 이미지 주소 목록
+FULL_SIZE_IMAGES = {
+    "https://cdn-images-1.medium.com/max/428/1*ZGBSmG7mwcOpZXz75jzU9g.png",  # InputMethodService 생명주기 다이어그램
+}
+
 NS = {"content": "http://purl.org/rss/1.0/modules/content/"}
 UA = {"User-Agent": "Mozilla/5.0 (blog builder)"}
 
@@ -156,8 +161,9 @@ def convert(body, slug, gists, local_links):
         src = m.group(1)
         alt = re.search(r'alt="([^"]*)"', m.group(0))
         alt = alt.group(1) if alt else ""
+        cls = ' class="full-size"' if src in FULL_SIZE_IMAGES else ""
         if src in IMAGE_OVERRIDES:
-            return f'<img src="../assets/images/blog/{slug}/{IMAGE_OVERRIDES[src]}" alt="{alt}" loading="lazy" />'
+            return f'<img src="../assets/images/blog/{slug}/{IMAGE_OVERRIDES[src]}" alt="{alt}" loading="lazy"{cls} />'
         ext = Path(src.split("?")[0]).suffix.lower()
         if ext not in (".png", ".jpg", ".jpeg", ".gif", ".webp"):
             ext = ".png"
@@ -166,7 +172,7 @@ def convert(body, slug, gists, local_links):
         if not path.exists():
             target.mkdir(parents=True, exist_ok=True)
             path.write_bytes(fetch(src))
-        return f'<img src="../assets/images/blog/{slug}/{name}" alt="{alt}" loading="lazy" />'
+        return f'<img src="../assets/images/blog/{slug}/{name}" alt="{alt}" loading="lazy"{cls} />'
 
     body = re.sub(r'<img[^>]*?src="(https://cdn-images-1\.medium\.com/[^"]+)"[^>]*>', replace_img, body)
 
