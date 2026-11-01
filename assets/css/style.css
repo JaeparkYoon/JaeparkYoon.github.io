@@ -1771,6 +1771,9 @@ a.writing-card {
 .post-body > img {
   display: block;
   max-width: 100%;
+  /* Phone screen captures are tall: cap the height and keep the ratio */
+  max-height: 480px;
+  width: auto;
   height: auto;
   margin: 0 auto;
   border-radius: var(--radius-md);
