@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="599" height="1183" viewBox="0 0 428 845">
+  <!-- Redrawn from the Android Developers "Creating an input method" lifecycle diagram -->
+  <defs>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcdcff"/><stop offset="1" stop-color="#7fb4ff"/></linearGradient>
+    <linearGradient id="g-gray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6f6"/><stop offset="1" stop-color="#d6d6d6"/></linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4f05a"/><stop offset="1" stop-color="#a6d32c"/></linearGradient>
+    <linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc4ee"/><stop offset="1" stop-color="#ff8fdc"/></linearGradient>
+    <filter id="sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#000" flood-opacity="0.18"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#444"/></marker>
+    <style>
+      text { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 8.6px; font-weight: 700; fill: #1f1f1f; }
+      .ln { fill: none; stroke: #444; stroke-width: 1; }
+    </style>
+  </defs>
+  <rect width="428" height="845" fill="#fff"/>
+  <path class="ln" d="M106.0 49 V77" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 116 V142" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 181 V207" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 246 V272" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 311 V335" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 374 V399" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 438 V468" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 507 V535" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 574 V599" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 638 V666" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 705 V730" marker-end="url(#ah)"/>
+  <path class="ln" d="M106.0 769 V794" marker-end="url(#ah)"/>
+  <path class="ln" d="M201 686.0 H325.5 V508" marker-end="url(#ah)"/>
+  <path class="ln" d="M325.5 469 V292.0 H203" marker-end="url(#ah)"/>
+  <path class="ln" d="M201 619.0 H210 V355.0 H203" marker-end="url(#ah)"/>
+  <rect x="11" y="11" width="190" height="38" rx="2" fill="url(#g-blue)" stroke="#6c9fe0" filter="url(#sh)"/>
+  <text x="106.0" y="24.75" text-anchor="middle" dominant-baseline="central">InputMethodService</text>
+  <text x="106.0" y="35.25" text-anchor="middle" dominant-baseline="central">starts</text>
+  <rect x="11" y="78" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="97.0" text-anchor="middle" dominant-baseline="central">onCreate()</text>
+  <rect x="11" y="143" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="162.0" text-anchor="middle" dominant-baseline="central">onCreateInputView()</text>
+  <rect x="11" y="208" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="227.0" text-anchor="middle" dominant-baseline="central">onCreateCandidateViews()</text>
+  <rect x="11" y="273" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="292.0" text-anchor="middle" dominant-baseline="central">onStartInputView()</text>
+  <rect x="11" y="336" width="190" height="38" rx="2" fill="url(#g-green)" stroke="#8ab521" filter="url(#sh)"/>
+  <text x="106.0" y="349.75" text-anchor="middle" dominant-baseline="central">Text input gets the current input method</text>
+  <text x="106.0" y="360.25" text-anchor="middle" dominant-baseline="central">subtype</text>
+  <rect x="11" y="400" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="413.75" text-anchor="middle" dominant-baseline="central">InputMethodManager#</text>
+  <text x="106.0" y="424.25" text-anchor="middle" dominant-baseline="central">getCurrentInputMethodSubtype()</text>
+  <rect x="11" y="469" width="190" height="38" rx="2" fill="url(#g-green)" stroke="#8ab521" filter="url(#sh)"/>
+  <text x="106.0" y="488.0" text-anchor="middle" dominant-baseline="central">Text input has started</text>
+  <rect x="11" y="536" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="555.0" text-anchor="middle" dominant-baseline="central">onCurrentInputMethodSubtypeChanged()</text>
+  <rect x="11" y="600" width="190" height="38" rx="2" fill="url(#g-green)" stroke="#8ab521" filter="url(#sh)"/>
+  <text x="106.0" y="613.75" text-anchor="middle" dominant-baseline="central">Detect the current input method subtype</text>
+  <text x="106.0" y="624.25" text-anchor="middle" dominant-baseline="central">has been changed</text>
+  <rect x="11" y="667" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="686.0" text-anchor="middle" dominant-baseline="central">onFinishInput()</text>
+  <rect x="11" y="731" width="190" height="38" rx="2" fill="url(#g-gray)" stroke="#a9a9a9" filter="url(#sh)"/>
+  <text x="106.0" y="750.0" text-anchor="middle" dominant-baseline="central">onDestroy()</text>
+  <rect x="11" y="795" width="190" height="38" rx="2" fill="url(#g-pink)" stroke="#e57fc6" filter="url(#sh)"/>
+  <text x="106.0" y="808.75" text-anchor="middle" dominant-baseline="central">InputMethodService</text>
+  <text x="106.0" y="819.25" text-anchor="middle" dominant-baseline="central">stops</text>
+  <rect x="234" y="469" width="183" height="38" rx="2" fill="url(#g-green)" stroke="#8ab521" filter="url(#sh)"/>
+  <text x="325.5" y="488.0" text-anchor="middle" dominant-baseline="central">Move to an additional field</text>
+</svg>

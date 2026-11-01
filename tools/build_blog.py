@@ -51,6 +51,7 @@ REMOVE_FIGURES = {
 # Medium 원본이 저해상도라 다시 그린 이미지로 바꿔 쓴다: Medium 이미지 주소 -> 글 이미지 폴더 안의 파일명
 IMAGE_OVERRIDES = {
     "https://cdn-images-1.medium.com/max/500/0*LIZhF4ZzO9xm_uAC": "fading-edge.png",  # RecyclerView fadingEdge — overlay view
+    "https://cdn-images-1.medium.com/max/428/1*ZGBSmG7mwcOpZXz75jzU9g.png": "ime-lifecycle.svg",  # InputMethodService 생명주기 (SVG로 다시 그림)
 }
 
 # 세로로 긴 다이어그램처럼 높이 제한(480px) 없이 원본 크기로 보여 줄 이미지: Medium 이미지 주소 목록
