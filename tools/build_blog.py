@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Medium 글을 홈페이지 블로그로 옮긴다.
+Medium에서 옮겨 온 글을 홈페이지 블로그 페이지로 만든다.
 
   python3 tools/build_blog.py
 
-- Medium RSS(@jpyoon1122)에서 글 본문을 받아 blog/<post id>.html 로 생성
-  (글 순서는 Medium 프로필과 같은 피드 순서를 따르되, "제목 — 1", "제목 — 2" 같은
+- Medium 블로그는 삭제됐다(2026-11-01). 글 원본은 삭제 전에 받아 둔 RSS 사본
+  tools/medium-export.xml 이 유일한 소스다 — 지우지 말 것.
+- 사본의 글 본문으로 blog/<post id>.html 을 생성
+  (글 순서는 Medium 프로필과 같았던 피드 순서를 따르되, "제목 — 1", "제목 — 2" 같은
    연재 글은 첫 편이 나온 자리에 1편부터 차례로 모은다. 작성일은 표시하지 않는다)
 - 본문 이미지는 assets/images/blog/<slug>/ 에 내려받아 로컬 경로로 교체
 - Medium 코드 임베드(GitHub Gist)는 Gist 원본 코드를 받아 <pre><code> 로 교체
@@ -30,7 +32,7 @@ from pathlib import Path
 
 MEDIUM_USER = "jpyoon1122"
 GITHUB_USER = "JaeparkYoon"
-FEED_URL = f"https://medium.com/feed/@{MEDIUM_USER}"
+EXPORT = Path(__file__).resolve().parent / "medium-export.xml"
 GISTS_URL = f"https://api.github.com/users/{GITHUB_USER}/gists?per_page=100"
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -228,7 +230,7 @@ POST_TEMPLATE = """<!DOCTYPE html>
   <title>{title} — 윤재박 기술 블로그</title>
   <meta name="description" content="{description}" />
   <meta name="author" content="Jaepark Yoon" />
-  <link rel="canonical" href="{medium_url}" />
+  <link rel="canonical" href="https://jaeparkyoon.github.io/blog/{slug}.html" />
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{title}" />
@@ -270,9 +272,6 @@ POST_TEMPLATE = """<!DOCTYPE html>
       <a href="../#writing" class="post-back"><i class="fa-solid fa-arrow-left"></i> 글 목록</a>
       <header class="post-header">
         <h1 class="post-title">{title}</h1>
-        <div class="post-meta">
-          <a href="{medium_url}" target="_blank" rel="noopener noreferrer">Medium 원문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
       </header>
 
       <div class="post-body">
@@ -289,9 +288,6 @@ POST_TEMPLATE = """<!DOCTYPE html>
     <div class="container footer-content">
       <div>
         <p>© 2026 윤재박 (Jaepark Yoon). All rights reserved.</p>
-        <p style="font-size: 0.78rem; margin-top: 4px; color: var(--text-muted);">
-          이 글은 <a href="https://medium.com/@{medium_user}" target="_blank" rel="noopener noreferrer">Medium</a>에 먼저 게시되었습니다.
-        </p>
       </div>
       <div class="footer-links">
         <a href="https://github.com/JaeparkYoon" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -330,10 +326,9 @@ def card(post):
 
 
 def main():
-    feed = sys.argv[1] if len(sys.argv) > 1 else None
-    xml = Path(feed).read_bytes() if feed else fetch(FEED_URL)
+    xml = EXPORT.read_bytes()
     items = ET.fromstring(xml).findall("channel/item")
-    print(f"Medium 글 {len(items)}편")
+    print(f"글 {len(items)}편")
 
     gists = load_gists()
     print(f"Gist 코드 {len({id(v) for v in gists.values()})}개")
@@ -345,7 +340,6 @@ def main():
             "id": post_id(link),
             "slug": post_id(link),
             "title": TITLE_OVERRIDES.get(post_id(link), item.findtext("title").strip()),
-            "medium_url": link.split("?")[0],
             "raw": item.find("content:encoded", NS).text,
         })
     posts = group_series(posts)
@@ -362,8 +356,7 @@ def main():
         page = POST_TEMPLATE.format(
             title=html.escape(post["title"]),
             description=html.escape(post["excerpt"]),
-            medium_url=post["medium_url"],
-            medium_user=MEDIUM_USER,
+            slug=post["slug"],
             body=body,
             nav="\n".join([nav_link(prev_post, "이전 글", "prev"), nav_link(next_post, "다음 글", "next")]),
         )
