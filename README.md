@@ -28,6 +28,7 @@ python3 tools/build_blog.py
 - 글 순서는 Medium 프로필과 같고, 작성일·분량은 표시하지 않습니다.
 - 「제목 — 1」「제목 — 2」 같은 연재 글은 1편부터 붙여서 보여줍니다.
 - 홈페이지에서 뺄 본문 이미지는 스크립트의 `REMOVE_FIGURES`에 등록합니다.
+- Medium과 다른 제목으로 보여 줄 글은 `TITLE_OVERRIDES`에 등록합니다.
 - 다시 그린 이미지로 바꿀 때는 `IMAGE_OVERRIDES`, 높이 제한 없이 원본 크기로 보여 줄 다이어그램은 `FULL_SIZE_IMAGES`에 등록합니다.
 - 본문 이미지는 `assets/images/blog/<글 ID>/`에 내려받습니다.
 - Medium 코드 임베드는 GitHub Gist 원본 코드로 바꿉니다. 비밀 Gist까지 찾으려면 `gh` CLI 로그인이 필요합니다.

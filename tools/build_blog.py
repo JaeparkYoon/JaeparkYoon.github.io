@@ -59,6 +59,11 @@ FULL_SIZE_IMAGES = {
     "https://cdn-images-1.medium.com/max/428/1*ZGBSmG7mwcOpZXz75jzU9g.png",  # InputMethodService 생명주기 다이어그램
 }
 
+# Medium 제목과 다르게 보여 줄 제목: 글 ID -> 홈페이지 제목
+TITLE_OVERRIDES = {
+    "35e5b2344a2b": "Android Keyboard의 InputMethodService Lifecycle 분석 내용 기록",
+}
+
 NS = {"content": "http://purl.org/rss/1.0/modules/content/"}
 UA = {"User-Agent": "Mozilla/5.0 (blog builder)"}
 
@@ -339,7 +344,7 @@ def main():
         posts.append({
             "id": post_id(link),
             "slug": post_id(link),
-            "title": item.findtext("title").strip(),
+            "title": TITLE_OVERRIDES.get(post_id(link), item.findtext("title").strip()),
             "medium_url": link.split("?")[0],
             "raw": item.find("content:encoded", NS).text,
         })
