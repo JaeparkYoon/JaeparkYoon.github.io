@@ -1,11 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4f46e5"/>
-      <stop offset="0.5" stop-color="#7c3aed"/>
-      <stop offset="1" stop-color="#0284c7"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="32" fill="url(#g)"/>
+  <!-- 차콜 원. 가장자리의 옅은 테두리는 어두운 탭에서도 원이 보이게 한다 -->
+  <circle cx="32" cy="32" r="31" fill="#202124" stroke="#ffffff" stroke-opacity="0.45" stroke-width="2"/>
   <text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Pretendard, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="800" fill="#fff">J</text>
 </svg>

@@ -1,0 +1,61 @@
+/* A 시안 — Android Developers 문서 스타일. 색은 링크·버튼에만, 나머지는 무채색. style.css 뒤에 불러온다. */
+:root {
+  --bg-primary: #ffffff; --bg-secondary: #ffffff; --bg-tertiary: #f8f9fa; --bg-card: #ffffff; --bg-card-hover: #ffffff;
+  --border-subtle: #dadce0; --border-hover: #bdc1c6; --border-focus: rgba(25,103,210,.4);
+  --accent-primary: #1967d2; --accent-primary-hover: #185abc; --accent-secondary: #1967d2;
+  --accent-gradient: #1967d2;
+  --accent-enopy: #3c4043; --accent-enopy-soft: #f8f9fa; --accent-enopy-glow: transparent;
+  --text-primary: #202124; --text-secondary: #3c4043; --text-muted: #5f6368;
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-xl: none;
+  --radius-sm: 6px; --radius-md: 8px; --radius-lg: 8px; --radius-xl: 8px;
+}
+body { background: #ffffff; background-image: none; line-height: 1.75; word-break: keep-all; }
+
+/* 헤더·탭: 선택된 탭은 파란 밑줄 (Android 문서 탭) */
+.site-header { background: rgba(255,255,255,.96); }
+.nav-link { border-radius: 0; padding: 8px 4px; margin: 0 10px; border-bottom: 2px solid transparent; }
+.nav-link:hover, .nav-link.active { background: transparent; color: var(--accent-primary); }
+.nav-link.active { border-bottom-color: var(--accent-primary); }
+.github-btn { border-radius: var(--radius-md); background: #fff; color: var(--text-primary); border-color: var(--border-subtle); }
+.github-btn:hover { background: var(--bg-tertiary); }
+
+/* 배지 → 작은 회색 머리글 */
+.section-badge, .badge-indigo, .badge-enopy { background: none !important; border: 0 !important; padding: 0 !important;
+  color: var(--text-muted) !important; letter-spacing: .1em; }
+
+/* 카드: 그림자·떠오름 없이 얇은 테두리 */
+.timeline-card:hover, .writing-card:hover, .ep-decision:hover, .ep-problem-card:hover { transform: none; box-shadow: none; border-color: var(--border-hover); }
+.career-duration { background: none; border: 0; padding: 0; color: var(--text-muted); }
+.career-bullets li::before { background: #9aa0a6; }
+.career-bullets a { color: var(--accent-primary); border-bottom: 0; }
+.career-bullets a:hover { text-decoration: underline; }
+
+/* 사이드 프로젝트: 브랜드 코랄 대신 회색 바탕 */
+.enopy-theme { background: transparent; }
+.ep-hero-tagline { color: var(--text-primary); }
+.ep-store-btn { border-radius: var(--radius-md); background: var(--accent-primary); }
+.ep-store-btn:hover { background: var(--accent-primary-hover); transform: none; box-shadow: none; }
+.ep-name, .ep-feature-note { background: var(--bg-tertiary); border: 1px solid var(--border-subtle); }
+.ep-feature-note { border-left: 3px solid var(--border-hover); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.ep-feature-step, .ep-problem-num { color: var(--text-muted); }
+
+/* 기술 블로그: 제목이 링크 */
+.writing-title { color: var(--accent-primary); }
+.writing-more { color: var(--text-muted); font-weight: 600; }
+
+/* 마무리 */
+.about-card { box-shadow: none; }
+.about-card::before, .about-card::after { display: none; }
+.about-role { color: var(--text-muted); }
+.closing-quote { border-left-color: var(--border-hover); }
+.btn { border-radius: var(--radius-md); }
+.btn-primary { background: var(--accent-primary); box-shadow: none; }
+.btn-primary:hover { background: var(--accent-primary-hover); box-shadow: none; transform: none; }
+.btn-secondary:hover { transform: none; }
+.gradient-text { background: none; -webkit-text-fill-color: currentColor; color: var(--text-primary); }
+
+/* 헤더 왼쪽 J 로고 */
+.nav-container > nav { flex: 1; }
+.site-logo { display: inline-flex; align-items: center; gap: 10px; margin-right: 18px; color: var(--text-primary); font-weight: 800; font-size: 1rem; text-decoration: none; }
+.site-logo img { width: 30px; height: 30px; display: block; }
+@media (max-width: 768px) { .site-logo { margin-right: auto; } .site-logo span { display: none; } }
